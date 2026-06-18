@@ -93,4 +93,9 @@ export const PAGE_SEO = {
     description: 'Book a hand wash or detailing appointment at Frothy Carwash Lounge. Call (954) 510-3073 or stop by at 2223 Pembroke Rd, Hollywood FL. Open 7 days.',
     canonical: '/contact',
   },
+  gallery: {
+    title: 'Photo & Video Gallery | Frothy Carwash Lounge | Hollywood, FL',
+    description: 'See our work — hand washes, full details, and ceramic coatings in Hollywood, FL. Browse photos and videos from the Frothy Carwash Lounge.',
+    canonical: '/gallery',
+  },
 }

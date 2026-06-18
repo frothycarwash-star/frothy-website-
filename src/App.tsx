@@ -7,6 +7,7 @@ import Ceramic from './pages/Ceramic'
 import Memberships from './pages/Memberships'
 import About from './pages/About'
 import Contact from './pages/Contact'
+import Gallery from './pages/Gallery'
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
           <Route path="/memberships" element={<Memberships />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/gallery" element={<Gallery />} />
         </Routes>
       </main>
       <Footer />
