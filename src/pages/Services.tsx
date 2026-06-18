@@ -69,12 +69,11 @@ const detailPackages = [
 
 const interiorAddOns = [
   { name: 'Pet Hair Removal', price: '$15–$50' },
-  { name: 'Seat Shampoo', price: '$40–$80' },
-  { name: 'Carpet Shampoo', price: '$40–$80' },
+  { name: 'Seat Deep Cleaning', price: 'Starting at $25 per seat' },
+  { name: 'Carpet Deep Cleaning', price: 'Starting at $25 per side' },
   { name: 'Full Interior Extraction', price: '$99–$199' },
-  { name: 'Leather Cleaning', price: '$40–$80' },
-  { name: 'Leather Conditioning', price: '$30–$60' },
-  { name: 'Plastic Trim Dressing', price: '$15' },
+  { name: 'Leather Cleaning & Conditioning', price: 'Starting at $25' },
+  { name: 'Plastic Trim Dressing', price: 'Starting at $15' },
   { name: 'Odor Removal', price: '$30–$75' },
   { name: 'Ozone Treatment', price: '$50–$100' },
   { name: 'Child Seat Cleaning', price: '$20–$40' },
@@ -95,9 +94,8 @@ const exteriorAddOns = [
   { name: 'Tree Sap Removal', price: '$30–$100' },
   { name: 'Paint Decontamination', price: '$75–$150' },
   { name: 'Chrome Polishing', price: '$25–$75' },
-  { name: 'Engine Bay Cleaning', price: '$40–$80' },
+  { name: 'Engine Bay Detail', price: 'Starting at $30' },
   { name: 'Wheel Deep Cleaning', price: '$25–$50' },
-  { name: 'Tire Dressing', price: '$10–$20' },
   { name: 'Trim Restoration', price: '$50–$150' },
 ]
 
@@ -113,7 +111,7 @@ const paintCorrectionServices = [
 ]
 
 const headlightGlassServices = [
-  { name: 'Headlight Restoration', price: '$75–$150' },
+  { name: 'Headlight Restoration', price: 'Starting at $50' },
   { name: 'Taillight Restoration', price: '$50–$100' },
   { name: 'Windshield Water Repellent', price: '$25–$50' },
   { name: 'Glass Polishing', price: '$75–$200' },
@@ -123,14 +121,11 @@ const headlightGlassServices = [
 const specialtyServices = [
   { name: 'Convertible Top Cleaning', price: '$50–$150' },
   { name: 'Convertible Top Protection', price: '$50–$150' },
-  { name: 'Vinyl Wrap Maintenance', price: '$75–$150' },
-  { name: 'PPF Maintenance', price: '$75–$150' },
   { name: 'Decal Removal', price: '$50–$200' },
   { name: 'Sticker Removal', price: '$20–$100' },
   { name: 'Overspray Removal', price: '$100–$500' },
-  { name: 'Smoke Removal', price: '$150–$400' },
+  { name: 'Smoke Odor Treatment', price: 'Starting at $50' },
   { name: 'Flood Cleanup', price: 'Quote' },
-  { name: 'Biohazard Cleanup', price: 'Quote' },
 ]
 
 const fleetLuxuryServices = [
