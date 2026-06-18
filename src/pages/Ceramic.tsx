@@ -124,7 +124,7 @@ export default function Ceramic() {
           {/* Middle Tiers (2-col) */}
           <div className="grid sm:grid-cols-2 gap-6 mb-6">
             {tiers.filter(t => !t.span).map((tier) => (
-              <div key={tier.name} className={`rounded-2xl overflow-hidden shadow-card ${tier.featured ? 'ring-2 ring-frothy-blue' : ''}`}>
+              <div key={tier.name} className={`h-full flex flex-col rounded-2xl overflow-hidden shadow-card ${tier.featured ? 'ring-2 ring-frothy-blue' : ''}`}>
                 <div className={`px-6 py-5 ${tier.featured ? 'bg-frothy-blue' : 'bg-frothy-navy'}`}>
                   <p className={`text-xs font-bold tracking-[0.15em] uppercase mb-2 ${tier.featured ? 'text-white/70' : 'text-frothy-blue'}`}>
                     {tier.tier}
@@ -143,8 +143,8 @@ export default function Ceramic() {
                     {tier.price}
                   </p>
                 </div>
-                <div className="bg-white p-6">
-                  <ul className="space-y-2.5 mb-6">
+                <div className="bg-white p-6 flex flex-col flex-1">
+                  <ul className="space-y-2.5 mb-6 flex-1">
                     {tier.features.map((f) => (
                       <li key={f} className="flex items-center gap-2.5 text-sm text-frothy-navy/80">
                         <Check className="w-4 h-4 text-frothy-blue flex-shrink-0" />

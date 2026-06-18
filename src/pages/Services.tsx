@@ -148,7 +148,7 @@ const fleetLuxuryServices = [
 
 function ServiceCard({ service, onBook }: { service: typeof basicWashes[0]; onBook: () => void }) {
   return (
-    <div className={`rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-shadow ${
+    <div className={`h-full flex flex-col rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-shadow ${
       service.featured ? 'ring-2 ring-frothy-blue' : ''
     }`}>
       <div className={`px-6 py-5 ${service.featured ? 'bg-frothy-blue' : 'bg-frothy-navy'}`}>
@@ -174,8 +174,8 @@ function ServiceCard({ service, onBook }: { service: typeof basicWashes[0]; onBo
           </span>
         </div>
       </div>
-      <div className="bg-white p-6">
-        <ul className="space-y-2.5 mb-6">
+      <div className="bg-white p-6 flex flex-col flex-1">
+        <ul className="space-y-2.5 mb-6 flex-1">
           {service.features.map((feature) => (
             <li key={feature} className="flex items-center gap-2.5 text-sm text-frothy-navy/80">
               <Check className="w-4 h-4 text-frothy-blue flex-shrink-0" />

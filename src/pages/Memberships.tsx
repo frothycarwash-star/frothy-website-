@@ -111,7 +111,7 @@ export default function Memberships() {
             {plans.map((plan) => (
               <div
                 key={plan.name}
-                className={`rounded-2xl overflow-hidden shadow-card ${plan.popular ? 'ring-2 ring-amber-400 lg:scale-105 lg:-my-4' : ''}`}
+                className={`h-full flex flex-col rounded-2xl overflow-hidden shadow-card ${plan.popular ? 'ring-2 ring-amber-400 lg:scale-105 lg:-my-4' : ''}`}
               >
                 {/* Header */}
                 <div className={`${plan.headerBg} px-6 py-6 text-center`}>
@@ -134,8 +134,8 @@ export default function Memberships() {
                 </div>
 
                 {/* Body */}
-                <div className="bg-white p-6">
-                  <ul className="space-y-3 mb-6">
+                <div className="bg-white p-6 flex flex-col flex-1">
+                  <ul className="space-y-3 mb-6 flex-1">
                     {plan.features.map((feature, i) => (
                       <li key={i} className="flex items-start gap-2.5 text-sm text-frothy-navy/80">
                         <Check className="w-4 h-4 text-frothy-blue flex-shrink-0 mt-0.5" />
