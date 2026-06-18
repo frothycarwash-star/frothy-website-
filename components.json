@@ -1,25 +1,22 @@
-import { useSEO, PAGE_SEO } from '../hooks/useSEO'
-import Hero from '../sections/Hero'
-import InfoBar from '../sections/InfoBar'
-import ServicesPreview from '../sections/ServicesPreview'
-import BeforeAfter from '../sections/BeforeAfter'
-import WhyFrothy from '../sections/WhyFrothy'
-import Reviews from '../sections/Reviews'
-import CeramicCTA from '../sections/CeramicCTA'
-import LocationCTA from '../sections/LocationCTA'
-
-export default function Home() {
-  useSEO(PAGE_SEO.home)
-  return (
-    <>
-      <Hero />
-      <InfoBar />
-      <ServicesPreview />
-      <BeforeAfter />
-      <WhyFrothy />
-      <Reviews />
-      <CeramicCTA />
-      <LocationCTA />
-    </>
-  )
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": {
+    "config": "postcss.config.js",
+    "css": "src/index.css",
+    "baseColor": "slate",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "iconLibrary": "lucide",
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
+  },
+  "registries": {}
 }
