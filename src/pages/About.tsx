@@ -27,7 +27,7 @@ const values = [
 
 const stats = [
   { num: '2,000+', label: 'Cars Detailed' },
-  { num: '4.9', label: 'Google Rating' },
+  { num: '5.0', label: 'Google Rating' },
   { num: '7', label: 'Days a Week' },
   { num: '100%', label: 'Hand Washed' },
 ]
