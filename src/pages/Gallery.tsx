@@ -5,19 +5,20 @@ import { X, Camera, Play } from 'lucide-react'
 const categories = ['All', 'Hand Wash', 'Full Detail', 'Ceramic Coating', 'Interior']
 
 const photos = [
-  { src: '/images/gallery-1.jpg', alt: 'Hand wash in progress', category: 'Hand Wash' },
-  { src: '/images/gallery-2.jpg', alt: 'Full detail finished result', category: 'Full Detail' },
-  { src: '/images/gallery-3.jpg', alt: 'Ceramic coating gloss finish', category: 'Ceramic Coating' },
-  { src: '/images/gallery-4.jpg', alt: 'Interior deep clean', category: 'Interior' },
-  { src: '/images/gallery-5.jpg', alt: 'Hand wash suds and foam', category: 'Hand Wash' },
-  { src: '/images/gallery-6.jpg', alt: 'Showroom detail package', category: 'Full Detail' },
-  { src: '/images/gallery-7.jpg', alt: 'Ceramic coated paint beading water', category: 'Ceramic Coating' },
-  { src: '/images/gallery-8.jpg', alt: 'Leather interior conditioning', category: 'Interior' },
+  { src: '/images/gallery-1.jpg', alt: 'Hand suds wash on a black Mercedes-Benz', category: 'Hand Wash' },
+  { src: '/images/gallery-2.jpg', alt: 'White Corvette covered in foam, rear three-quarter view', category: 'Hand Wash' },
+  { src: '/images/gallery-3.jpg', alt: 'White Corvette covered in foam, front view', category: 'Hand Wash' },
+  { src: '/images/gallery-4.jpg', alt: 'Black BMW M2 after a full detail', category: 'Full Detail' },
+  { src: '/images/gallery-5.jpg', alt: 'Lamborghini gold wheel and brake caliper close-up', category: 'Full Detail' },
+  { src: '/images/gallery-6.jpg', alt: 'Before and after interior detail — seats and dashboard', category: 'Interior' },
+  { src: '/images/gallery-7.jpg', alt: 'Lamborghini door panel with yellow stitching detail', category: 'Interior' },
+  { src: '/images/gallery-8.jpg', alt: 'Green Lamborghini Urus parked at the carwash after a full detail', category: 'Full Detail' },
 ]
 
 const videos = [
-  { src: '/videos/gallery-1.mp4', poster: '/images/gallery-1.jpg', title: 'Hand wash walkthrough' },
-  { src: '/videos/gallery-2.mp4', poster: '/images/gallery-3.jpg', title: 'Ceramic coating application' },
+  { src: '/videos/gallery-1.mp4', poster: '/images/gallery-video-1-poster.jpg', title: 'Hand wash walkthrough' },
+  { src: '/videos/gallery-2.mp4', poster: '/images/gallery-video-2-poster.jpg', title: 'Foam wash in action' },
+  { src: '/videos/gallery-3.mp4', poster: '/images/gallery-video-3-poster.jpg', title: 'Behind the scenes at Frothy' },
 ]
 
 function PhotoTile({ src, alt, onClick }: { src: string; alt: string; onClick: () => void }) {
