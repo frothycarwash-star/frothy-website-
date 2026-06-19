@@ -86,6 +86,9 @@ export default function WhyFrothy() {
               <img
                 src="/images/lounge-interior.jpg"
                 alt="Frothy Carwash Lounge interior"
+                width={1400}
+                height={1050}
+                loading="lazy"
                 className="w-full aspect-video object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-frothy-navy/80 to-transparent" />

@@ -14,6 +14,9 @@ export default function Hero() {
           <img
             src="/images/hero-car.jpg"
             alt="Premium hand car wash"
+            width={1536}
+            height={1024}
+            fetchPriority="high"
             className="w-full h-full object-cover"
           />
           {/* Gradient Overlay */}

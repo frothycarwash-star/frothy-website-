@@ -50,6 +50,7 @@ function ComparisonSlider({ before, after, label }: { before: string; after: str
       <img
         src={after}
         alt={`${label} after`}
+        loading="lazy"
         className="absolute inset-0 w-full h-full object-cover"
         draggable={false}
       />

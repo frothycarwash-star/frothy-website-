@@ -96,6 +96,9 @@ export default function About() {
                 <img
                   src="/images/team.jpg"
                   alt="The Frothy team"
+                  width={1400}
+                  height={933}
+                  loading="lazy"
                   className="w-full aspect-[3/2] object-cover"
                 />
               </div>
@@ -130,6 +133,9 @@ export default function About() {
                 <img
                   src="/images/hand-wash.jpg"
                   alt="Hand washing a car at Frothy"
+                  width={1200}
+                  height={1600}
+                  loading="lazy"
                   className="w-full aspect-[4/3] object-cover"
                 />
               </div>

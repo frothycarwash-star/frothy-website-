@@ -5,13 +5,14 @@ interface SEOProps {
   description: string
   canonical?: string
   ogImage?: string
+  noindex?: boolean
 }
 
 const SITE_NAME = 'Frothy Carwash Lounge'
 const DEFAULT_OG_IMAGE = '/images/hero-car.jpg'
 const BASE_URL = 'https://frothycarwash.com'
 
-export function useSEO({ title, description, canonical, ogImage }: SEOProps) {
+export function useSEO({ title, description, canonical, ogImage, noindex }: SEOProps) {
   useEffect(() => {
     // Title
     document.title = title
@@ -58,7 +59,10 @@ export function useSEO({ title, description, canonical, ogImage }: SEOProps) {
     if (canonical) {
       setLink('canonical', `${BASE_URL}${canonical}`)
     }
-  }, [title, description, canonical, ogImage])
+
+    // Robots (noindex for utility pages like 404)
+    setMeta('meta[name="robots"]', 'name=robots', noindex ? 'noindex, nofollow' : 'index, follow')
+  }, [title, description, canonical, ogImage, noindex])
 }
 
 // Per-page SEO configs
@@ -69,7 +73,7 @@ export const PAGE_SEO = {
     canonical: '/',
   },
   services: {
-    title: 'Car Wash & Detailing Services | Frothy Carwash Lounge Hollywood FL',
+    title: 'Car Wash & Detailing Services | Frothy Hollywood FL',
     description: 'Hand washes from $25, full details from $65, and showroom packages up to $299. Every service done by hand. Sedan & SUV pricing. Hollywood, FL.',
     canonical: '/services',
   },
@@ -79,7 +83,7 @@ export const PAGE_SEO = {
     canonical: '/ceramic',
   },
   memberships: {
-    title: 'Car Wash Memberships | Silver, Gold & Platinum | Frothy Hollywood FL',
+    title: 'Car Wash Memberships | Frothy Hollywood FL',
     description: 'Monthly car wash memberships starting at $119/mo. Silver, Gold, and Platinum plans with hand washes, details, and priority scheduling. Hollywood, FL.',
     canonical: '/memberships',
   },

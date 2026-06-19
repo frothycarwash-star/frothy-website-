@@ -33,6 +33,7 @@ function PhotoTile({ src, alt, onClick }: { src: string; alt: string; onClick: (
         <img
           src={src}
           alt={alt}
+          loading="lazy"
           onError={() => setErrored(true)}
           className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
@@ -73,6 +74,7 @@ function VideoTile({ src, poster, title }: { src: string; poster: string; title:
         <img
           src={poster}
           alt={title}
+          loading="lazy"
           onError={() => setPosterErrored(true)}
           className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />

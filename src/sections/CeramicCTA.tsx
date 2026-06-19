@@ -76,6 +76,9 @@ export default function CeramicCTA() {
               <img
                 src="/images/ceramic-coating.jpg"
                 alt="Ceramic coating water beading effect"
+                width={1400}
+                height={933}
+                loading="lazy"
                 className="w-full aspect-[16/10] object-cover"
               />
             </div>
