@@ -5,16 +5,16 @@ const comparisons = [
   {
     id: 1,
     label: 'Exterior Detail',
-    desc: 'From road-worn to showroom shine',
-    before: '/images/before-dirty.jpg',
-    after: '/images/after-clean.jpg',
+    desc: 'Stains and grime lifted from every panel',
+    before: '/images/exterior-before.jpg',
+    after: '/images/exterior-after.jpg',
   },
   {
     id: 2,
     label: 'Interior Deep Clean',
     desc: 'Complete interior restoration',
-    before: '/images/interior-detail.jpg',
-    after: '/images/interior-detail.jpg',
+    before: '/images/interior-before.jpg',
+    after: '/images/interior-after.jpg',
   },
 ]
 
