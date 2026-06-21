@@ -1,30 +1,32 @@
 import { useState } from 'react'
 import { useSEO, PAGE_SEO } from '../hooks/useSEO'
-import { Check, ChevronDown, Phone, Star } from 'lucide-react'
+import { Check, ChevronDown, Phone, Star, Car, Truck } from 'lucide-react'
 import BookingModal from '../components/BookingModal'
+
+type Vehicle = 'sedan' | 'suv'
 
 const basicWashes = [
   {
     name: 'Exterior Wash',
     tagline: 'The quick clean refresh',
-    price: '$25',
-    priceNote: 'sedan & SUV/Truck',
+    sedanPrice: 25,
+    suvPrice: 25,
     features: ['Hand wash exterior', 'Rinse & hand dry', 'Window cleaning', 'Tire & wheel cleaning', 'Door jamb wipe-down'],
     featured: false,
   },
   {
     name: 'Interior Vacuum',
     tagline: 'Inside freshened up',
-    price: '$35',
-    priceNote: 'sedan · $40 SUV/Truck',
+    sedanPrice: 35,
+    suvPrice: 40,
     features: ['Full interior vacuum', 'Floor & mat vacuuming', 'Seat vacuuming', 'Trunk vacuum'],
     featured: false,
   },
   {
     name: 'Inside & Out Wash',
     tagline: 'Full interior + exterior · ~35 min',
-    price: '$40',
-    priceNote: 'sedan · $50 SUV/Truck',
+    sedanPrice: 40,
+    suvPrice: 50,
     features: ['Hand wash exterior', 'Wheels & tire cleaning', 'Hand dry', 'Full interior vacuum', 'Dashboard & console wipe-down', 'Door panels cleaned', 'Interior & exterior windows', 'Floor mat cleaning'],
     featured: true,
     badge: 'Most Popular',
@@ -35,16 +37,16 @@ const detailPackages = [
   {
     name: 'Signature Detail',
     tagline: 'Deep clean + UV protect + spray wax · ~1 hour',
-    price: '$65',
-    priceNote: 'sedan · $75 SUV/Truck',
+    sedanPrice: 65,
+    suvPrice: 75,
     features: ['Everything in Inside & Out', 'Spray wax exterior', 'UV paint protection', 'Tire dressing', 'Trim wipe-down', 'Air freshener'],
     featured: false,
   },
   {
     name: 'Executive Finish',
     tagline: 'Shampoo + leather + premium wax + trim restore',
-    price: '$95',
-    priceNote: 'sedan · $105 SUV/Truck',
+    sedanPrice: 95,
+    suvPrice: 105,
     features: ['Everything in Signature Detail', 'Seat & carpet shampoo', 'Leather cleaning & conditioning', 'Premium hand wax', 'Trim restoration', 'Engine bay wipe-down'],
     featured: true,
     badge: 'Best Value',
@@ -52,16 +54,16 @@ const detailPackages = [
   {
     name: 'Full Detail Package',
     tagline: 'Complete inside-out restoration',
-    price: '$199',
-    priceNote: 'sedan · $249 SUV/Truck',
+    sedanPrice: 199,
+    suvPrice: 249,
     features: ['Everything in Executive Finish', 'Clay bar decontamination', 'Iron decontamination', 'Full carpet extraction', 'Headliner cleaning', 'Paint sealant application'],
     featured: false,
   },
   {
     name: 'Showroom Detail',
     tagline: 'The ultimate treatment',
-    price: '$299',
-    priceNote: 'sedan · $399 SUV/Truck',
+    sedanPrice: 299,
+    suvPrice: 399,
     features: ['Everything in Full Detail', 'Paint correction (1-step polish)', 'Full interior steam clean', 'Ozone odor treatment', 'Wheel ceramic sealant', 'Glass ceramic coating', 'Certificate of completion'],
     featured: false,
   },
@@ -141,7 +143,8 @@ const fleetLuxuryServices = [
   { name: 'Motorcycle Detail', price: '$100–$250' },
 ]
 
-function ServiceCard({ service, onBook }: { service: typeof basicWashes[0]; onBook: () => void }) {
+function ServiceCard({ service, vehicle, onBook }: { service: typeof basicWashes[0]; vehicle: Vehicle; onBook: () => void }) {
+  const price = vehicle === 'sedan' ? service.sedanPrice : service.suvPrice
   return (
     <div className={`h-full flex flex-col rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-shadow ${
       service.featured ? 'ring-2 ring-frothy-blue' : ''
@@ -162,10 +165,10 @@ function ServiceCard({ service, onBook }: { service: typeof basicWashes[0]; onBo
         </p>
         <div className="mt-3">
           <span className={`font-heading text-3xl font-bold ${service.featured ? 'text-white' : 'text-frothy-yellow'}`}>
-            {service.price}
+            ${price}
           </span>
           <span className={`text-sm ml-2 ${service.featured ? 'text-white/60' : 'text-frothy-foam/50'}`}>
-            {service.priceNote}
+            {vehicle === 'sedan' ? 'sedan' : 'SUV/Truck'}
           </span>
         </div>
       </div>
@@ -228,10 +231,16 @@ export default function Services() {
   useSEO(PAGE_SEO.services)
   const [bookingOpen, setBookingOpen] = useState(false)
   const [bookingService, setBookingService] = useState('Inside & Out Wash ($40)')
+  const [vehicle, setVehicle] = useState<Vehicle>('sedan')
 
   const openBooking = (serviceName: string, price: string) => {
     setBookingService(`${serviceName} (${price})`)
     setBookingOpen(true)
+  }
+
+  const openServiceBooking = (service: { name: string; sedanPrice: number; suvPrice: number }) => {
+    const price = vehicle === 'sedan' ? service.sedanPrice : service.suvPrice
+    openBooking(`${service.name} (${vehicle === 'sedan' ? 'Sedan' : 'SUV/Truck'})`, `$${price}`)
   }
 
   return (
@@ -253,7 +262,7 @@ export default function Services() {
           </p>
           <p className="text-frothy-blue text-sm font-semibold flex items-center gap-2">
             <Star className="w-4 h-4" />
-            All prices shown for sedan · SUV/Truck pricing noted where different.
+            Select your vehicle type below for accurate pricing on washes & detail packages.
           </p>
         </div>
       </section>
@@ -263,6 +272,31 @@ export default function Services() {
       <div className="bg-frothy-cream section-padding">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
+          {/* Vehicle Toggle */}
+          <div className="flex flex-col items-center mb-10">
+            <p className="text-frothy-navy/60 text-sm font-semibold mb-3">Select your vehicle type to see accurate pricing</p>
+            <div className="inline-flex bg-white rounded-xl shadow-card p-1.5 gap-1">
+              <button
+                onClick={() => setVehicle('sedan')}
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-bold text-sm transition-all ${
+                  vehicle === 'sedan' ? 'bg-frothy-navy text-frothy-yellow' : 'text-frothy-navy/50 hover:text-frothy-navy'
+                }`}
+              >
+                <Car className="w-4 h-4" />
+                Sedan / Car
+              </button>
+              <button
+                onClick={() => setVehicle('suv')}
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-bold text-sm transition-all ${
+                  vehicle === 'suv' ? 'bg-frothy-navy text-frothy-yellow' : 'text-frothy-navy/50 hover:text-frothy-navy'
+                }`}
+              >
+                <Truck className="w-4 h-4" />
+                SUV / Truck
+              </button>
+            </div>
+          </div>
+
           {/* Basic Washes */}
           <div className="mb-14">
             <span className="inline-block bg-frothy-navy text-frothy-yellow text-[11px] font-bold tracking-[0.15em] uppercase px-3.5 py-1.5 rounded-full mb-4">
@@ -271,7 +305,7 @@ export default function Services() {
             <h2 className="font-heading text-2xl sm:text-3xl text-frothy-navy mb-8">Start with the essentials.</h2>
             <div className="grid sm:grid-cols-3 gap-6">
               {basicWashes.map((service) => (
-                <ServiceCard key={service.name} service={service} onBook={() => openBooking(service.name, service.price)} />
+                <ServiceCard key={service.name} service={service} vehicle={vehicle} onBook={() => openServiceBooking(service)} />
               ))}
             </div>
           </div>
@@ -284,7 +318,7 @@ export default function Services() {
             <h2 className="font-heading text-2xl sm:text-3xl text-frothy-navy mb-8">Go deeper.</h2>
             <div className="grid sm:grid-cols-2 gap-6">
               {detailPackages.map((service) => (
-                <ServiceCard key={service.name} service={service} onBook={() => openBooking(service.name, service.price)} />
+                <ServiceCard key={service.name} service={service} vehicle={vehicle} onBook={() => openServiceBooking(service)} />
               ))}
             </div>
           </div>
