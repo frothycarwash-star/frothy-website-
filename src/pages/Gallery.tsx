@@ -2,7 +2,7 @@ import { useSEO, PAGE_SEO } from '../hooks/useSEO'
 import { useState } from 'react'
 import { X, Camera, Play } from 'lucide-react'
 
-const categories = ['All', 'Hand Wash', 'Full Detail', 'Ceramic Coating', 'Interior']
+const categories = ['All', 'Hand Wash', 'Full Detail', 'Ceramic Coating', 'Interior', 'Fleet & Luxury']
 
 const photos = [
   { src: '/images/gallery-1.jpg', alt: 'Hand suds wash on a black Mercedes-Benz', category: 'Hand Wash' },
@@ -13,12 +13,22 @@ const photos = [
   { src: '/images/gallery-6.jpg', alt: 'Before and after interior detail — seats and dashboard', category: 'Interior' },
   { src: '/images/gallery-7.jpg', alt: 'Lamborghini door panel with yellow stitching detail', category: 'Interior' },
   { src: '/images/gallery-8.jpg', alt: 'Green Lamborghini Urus parked at the carwash after a full detail', category: 'Full Detail' },
+  { src: '/images/gallery-10.jpg', alt: 'White McLaren 570S with door open during a full detail', category: 'Fleet & Luxury' },
+  { src: '/images/gallery-14.jpg', alt: 'Red Porsche Macan after a hand wash, glossy finish', category: 'Fleet & Luxury' },
+  { src: '/images/gallery-15.jpg', alt: 'Blue Maserati Levante after a full detail', category: 'Fleet & Luxury' },
+  { src: '/images/gallery-16.jpg', alt: 'Chevy Colorado front end with a glossy ceramic-coated finish', category: 'Ceramic Coating' },
+  { src: '/images/gallery-17.jpg', alt: 'Chevy Colorado side panel showing deep ceramic-coated gloss', category: 'Ceramic Coating' },
+  { src: '/images/gallery-11.jpg', alt: 'Clean tan leather truck interior after a detail', category: 'Interior' },
+  { src: '/images/gallery-12.jpg', alt: 'Heavily soiled cloth seat before an interior deep clean', category: 'Interior' },
+  { src: '/images/gallery-13.jpg', alt: 'Rear bench seat after a full interior detail', category: 'Interior' },
 ]
 
 const videos = [
   { src: '/videos/gallery-1.mp4', poster: '/images/gallery-video-1-poster.jpg', title: 'Hand wash walkthrough' },
   { src: '/videos/gallery-2.mp4', poster: '/images/gallery-video-2-poster.jpg', title: 'Foam wash in action' },
   { src: '/videos/gallery-3.mp4', poster: '/images/gallery-video-3-poster.jpg', title: 'Behind the scenes at Frothy' },
+  { src: '/videos/gallery-4.mp4', poster: '/images/gallery-video-4-poster.jpg', title: 'Ceramic coating gloss close-up' },
+  { src: '/videos/gallery-5.mp4', poster: '/images/gallery-video-5-poster.jpg', title: 'Interior detail walkthrough' },
 ]
 
 function PhotoTile({ src, alt, onClick }: { src: string; alt: string; onClick: () => void }) {
