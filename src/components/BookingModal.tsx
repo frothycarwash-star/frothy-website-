@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { X, Calendar, Clock, Car, User, Phone, MessageSquare, Check, Loader2 } from 'lucide-react'
+import { X, Calendar, Clock, Car, User, Phone, MessageSquare, Check, Loader2, ChevronDown, Plus } from 'lucide-react'
+import { addOnGroups } from '../data/addOns'
 
 interface BookingModalProps {
   isOpen: boolean
@@ -63,8 +64,16 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
     time: '',
     notes: matchNotes(preselectedService),
   })
+  const [selectedAddOns, setSelectedAddOns] = useState<string[]>([])
+  const [openAddOnGroup, setOpenAddOnGroup] = useState<string | null>(null)
 
   if (!isOpen) return null
+
+  const toggleAddOn = (label: string) => {
+    setSelectedAddOns((prev) =>
+      prev.includes(label) ? prev.filter((a) => a !== label) : [...prev, label]
+    )
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -82,10 +91,11 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
           name: formData.name,
           phone: formData.phone,
           service: formData.service,
+          addOns: selectedAddOns.join(', ') || 'None',
           date: formData.date,
           time: formData.time,
           notes: formData.notes,
-          _subject: `New booking request — ${formData.service} — ${formData.date} ${formData.time}`,
+          _subject: `New booking request — ${formData.service}${selectedAddOns.length ? ' + ' + selectedAddOns.length + ' add-on(s)' : ''} — ${formData.date} ${formData.time}`,
         }),
       })
 
@@ -108,6 +118,8 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
     setStatus('idle')
     setStep(1)
     setFormData({ name: '', phone: '', service: matchService(preselectedService), date: '', time: '', notes: matchNotes(preselectedService) })
+    setSelectedAddOns([])
+    setOpenAddOnGroup(null)
     onClose()
   }
 
@@ -219,6 +231,58 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
                       ))}
                     </select>
                   </div>
+
+                  <div>
+                    <p className="flex items-center gap-2 text-sm font-semibold text-frothy-navy mb-2">
+                      <Plus className="w-4 h-4 text-frothy-blue" />
+                      Add-Ons (optional){selectedAddOns.length > 0 ? ` — ${selectedAddOns.length} selected` : ''}
+                    </p>
+                    <div className="border-2 border-frothy-foam rounded-xl divide-y divide-frothy-foam overflow-hidden">
+                      {addOnGroups.map((group) => (
+                        <div key={group.title}>
+                          <button
+                            type="button"
+                            onClick={() => setOpenAddOnGroup(openAddOnGroup === group.title ? null : group.title)}
+                            className="w-full px-4 py-2.5 flex items-center justify-between bg-frothy-foam/40 hover:bg-frothy-foam/70 transition-colors"
+                          >
+                            <span className="text-sm font-semibold text-frothy-navy">{group.title}</span>
+                            <ChevronDown
+                              className={`w-4 h-4 text-frothy-navy/40 transition-transform ${openAddOnGroup === group.title ? 'rotate-180' : ''}`}
+                            />
+                          </button>
+                          {openAddOnGroup === group.title && (
+                            <div className="px-4 py-2 space-y-1 bg-white">
+                              {group.items.map((item) => {
+                                const label = `${item.name} (${item.price})`
+                                const checked = selectedAddOns.includes(label)
+                                return (
+                                  <label
+                                    key={item.name}
+                                    className="flex items-center justify-between gap-3 py-1.5 cursor-pointer"
+                                  >
+                                    <span className="flex items-center gap-2 text-sm text-frothy-navy">
+                                      <input
+                                        type="checkbox"
+                                        checked={checked}
+                                        onChange={() => toggleAddOn(label)}
+                                        className="w-4 h-4 accent-frothy-blue"
+                                      />
+                                      {item.name}
+                                    </span>
+                                    <span className="text-xs font-semibold text-frothy-blue whitespace-nowrap">{item.price}</span>
+                                  </label>
+                                )
+                              })}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                    <p className="text-xs text-frothy-navy/40 mt-1.5">
+                      Exact add-on pricing depends on vehicle size, severity, or quantity — we'll confirm your total when we call to confirm.
+                    </p>
+                  </div>
+
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <label className="flex items-center gap-2 text-sm font-semibold text-frothy-navy mb-2">
@@ -276,7 +340,14 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
                   <div className="bg-frothy-foam rounded-xl p-4 mb-2">
                     <p className="text-xs text-frothy-navy/50 font-semibold uppercase tracking-wider mb-1">Booking Summary</p>
                     <p className="text-sm text-frothy-navy font-medium">{formData.service}</p>
-                    <p className="text-sm text-frothy-navy/70">{formData.date} at {formData.time}</p>
+                    {selectedAddOns.length > 0 && (
+                      <ul className="mt-1.5 space-y-0.5">
+                        {selectedAddOns.map((a) => (
+                          <li key={a} className="text-xs text-frothy-navy/70">+ {a}</li>
+                        ))}
+                      </ul>
+                    )}
+                    <p className="text-sm text-frothy-navy/70 mt-1.5">{formData.date} at {formData.time}</p>
                   </div>
                   <div>
                     <label className="flex items-center gap-2 text-sm font-semibold text-frothy-navy mb-2">
