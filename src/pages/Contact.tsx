@@ -1,6 +1,6 @@
 import { useSEO, PAGE_SEO } from '../hooks/useSEO'
 import { useState } from 'react'
-import { Phone, MapPin, Clock, CheckCircle, Send, MessageSquare, User, Car } from 'lucide-react'
+import { Phone, Mail, MapPin, Clock, CheckCircle, Send, MessageSquare, User, Car } from 'lucide-react'
 
 const services = [
   'Hand Wash',
@@ -102,6 +102,18 @@ export default function Contact() {
 
                 <div className="bg-white rounded-2xl p-5 flex items-start gap-4 shadow-card">
                   <div className="flex-shrink-0 w-11 h-11 bg-frothy-blue/10 rounded-xl flex items-center justify-center">
+                    <Mail className="w-5 h-5 text-frothy-blue" />
+                  </div>
+                  <div>
+                    <p className="text-frothy-blue text-xs font-bold uppercase tracking-wider mb-1">Email</p>
+                    <a href="mailto:info@frothycarwash.com" className="font-semibold text-frothy-navy text-lg hover:text-frothy-blue transition-colors">
+                      info@frothycarwash.com
+                    </a>
+                  </div>
+                </div>
+
+                <div className="bg-white rounded-2xl p-5 flex items-start gap-4 shadow-card">
+                  <div className="flex-shrink-0 w-11 h-11 bg-frothy-blue/10 rounded-xl flex items-center justify-center">
                     <Clock className="w-5 h-5 text-frothy-blue" />
                   </div>
                   <div>
@@ -127,7 +139,7 @@ export default function Contact() {
               {/* Map */}
               <div className="rounded-2xl overflow-hidden shadow-card">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3592.6!2d-80.1495!3d26.0112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z2223+Pembroke+Rd%2C+Hollywood%2C+FL+33020!5e0!3m2!1sen!2sus!4v1"
+                  src="https://www.google.com/maps?q=2223+Pembroke+Rd,+Hollywood,+FL+33020&output=embed"
                   width="100%"
                   height="300"
                   className="border-0 block"

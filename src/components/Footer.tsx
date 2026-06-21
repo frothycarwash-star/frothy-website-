@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Phone, MapPin, Clock } from 'lucide-react'
+import { Phone, Mail, MapPin, Clock } from 'lucide-react'
 
 const serviceLinks = [
   { label: 'Hand Wash', to: '/services' },
@@ -53,6 +53,13 @@ export default function Footer() {
               >
                 <MapPin className="w-4 h-4" />
                 2223 Pembroke Rd, Hollywood FL 33020
+              </a>
+              <a
+                href="mailto:info@frothycarwash.com"
+                className="flex items-center gap-2 text-frothy-foam/60 text-sm hover:text-frothy-yellow transition-colors"
+              >
+                <Mail className="w-4 h-4" />
+                info@frothycarwash.com
               </a>
             </div>
           </div>
