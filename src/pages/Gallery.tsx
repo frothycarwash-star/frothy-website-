@@ -2,7 +2,7 @@ import { useSEO, PAGE_SEO } from '../hooks/useSEO'
 import { useState } from 'react'
 import { X, Camera, Play } from 'lucide-react'
 
-const categories = ['All', 'Hand Wash', 'Full Detail', 'Ceramic Coating', 'Interior', 'Fleet & Luxury']
+const categories = ['All', 'Hand Wash', 'Full Detail', 'Ceramic Coating', 'Interior', 'Fleet & Luxury', 'Our Lounge']
 
 const photos = [
   { src: '/images/gallery-1.jpg', alt: 'Hand suds wash on a black Mercedes-Benz', category: 'Hand Wash' },
@@ -21,6 +21,25 @@ const photos = [
   { src: '/images/gallery-11.jpg', alt: 'Clean tan leather truck interior after a detail', category: 'Interior' },
   { src: '/images/gallery-12.jpg', alt: 'Heavily soiled cloth seat before an interior deep clean', category: 'Interior' },
   { src: '/images/gallery-13.jpg', alt: 'Rear bench seat after a full interior detail', category: 'Interior' },
+  { src: '/images/gallery-20.jpg', alt: 'Red Lexus NX rear view after a hand wash', category: 'Hand Wash' },
+  { src: '/images/gallery-21.jpg', alt: 'Clean detailed engine bay close-up', category: 'Full Detail' },
+  { src: '/images/gallery-22.jpg', alt: 'White Corvette covered in foam, rear close-up', category: 'Hand Wash' },
+  { src: '/images/gallery-23.jpg', alt: 'White Corvette hood covered in foam suds', category: 'Hand Wash' },
+  { src: '/images/gallery-24.jpg', alt: 'Black BMW M2 getting hand washed by our team', category: 'Full Detail' },
+  { src: '/images/gallery-25.jpg', alt: 'Lamborghini gold wheel and brake caliper close-up', category: 'Fleet & Luxury' },
+  { src: '/images/gallery-26.jpg', alt: 'Lamborghini Urus steering wheel and digital dash', category: 'Fleet & Luxury' },
+  { src: '/images/gallery-27.jpg', alt: 'Dark green Lamborghini Urus after a full detail', category: 'Fleet & Luxury' },
+  { src: '/images/gallery-28.jpg', alt: 'Classic Mercedes convertible getting hand washed', category: 'Hand Wash' },
+  { src: '/images/gallery-29.jpg', alt: 'Black BMW X7 covered in foam with our team washing', category: 'Hand Wash' },
+  { src: '/images/gallery-30.jpg', alt: 'Black BMW 7 Series rear view after a full detail', category: 'Full Detail' },
+  { src: '/images/gallery-31.jpg', alt: 'SUV covered in foam with our team hand washing', category: 'Hand Wash' },
+  { src: '/images/gallery-32.jpg', alt: 'White Mercedes-AMG G63 covered in foam during a hand wash', category: 'Hand Wash' },
+  { src: '/images/gallery-33.jpg', alt: 'Black Bentley Continental GT after a full detail', category: 'Fleet & Luxury' },
+  { src: '/images/gallery-34.jpg', alt: 'Clean tan door panel close-up after an interior detail', category: 'Interior' },
+  { src: '/images/gallery-35.jpg', alt: 'Black BMW M5 front three-quarter view, glossy finish', category: 'Full Detail' },
+  { src: '/images/gallery-9.jpg', alt: 'Frothy Carwash Lounge front desk and snack counter', category: 'Our Lounge' },
+  { src: '/images/gallery-18.jpg', alt: 'Massage chairs in the Frothy Carwash Lounge', category: 'Our Lounge' },
+  { src: '/images/gallery-19.jpg', alt: 'Frothy Carwash Lounge seating and waiting area', category: 'Our Lounge' },
 ]
 
 const videos = [
