@@ -98,8 +98,8 @@ export const PAGE_SEO = {
     canonical: '/contact',
   },
   gallery: {
-    title: 'Photo & Video Gallery | Frothy Carwash Lounge | Hollywood, FL',
-    description: 'See our work — hand washes, full details, and ceramic coatings in Hollywood, FL. Browse photos and videos from the Frothy Carwash Lounge.',
+    title: 'Photo Gallery | Frothy Carwash Lounge | Hollywood, FL',
+    description: 'See our work — hand washes, full details, and ceramic coatings in Hollywood, FL. Browse photos from the Frothy Carwash Lounge.',
     canonical: '/gallery',
   },
 }

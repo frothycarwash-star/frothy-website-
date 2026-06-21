@@ -1,6 +1,6 @@
 import { useSEO, PAGE_SEO } from '../hooks/useSEO'
 import { useState } from 'react'
-import { X, Camera, Play } from 'lucide-react'
+import { X, Camera } from 'lucide-react'
 
 const categories = ['All', 'Hand Wash', 'Full Detail', 'Ceramic Coating', 'Interior', 'Fleet & Luxury', 'Our Lounge']
 
@@ -87,14 +87,6 @@ const photos = [
   { src: '/images/gallery-80.jpg', alt: 'Boat and black car parked at Frothy Carwash', category: 'Fleet & Luxury' },
 ]
 
-const videos = [
-  { src: '/videos/gallery-1.mp4', poster: '/images/gallery-video-1-poster.jpg', title: 'Hand wash walkthrough' },
-  { src: '/videos/gallery-2.mp4', poster: '/images/gallery-video-2-poster.jpg', title: 'Foam wash in action' },
-  { src: '/videos/gallery-3.mp4', poster: '/images/gallery-video-3-poster.jpg', title: 'Behind the scenes at Frothy' },
-  { src: '/videos/gallery-4.mp4', poster: '/images/gallery-video-4-poster.jpg', title: 'Ceramic coating gloss close-up' },
-  { src: '/videos/gallery-5.mp4', poster: '/images/gallery-video-5-poster.jpg', title: 'Interior detail walkthrough' },
-]
-
 function PhotoTile({ src, alt, onClick }: { src: string; alt: string; onClick: () => void }) {
   const [errored, setErrored] = useState(false)
 
@@ -123,51 +115,6 @@ function PhotoTile({ src, alt, onClick }: { src: string; alt: string; onClick: (
   )
 }
 
-function VideoTile({ src, poster, title }: { src: string; poster: string; title: string }) {
-  const [posterErrored, setPosterErrored] = useState(false)
-  const [playing, setPlaying] = useState(false)
-
-  if (playing) {
-    return (
-      <video
-        src={src}
-        controls
-        autoPlay
-        className="w-full aspect-video rounded-2xl bg-frothy-navy"
-        onError={() => setPlaying(false)}
-      />
-    )
-  }
-
-  return (
-    <button
-      onClick={() => setPlaying(true)}
-      className="relative w-full aspect-video rounded-2xl overflow-hidden bg-frothy-navy/10 group cursor-pointer"
-    >
-      {!posterErrored && (
-        <img
-          src={poster}
-          alt={title}
-          loading="lazy"
-          onError={() => setPosterErrored(true)}
-          className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-        />
-      )}
-      {posterErrored && (
-        <div className="absolute inset-0 bg-gradient-to-br from-frothy-navy to-frothy-blue" />
-      )}
-      <div className="absolute inset-0 bg-frothy-navy/40 flex items-center justify-center">
-        <div className="w-16 h-16 rounded-full bg-frothy-yellow flex items-center justify-center group-hover:scale-110 transition-transform">
-          <Play className="w-7 h-7 text-frothy-navy fill-frothy-navy" />
-        </div>
-      </div>
-      <div className="absolute bottom-3 left-4 right-4 text-white text-sm font-semibold drop-shadow">
-        {title}
-      </div>
-    </button>
-  )
-}
-
 export default function Gallery() {
   useSEO(PAGE_SEO.gallery)
   const [activeCategory, setActiveCategory] = useState('All')
@@ -184,7 +131,7 @@ export default function Gallery() {
             Our Work
           </span>
           <h1 className="font-heading text-4xl sm:text-5xl text-white leading-tight mb-4">
-            Photo &amp; Video Gallery
+            Photo Gallery
           </h1>
           <p className="text-white/60 text-lg max-w-xl mx-auto">
             A look at the hand washes, details, and ceramic coatings we deliver every day in Hollywood, FL.
@@ -215,25 +162,6 @@ export default function Gallery() {
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
             {filtered.map((photo, i) => (
               <PhotoTile key={i} src={photo.src} alt={photo.alt} onClick={() => setLightbox(photo.src)} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Videos */}
-      <section className="section-padding bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <h2 className="font-heading text-3xl sm:text-4xl text-frothy-navy leading-tight mb-4">
-              Watch us in action.
-            </h2>
-            <p className="text-frothy-navy/60 text-lg max-w-xl mx-auto">
-              Short clips of the process, from first rinse to final shine.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {videos.map((video, i) => (
-              <VideoTile key={i} src={video.src} poster={video.poster} title={video.title} />
             ))}
           </div>
         </div>
