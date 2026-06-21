@@ -2,7 +2,7 @@ import { useSEO, PAGE_SEO } from '../hooks/useSEO'
 import { useState } from 'react'
 import { X, Camera } from 'lucide-react'
 
-const categories = ['All', 'Hand Wash', 'Full Detail', 'Ceramic Coating', 'Interior', 'Fleet & Luxury', 'Our Lounge']
+const categories = ['All', 'Hand Wash', 'Full Detail', 'Interior', 'Fleet & Luxury', 'Our Lounge']
 
 const photos = [
   { src: '/images/gallery-1.jpg', alt: 'Hand suds wash on a black Mercedes-Benz', category: 'Hand Wash' },
@@ -16,8 +16,6 @@ const photos = [
   { src: '/images/gallery-10.jpg', alt: 'White McLaren 570S with door open during a full detail', category: 'Fleet & Luxury' },
   { src: '/images/gallery-14.jpg', alt: 'Red Porsche Macan after a hand wash, glossy finish', category: 'Fleet & Luxury' },
   { src: '/images/gallery-15.jpg', alt: 'Blue Maserati Levante after a full detail', category: 'Fleet & Luxury' },
-  { src: '/images/gallery-16.jpg', alt: 'Chevy Colorado front end with a glossy ceramic-coated finish', category: 'Ceramic Coating' },
-  { src: '/images/gallery-17.jpg', alt: 'Chevy Colorado side panel showing deep ceramic-coated gloss', category: 'Ceramic Coating' },
   { src: '/images/gallery-11.jpg', alt: 'Clean tan leather truck interior after a detail', category: 'Interior' },
   { src: '/images/gallery-12.jpg', alt: 'Heavily soiled cloth seat before an interior deep clean', category: 'Interior' },
   { src: '/images/gallery-13.jpg', alt: 'Rear bench seat after a full interior detail', category: 'Interior' },
