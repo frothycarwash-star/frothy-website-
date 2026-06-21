@@ -29,7 +29,7 @@ const timeSlots = [
 ]
 
 // Square Appointments booking page — swap in your real Square booking URL
-const SQUARE_BOOKING_URL = 'https://app.squareup.com/appointments/book/60lwzylzpmyuls/L52E1Y2E4PK6M/start'
+const SQUARE_BOOKING_URL = 'https://square.site/book/L52E1Y2E4PK6M/frothy-carwash-lounge-hollywood-fl'
 
 // Formspree endpoint — swap in your real form ID after creating at formspree.io
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mdavkzej'

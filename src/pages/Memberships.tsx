@@ -1,7 +1,9 @@
 import { useSEO, PAGE_SEO } from '../hooks/useSEO'
 import { useState } from 'react'
-import { Check, Phone, Star, Calendar, CreditCard, XCircle, HelpCircle } from 'lucide-react'
+import { Check, Phone, Star, Calendar, CreditCard, XCircle, HelpCircle, Car, Truck } from 'lucide-react'
 import BookingModal from '../components/BookingModal'
+
+type Vehicle = 'sedan' | 'suv'
 
 const plans = [
   {
@@ -11,8 +13,10 @@ const plans = [
     accentColor: 'text-slate-300',
     badgeBg: 'bg-slate-600',
     badgeText: 'text-slate-200',
-    price: '$119',
-    period: 'per month · sedan',
+    sedanPrice: 119,
+    suvPrice: 139,
+    sedanLink: 'https://square.link/u/18XnOa8I',
+    suvLink: 'https://square.link/u/ojjyVr7P',
     savings: 'Walk-in value ~$160 · Save ~$41',
     features: [
       '2× Inside & Out ($40 each · 35 min)',
@@ -29,8 +33,10 @@ const plans = [
     accentColor: 'text-amber-100',
     badgeBg: 'bg-amber-600',
     badgeText: 'text-amber-100',
-    price: '$179',
-    period: 'per month · sedan',
+    sedanPrice: 179,
+    suvPrice: 199,
+    sedanLink: 'https://square.link/u/TfrwVKKt',
+    suvLink: 'https://square.link/u/HCgmJglV',
     savings: 'Walk-in value ~$285 · Save ~$106',
     popular: true,
     features: [
@@ -49,8 +55,10 @@ const plans = [
     accentColor: 'text-purple-200',
     badgeBg: 'bg-purple-600',
     badgeText: 'text-purple-100',
-    price: '$229',
-    period: 'per month · sedan',
+    sedanPrice: 229,
+    suvPrice: 249,
+    sedanLink: 'https://square.link/u/a3JZmF41',
+    suvLink: 'https://square.link/u/uYVlji14',
     savings: 'Walk-in value ~$335 · Save ~$106',
     features: [
       '4× Inside & Out ($40 each · 35 min)',
@@ -65,9 +73,9 @@ const plans = [
 
 const rules = [
   { icon: Calendar, text: 'No rollovers — credits reset at end of each billing month' },
-  { icon: CreditCard, text: 'Card on file required — auto-billed on same date each month' },
+  { icon: CreditCard, text: 'Card on file required — auto-billed monthly through Square' },
   { icon: XCircle, text: 'Machine Polish not included — members get 10% off when booked separately' },
-  { icon: HelpCircle, text: 'SUV surcharge at counter — Inside & Out +$10 · Signature +$10 · Executive +$15' },
+  { icon: HelpCircle, text: 'SUV/Truck pricing is a flat +$20/mo across all tiers — already reflected above' },
   { icon: Star, text: 'Launch offer — ask about $20 off your first month' },
   { icon: Check, text: 'Cancel anytime — no contracts, no hidden fees' },
 ]
@@ -75,6 +83,7 @@ const rules = [
 export default function Memberships() {
   useSEO(PAGE_SEO.memberships)
   const [bookingOpen, setBookingOpen] = useState(false)
+  const [vehicle, setVehicle] = useState<Vehicle>('sedan')
 
   return (
     <>
@@ -91,7 +100,7 @@ export default function Memberships() {
             Membership Plans.
           </h1>
           <p className="text-frothy-foam/70 text-lg max-w-xl">
-            Regular customers save the most. Pick a plan and keep your car clean on your schedule — all month long.
+            Regular customers save the most. Pick a plan, sign up online, and keep your car clean on your schedule — all month long.
           </p>
         </div>
       </section>
@@ -100,71 +109,97 @@ export default function Memberships() {
 
       <div className="bg-frothy-cream section-padding">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Pricing Note */}
-          <div className="bg-frothy-navy text-frothy-blue text-xs sm:text-sm font-semibold px-5 py-3 rounded-full inline-flex items-center gap-2 mb-10 mx-auto justify-center w-full sm:w-auto">
-            <HelpCircle className="w-4 h-4 flex-shrink-0" />
-            All prices sedan-based · SUV/Truck: +$10 Inside & Out · +$10 Signature Detail · +$15 Executive Finish
+          {/* Vehicle Toggle */}
+          <div className="flex flex-col items-center mb-10">
+            <p className="text-frothy-navy/60 text-sm font-semibold mb-3">Select your vehicle type to see accurate pricing</p>
+            <div className="inline-flex bg-white rounded-xl shadow-card p-1.5 gap-1">
+              <button
+                onClick={() => setVehicle('sedan')}
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-bold text-sm transition-all ${
+                  vehicle === 'sedan' ? 'bg-frothy-navy text-frothy-yellow' : 'text-frothy-navy/50 hover:text-frothy-navy'
+                }`}
+              >
+                <Car className="w-4 h-4" />
+                Sedan / Car
+              </button>
+              <button
+                onClick={() => setVehicle('suv')}
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-bold text-sm transition-all ${
+                  vehicle === 'suv' ? 'bg-frothy-navy text-frothy-yellow' : 'text-frothy-navy/50 hover:text-frothy-navy'
+                }`}
+              >
+                <Truck className="w-4 h-4" />
+                SUV / Truck
+              </button>
+            </div>
           </div>
 
           {/* Plans Grid */}
           <div className="grid lg:grid-cols-3 gap-6 mb-12">
-            {plans.map((plan) => (
-              <div
-                key={plan.name}
-                className={`h-full flex flex-col rounded-2xl overflow-hidden shadow-card ${plan.popular ? 'ring-2 ring-amber-400 lg:scale-105 lg:-my-4' : ''}`}
-              >
-                {/* Header */}
-                <div className={`${plan.headerBg} px-6 py-6 text-center`}>
-                  {plan.popular && (
-                    <span className="inline-block bg-white/20 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-3">
-                      Most Popular
-                    </span>
-                  )}
-                  <p className={`text-xs font-bold tracking-[0.15em] uppercase mb-2 ${plan.accentColor}`}>
-                    {plan.name}
-                  </p>
-                  <h3 className={`font-heading text-2xl ${plan.accentColor} mb-1`}>
-                    {plan.name} Plan
-                  </h3>
-                  <p className="font-heading text-5xl font-bold text-white mb-1">{plan.price}</p>
-                  <p className="text-white/60 text-sm mb-3">{plan.period}</p>
-                  <span className={`inline-block ${plan.badgeBg} ${plan.badgeText} text-[11px] font-bold px-3 py-1.5 rounded-full`}>
-                    {plan.savings}
-                  </span>
-                </div>
-
-                {/* Body */}
-                <div className="bg-white p-6 flex flex-col flex-1">
-                  <ul className="space-y-3 mb-6 flex-1">
-                    {plan.features.map((feature, i) => (
-                      <li key={i} className="flex items-start gap-2.5 text-sm text-frothy-navy/80">
-                        <Check className="w-4 h-4 text-frothy-blue flex-shrink-0 mt-0.5" />
-                        <span className={feature.includes('Wax included') || feature.includes('Top-tier') ? 'font-semibold text-frothy-blue' : ''}>
-                          {feature}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="border-t border-frothy-foam pt-4 mb-5">
-                    <p className="text-xs text-frothy-navy/50">
-                      <span className="font-semibold text-frothy-navy/70">Best for:</span> {plan.bestFor}
+            {plans.map((plan) => {
+              const price = vehicle === 'sedan' ? plan.sedanPrice : plan.suvPrice
+              const signupLink = vehicle === 'sedan' ? plan.sedanLink : plan.suvLink
+              return (
+                <div
+                  key={plan.name}
+                  className={`h-full flex flex-col rounded-2xl overflow-hidden shadow-card ${plan.popular ? 'ring-2 ring-amber-400 lg:scale-105 lg:-my-4' : ''}`}
+                >
+                  {/* Header */}
+                  <div className={`${plan.headerBg} px-6 py-6 text-center`}>
+                    {plan.popular && (
+                      <span className="inline-block bg-white/20 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-3">
+                        Most Popular
+                      </span>
+                    )}
+                    <p className={`text-xs font-bold tracking-[0.15em] uppercase mb-2 ${plan.accentColor}`}>
+                      {plan.name}
                     </p>
+                    <h3 className={`font-heading text-2xl ${plan.accentColor} mb-1`}>
+                      {plan.name} Plan
+                    </h3>
+                    <p className="font-heading text-5xl font-bold text-white mb-1">${price}</p>
+                    <p className="text-white/60 text-sm mb-3">per month · {vehicle === 'sedan' ? 'sedan' : 'SUV/truck'}</p>
+                    <span className={`inline-block ${plan.badgeBg} ${plan.badgeText} text-[11px] font-bold px-3 py-1.5 rounded-full`}>
+                      {plan.savings}
+                    </span>
                   </div>
 
-                  <button
-                    onClick={() => setBookingOpen(true)}
-                    className={`w-full font-bold py-3.5 rounded-xl transition-all hover:scale-[1.02] ${
-                      plan.popular
-                        ? 'bg-amber-500 text-white hover:bg-amber-600'
-                        : 'bg-frothy-navy text-frothy-yellow hover:bg-frothy-navy-light'
-                    }`}
-                  >
-                    Sign Up — Call Us
-                  </button>
+                  {/* Body */}
+                  <div className="bg-white p-6 flex flex-col flex-1">
+                    <ul className="space-y-3 mb-6 flex-1">
+                      {plan.features.map((feature, i) => (
+                        <li key={i} className="flex items-start gap-2.5 text-sm text-frothy-navy/80">
+                          <Check className="w-4 h-4 text-frothy-blue flex-shrink-0 mt-0.5" />
+                          <span className={feature.includes('Wax included') || feature.includes('Top-tier') ? 'font-semibold text-frothy-blue' : ''}>
+                            {feature}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="border-t border-frothy-foam pt-4 mb-5">
+                      <p className="text-xs text-frothy-navy/50">
+                        <span className="font-semibold text-frothy-navy/70">Best for:</span> {plan.bestFor}
+                      </p>
+                    </div>
+
+                    <a
+                      href={signupLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`w-full text-center font-bold py-3.5 rounded-xl transition-all hover:scale-[1.02] ${
+                        plan.popular
+                          ? 'bg-amber-500 text-white hover:bg-amber-600'
+                          : 'bg-frothy-navy text-frothy-yellow hover:bg-frothy-navy-light'
+                      }`}
+                    >
+                      Sign Up Online — ${price}/mo
+                    </a>
+                    <p className="text-center text-xs text-frothy-navy/40 mt-2">Secure checkout via Square · cancel anytime</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
 
           {/* Rules */}
@@ -182,12 +217,13 @@ export default function Memberships() {
 
           {/* CTA */}
           <div className="text-center">
+            <p className="text-frothy-navy/60 text-sm mb-4">Prefer to sign up in person or have questions first?</p>
             <a
               href="tel:9545103073"
               className="inline-flex items-center gap-2 bg-frothy-yellow text-frothy-navy font-bold text-lg px-8 py-4 rounded-xl hover:scale-105 transition-transform"
             >
               <Phone className="w-5 h-5" />
-              Call to Sign Up — (954) 510-3073
+              Call Us — (954) 510-3073
             </a>
           </div>
         </div>
