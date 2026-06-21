@@ -20,6 +20,7 @@ const services = [
   'Headlight Restoration',
   'Specialty Service',
   'Fleet / Corporate',
+  'Other / Add-On (see notes)',
   'Membership Sign-Up',
 ]
 
@@ -38,6 +39,16 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mdavkzej'
 const PHONE = '(954) 510-3073'
 const PHONE_HREF = 'tel:9545103073'
 
+function matchService(preselected?: string): string {
+  if (!preselected) return services[2]
+  return services.includes(preselected) ? preselected : 'Other / Add-On (see notes)'
+}
+
+function matchNotes(preselected?: string): string {
+  if (!preselected || services.includes(preselected)) return ''
+  return `Requested: ${preselected}`
+}
+
 type SubmitStatus = 'idle' | 'loading' | 'success' | 'error'
 
 export default function BookingModal({ isOpen, onClose, preselectedService }: BookingModalProps) {
@@ -47,10 +58,10 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    service: preselectedService || services[2],
+    service: matchService(preselectedService),
     date: '',
     time: '',
-    notes: '',
+    notes: matchNotes(preselectedService),
   })
 
   if (!isOpen) return null
@@ -96,7 +107,7 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
   const reset = () => {
     setStatus('idle')
     setStep(1)
-    setFormData({ name: '', phone: '', service: preselectedService || services[2], date: '', time: '', notes: '' })
+    setFormData({ name: '', phone: '', service: matchService(preselectedService), date: '', time: '', notes: matchNotes(preselectedService) })
     onClose()
   }
 

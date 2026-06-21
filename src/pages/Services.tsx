@@ -193,7 +193,7 @@ function ServiceCard({ service, onBook }: { service: typeof basicWashes[0]; onBo
   )
 }
 
-function AddOnTable({ title, items }: { title: string; items: { name: string; price: string }[] }) {
+function AddOnTable({ title, items, onBook }: { title: string; items: { name: string; price: string }[]; onBook: (name: string, price: string) => void }) {
   const [isOpen, setIsOpen] = useState(false)
   return (
     <div className="bg-white rounded-2xl overflow-hidden shadow-card mb-6">
@@ -208,13 +208,14 @@ function AddOnTable({ title, items }: { title: string; items: { name: string; pr
         <div className="px-6 pb-4">
           <div className="border-t border-frothy-foam pt-3 space-y-2">
             {items.map((item, i) => (
-              <div
+              <button
                 key={item.name}
-                className={`flex items-center justify-between py-2 px-3 rounded-lg ${i % 2 === 0 ? 'bg-frothy-foam/50' : ''}`}
+                onClick={() => onBook(item.name, item.price)}
+                className={`w-full flex items-center justify-between py-2 px-3 rounded-lg text-left hover:bg-frothy-blue/10 transition-colors ${i % 2 === 0 ? 'bg-frothy-foam/50' : ''}`}
               >
                 <span className="text-sm font-medium text-frothy-navy">{item.name}</span>
                 <span className="text-sm font-bold text-frothy-blue">{item.price}</span>
-              </div>
+              </button>
             ))}
           </div>
         </div>
@@ -293,10 +294,22 @@ export default function Services() {
             <span className="inline-block bg-frothy-navy text-frothy-yellow text-[11px] font-bold tracking-[0.15em] uppercase px-3.5 py-1.5 rounded-full mb-4">
               Add-Ons
             </span>
-            <h2 className="font-heading text-2xl sm:text-3xl text-frothy-navy mb-8">Customize your clean.</h2>
+            <h2 className="font-heading text-2xl sm:text-3xl text-frothy-navy mb-3">Customize your clean.</h2>
+            <p className="text-frothy-navy/60 text-sm mb-6">
+              Tap any add-on to request it, or{' '}
+              <a
+                href="https://square.site/book/L52E1Y2E4PK6M/frothy-carwash-lounge-hollywood-fl"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-frothy-blue font-semibold underline"
+              >
+                book online
+              </a>{' '}
+              to pick exact options (vehicle size, severity, quantity) and see live pricing.
+            </p>
             <div className="grid lg:grid-cols-2 gap-6">
-              <AddOnTable title="Interior Add-Ons" items={interiorAddOns} />
-              <AddOnTable title="Exterior Add-Ons" items={exteriorAddOns} />
+              <AddOnTable title="Interior Add-Ons" items={interiorAddOns} onBook={openBooking} />
+              <AddOnTable title="Exterior Add-Ons" items={exteriorAddOns} onBook={openBooking} />
             </div>
           </div>
 
@@ -307,8 +320,8 @@ export default function Services() {
             </span>
             <h2 className="font-heading text-2xl sm:text-3xl text-frothy-navy mb-8">Restore the finish.</h2>
             <div className="grid lg:grid-cols-2 gap-6">
-              <AddOnTable title="Paint Correction Services" items={paintCorrectionServices} />
-              <AddOnTable title="Headlights & Glass" items={headlightGlassServices} />
+              <AddOnTable title="Paint Correction Services" items={paintCorrectionServices} onBook={openBooking} />
+              <AddOnTable title="Headlights & Glass" items={headlightGlassServices} onBook={openBooking} />
             </div>
           </div>
 
@@ -319,8 +332,8 @@ export default function Services() {
             </span>
             <h2 className="font-heading text-2xl sm:text-3xl text-frothy-navy mb-8">Beyond the everyday.</h2>
             <div className="grid lg:grid-cols-2 gap-6">
-              <AddOnTable title="Specialty Services" items={specialtyServices} />
-              <AddOnTable title="Fleet & Luxury" items={fleetLuxuryServices} />
+              <AddOnTable title="Specialty Services" items={specialtyServices} onBook={openBooking} />
+              <AddOnTable title="Fleet & Luxury" items={fleetLuxuryServices} onBook={openBooking} />
             </div>
           </div>
 
