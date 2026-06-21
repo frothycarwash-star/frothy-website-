@@ -4,17 +4,17 @@ import { MoveHorizontal } from 'lucide-react'
 const comparisons = [
   {
     id: 1,
-    label: 'Seats',
-    desc: 'Deep-cleaned cloth seats, stain by stain',
-    before: '/images/seats-before.jpg',
-    after: '/images/seats-after.jpg',
+    label: 'Exterior',
+    desc: 'Soap-to-shine, the same car start to finish',
+    before: '/images/exterior-before.jpg',
+    after: '/images/exterior-after.jpg',
   },
   {
     id: 2,
-    label: 'Door & Trim',
-    desc: 'Armrests and door panels restored to like-new',
-    before: '/images/door-before.jpg',
-    after: '/images/door-after.jpg',
+    label: 'Interior',
+    desc: 'Deep-cleaned cloth seats, stain by stain',
+    before: '/images/seats-before.jpg',
+    after: '/images/seats-after.jpg',
   },
 ]
 
