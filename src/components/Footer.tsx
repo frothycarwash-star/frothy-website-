@@ -9,6 +9,12 @@ const serviceLinks = [
   { label: 'Book Now', to: '/contact', external: false },
 ]
 
+const seoLinks = [
+  { label: 'Hand Car Wash Hollywood, FL', to: '/hand-car-wash-hollywood-fl' },
+  { label: 'Car Detailing Hollywood, FL', to: '/car-detailing-hollywood-fl' },
+  { label: 'Ceramic Coating Hollywood, FL', to: '/ceramic-coating-hollywood-fl' },
+]
+
 const areaLinks = [
   { label: 'Hollywood, FL', to: '/' },
   { label: 'Hallandale Beach, FL', to: '/' },
@@ -84,8 +90,23 @@ export default function Footer() {
             <h4 className="text-frothy-yellow text-xs font-bold tracking-[0.15em] uppercase mb-5">
               Nearby Areas
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-3 mb-8">
               {areaLinks.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    to={link.to}
+                    className="text-frothy-foam/60 text-sm hover:text-frothy-yellow transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <h4 className="text-frothy-yellow text-xs font-bold tracking-[0.15em] uppercase mb-5">
+              Popular Searches
+            </h4>
+            <ul className="space-y-3">
+              {seoLinks.map((link) => (
                 <li key={link.label}>
                   <Link
                     to={link.to}

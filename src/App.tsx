@@ -10,6 +10,9 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import Gallery from './pages/Gallery'
 import NotFound from './pages/NotFound'
+import HandCarWashHollywood from './pages/HandCarWashHollywood'
+import CarDetailingHollywood from './pages/CarDetailingHollywood'
+import CeramicCoatingHollywood from './pages/CeramicCoatingHollywood'
 
 export default function App() {
   return (
@@ -24,6 +27,9 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/hand-car-wash-hollywood-fl" element={<HandCarWashHollywood />} />
+          <Route path="/car-detailing-hollywood-fl" element={<CarDetailingHollywood />} />
+          <Route path="/ceramic-coating-hollywood-fl" element={<CeramicCoatingHollywood />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
