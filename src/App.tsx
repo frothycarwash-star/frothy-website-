@@ -13,6 +13,10 @@ import NotFound from './pages/NotFound'
 import HandCarWashHollywood from './pages/HandCarWashHollywood'
 import CarDetailingHollywood from './pages/CarDetailingHollywood'
 import CeramicCoatingHollywood from './pages/CeramicCoatingHollywood'
+import CarWashHallandaleBeach from './pages/CarWashHallandaleBeach'
+import CarWashDaniaBeach from './pages/CarWashDaniaBeach'
+import CarWashPembrokePines from './pages/CarWashPembrokePines'
+import CarWashAventura from './pages/CarWashAventura'
 
 export default function App() {
   return (
@@ -30,6 +34,10 @@ export default function App() {
           <Route path="/hand-car-wash-hollywood-fl" element={<HandCarWashHollywood />} />
           <Route path="/car-detailing-hollywood-fl" element={<CarDetailingHollywood />} />
           <Route path="/ceramic-coating-hollywood-fl" element={<CeramicCoatingHollywood />} />
+          <Route path="/car-wash-hallandale-beach-fl" element={<CarWashHallandaleBeach />} />
+          <Route path="/car-wash-dania-beach-fl" element={<CarWashDaniaBeach />} />
+          <Route path="/car-wash-pembroke-pines-fl" element={<CarWashPembrokePines />} />
+          <Route path="/car-wash-aventura-fl" element={<CarWashAventura />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

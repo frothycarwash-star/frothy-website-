@@ -26,6 +26,10 @@ const pages = [
   { route: '/hand-car-wash-hollywood-fl', title: 'Hand Car Wash Hollywood FL | Frothy Carwash Lounge', description: 'Premium hand car wash in Hollywood, FL. No machines, no brushes — every car washed by hand. Walk-ins welcome, 7 days a week. Call (954) 510-3073.', ssrKey: 'handCarWash' },
   { route: '/car-detailing-hollywood-fl', title: 'Car Detailing Hollywood FL | Interior & Exterior Detailing | Frothy', description: 'Professional car detailing in Hollywood, FL. Interior detailing, exterior detailing, and full showroom packages from $65. Book your detail at Frothy Carwash Lounge.', ssrKey: 'carDetailing' },
   { route: '/ceramic-coating-hollywood-fl', title: 'Ceramic Coating Hollywood FL | Paint Protection Near Me | Frothy', description: 'Ceramic coating in Hollywood, FL from $149. 1, 3, and 5-year paint protection packages with hydrophobic finish and UV protection. Free quotes at Frothy Carwash Lounge.', ssrKey: 'ceramicCoatingSEO' },
+  { route: '/car-wash-hallandale-beach-fl', title: 'Car Wash Near Hallandale Beach, FL | Frothy Carwash Lounge', description: 'Hand car wash, detailing & ceramic coating just minutes from Hallandale Beach, FL. Walk-ins welcome, indoor lounge with coffee & Wi-Fi while you wait.', ssrKey: 'hallandaleBeach', kind: 'location' },
+  { route: '/car-wash-dania-beach-fl', title: 'Car Wash Near Dania Beach, FL | Frothy Carwash Lounge', description: 'Hand car wash, detailing & ceramic coating minutes from Dania Beach, FL. Walk-ins welcome, indoor lounge with coffee & Wi-Fi while you wait.', ssrKey: 'daniaBeach', kind: 'location' },
+  { route: '/car-wash-pembroke-pines-fl', title: 'Car Wash Near Pembroke Pines, FL | Frothy Carwash Lounge', description: 'Hand car wash, detailing & ceramic coating a short drive from Pembroke Pines, FL. Walk-ins welcome, indoor lounge with coffee & Wi-Fi while you wait.', ssrKey: 'pembrokePines', kind: 'location' },
+  { route: '/car-wash-aventura-fl', title: 'Car Wash Near Aventura, FL | Frothy Carwash Lounge', description: 'Hand car wash, detailing & ceramic coating minutes from Aventura, FL. Walk-ins welcome, indoor lounge with coffee & Wi-Fi while you wait.', ssrKey: 'aventura', kind: 'location' },
 ]
 
 function injectHead(html, page) {
@@ -57,7 +61,9 @@ async function main() {
     let html = injectHead(baseHtml, page)
 
     if (page.ssrKey) {
-      const bodyHtml = ssrModule.renderSeoPage(page.ssrKey)
+      const bodyHtml = page.kind === 'location'
+        ? ssrModule.renderLocationPage(page.ssrKey)
+        : ssrModule.renderSeoPage(page.ssrKey)
       html = html.replace('<div id="root"></div>', `<div id="root">${bodyHtml}</div>`)
     }
 

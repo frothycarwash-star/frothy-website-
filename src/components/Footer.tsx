@@ -17,9 +17,10 @@ const seoLinks = [
 
 const areaLinks = [
   { label: 'Hollywood, FL', to: '/' },
-  { label: 'Hallandale Beach, FL', to: '/' },
-  { label: 'Aventura, FL', to: '/' },
-  { label: 'Dania Beach, FL', to: '/' },
+  { label: 'Hallandale Beach, FL', to: '/car-wash-hallandale-beach-fl' },
+  { label: 'Aventura, FL', to: '/car-wash-aventura-fl' },
+  { label: 'Dania Beach, FL', to: '/car-wash-dania-beach-fl' },
+  { label: 'Pembroke Pines, FL', to: '/car-wash-pembroke-pines-fl' },
 ]
 
 export default function Footer() {
