@@ -7,6 +7,7 @@ import WhyFrothy from '../sections/WhyFrothy'
 import Reviews from '../sections/Reviews'
 import CeramicCTA from '../sections/CeramicCTA'
 import LocationCTA from '../sections/LocationCTA'
+import HomeSEOContent from '../sections/HomeSEOContent'
 
 export default function Home() {
   useSEO(PAGE_SEO.home)
@@ -19,6 +20,7 @@ export default function Home() {
       <WhyFrothy />
       <Reviews />
       <CeramicCTA />
+      <HomeSEOContent />
       <LocationCTA />
     </>
   )

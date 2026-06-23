@@ -55,7 +55,7 @@ export default function Ceramic() {
       {/* Hero */}
       <section className="relative bg-frothy-navy pt-32 pb-16">
         <div className="absolute inset-0 opacity-15">
-          <img src="/images/ceramic-coating.jpg" alt="" className="w-full h-full object-cover" />
+          <img src="/images/ceramic-coating.jpg" alt="Ceramic coating applied to car paint, water beading on the surface" className="w-full h-full object-cover" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <span className="inline-block bg-frothy-blue/20 text-frothy-blue text-[11px] font-bold tracking-[0.15em] uppercase px-3.5 py-1.5 rounded-full mb-4">
