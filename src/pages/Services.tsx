@@ -104,7 +104,7 @@ function ServiceCard({ service, vehicle, onBook }: { service: typeof basicWashes
           <span className={`font-heading text-3xl font-bold ${service.featured ? 'text-white' : 'text-frothy-yellow'}`}>
             ${price}
           </span>
-          <span className={`text-sm ml-2 ${service.featured ? 'text-white/60' : 'text-frothy-foam/50'}`}>
+          <span className={`text-sm ml-2 ${service.featured ? 'text-white/60' : 'text-frothy-foam/60'}`}>
             {vehicle === 'sedan' ? 'sedan' : 'SUV/Truck'}
           </span>
         </div>
@@ -142,7 +142,7 @@ function AddOnTable({ title, items, onBook }: { title: string; items: { name: st
         className="w-full px-6 py-4 flex items-center justify-between hover:bg-frothy-foam/50 transition-colors"
       >
         <h3 className="font-body font-bold text-frothy-navy">{title}</h3>
-        <ChevronDown className={`w-5 h-5 text-frothy-navy/40 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+        <ChevronDown className={`w-5 h-5 text-frothy-navy/70 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </button>
       {isOpen && (
         <div className="px-6 pb-4">
@@ -211,12 +211,12 @@ export default function Services() {
 
           {/* Vehicle Toggle */}
           <div className="flex flex-col items-center mb-10">
-            <p className="text-frothy-navy/60 text-sm font-semibold mb-3">Select your vehicle type to see accurate pricing</p>
+            <p className="text-frothy-navy/70 text-sm font-semibold mb-3">Select your vehicle type to see accurate pricing</p>
             <div className="inline-flex bg-white rounded-xl shadow-card p-1.5 gap-1">
               <button
                 onClick={() => setVehicle('sedan')}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-bold text-sm transition-all ${
-                  vehicle === 'sedan' ? 'bg-frothy-navy text-frothy-yellow' : 'text-frothy-navy/50 hover:text-frothy-navy'
+                  vehicle === 'sedan' ? 'bg-frothy-navy text-frothy-yellow' : 'text-frothy-navy/70 hover:text-frothy-navy'
                 }`}
               >
                 <Car className="w-4 h-4" />
@@ -225,7 +225,7 @@ export default function Services() {
               <button
                 onClick={() => setVehicle('suv')}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-bold text-sm transition-all ${
-                  vehicle === 'suv' ? 'bg-frothy-navy text-frothy-yellow' : 'text-frothy-navy/50 hover:text-frothy-navy'
+                  vehicle === 'suv' ? 'bg-frothy-navy text-frothy-yellow' : 'text-frothy-navy/70 hover:text-frothy-navy'
                 }`}
               >
                 <Truck className="w-4 h-4" />
@@ -266,7 +266,7 @@ export default function Services() {
               Add-Ons
             </span>
             <h2 className="font-heading text-2xl sm:text-3xl text-frothy-navy mb-3">Customize your clean.</h2>
-            <p className="text-frothy-navy/60 text-sm mb-6">
+            <p className="text-frothy-navy/70 text-sm mb-6">
               Tap any add-on to request it, or{' '}
               <a
                 href="https://square.site/book/L52E1Y2E4PK6M/frothy-carwash-lounge-hollywood-fl"

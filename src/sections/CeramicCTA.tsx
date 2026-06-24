@@ -43,10 +43,10 @@ export default function CeramicCTA() {
                     <benefit.icon className="w-5 h-5 text-frothy-navy" />
                   </div>
                   <div>
-                    <h4 className="font-body font-bold text-sm text-frothy-navy mb-0.5">
+                    <p className="font-body font-bold text-sm text-frothy-navy mb-0.5">
                       {benefit.title}
-                    </h4>
-                    <p className="text-frothy-navy/60 text-sm">{benefit.desc}</p>
+                    </p>
+                    <p className="text-frothy-navy/70 text-sm">{benefit.desc}</p>
                   </div>
                 </div>
               ))}
@@ -74,7 +74,7 @@ export default function CeramicCTA() {
           <div className="relative">
             <div className="rounded-2xl overflow-hidden shadow-frothy-lg">
               <img
-                src="/images/ceramic-coating-hollywood-fl.jpg"
+                src="/images/ceramic-coating-hollywood-fl.webp"
                 alt="Ceramic coating water beading on a car in Hollywood, FL"
                 width={1400}
                 height={933}

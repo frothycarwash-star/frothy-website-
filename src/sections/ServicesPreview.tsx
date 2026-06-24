@@ -44,7 +44,7 @@ export default function ServicesPreview() {
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-[42px] text-frothy-navy leading-tight mb-4">
             Everything your car needs.
           </h2>
-          <p className="text-frothy-navy/60 text-lg max-w-xl">
+          <p className="text-frothy-navy/70 text-lg max-w-xl">
             From a quick exterior refresh to a full detailing treatment — we&apos;ve got you covered.
           </p>
         </div>
@@ -63,7 +63,7 @@ export default function ServicesPreview() {
               <h3 className="font-body font-bold text-lg text-frothy-navy mb-2">
                 {service.title}
               </h3>
-              <p className="text-frothy-navy/60 text-sm leading-relaxed mb-4">
+              <p className="text-frothy-navy/70 text-sm leading-relaxed mb-4">
                 {service.desc}
               </p>
               <span className="text-frothy-blue font-bold text-sm">{service.price}</span>

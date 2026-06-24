@@ -41,7 +41,7 @@ export default function Footer() {
             <p className="text-frothy-foam/60 text-sm italic mb-6 max-w-xs">
               Full Steam Ahead™
             </p>
-            <p className="text-frothy-foam/50 text-sm leading-relaxed mb-6 max-w-sm">
+            <p className="text-frothy-foam/60 text-sm leading-relaxed mb-6 max-w-sm">
               Where clean cars meet good company. Hollywood&apos;s premium hand car wash and lounge experience.
             </p>
             <div className="space-y-3">
@@ -148,10 +148,10 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-3">
-          <p className="text-frothy-foam/40 text-xs">
+          <p className="text-frothy-foam/60 text-xs">
             &copy; {new Date().getFullYear()} Frothy Carwash Lounge · Hollywood, FL
           </p>
-          <p className="text-frothy-foam/30 text-xs">
+          <p className="text-frothy-foam/60 text-xs">
             Hand Wash · Coffee · Lounge
           </p>
         </div>

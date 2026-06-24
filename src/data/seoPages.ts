@@ -104,7 +104,7 @@ export const seoPages: Record<string, SEOPageData> = {
     h1: 'Car Detailing in Hollywood, FL',
     intro:
       "Frothy Carwash Lounge offers professional car detailing in Hollywood, FL — full interior detailing, exterior detailing, and complete showroom-quality packages. Whether your car needs a deep clean or a full restoration of that new-car feel, our detailing team handles it by hand, panel by panel.",
-    heroImage: '/images/seats-after.jpg',
+    heroImage: '/images/seats-after.webp',
     sections: [
       {
         heading: 'Interior detailing that goes beyond a vacuum',
@@ -172,7 +172,7 @@ export const seoPages: Record<string, SEOPageData> = {
     h1: 'Ceramic Coating in Hollywood, FL',
     intro:
       "Searching for ceramic coating near you in South Florida? Frothy Carwash Lounge applies professional-grade ceramic coatings in Hollywood, FL, with packages ranging from a 1-year spray sealant to a 5-year ultimate protection package. Every coating is applied by hand after a full paint decontamination.",
-    heroImage: '/images/ceramic-coating-hollywood-fl.jpg',
+    heroImage: '/images/ceramic-coating-hollywood-fl.webp',
     sections: [
       {
         heading: 'Why ceramic coating matters in South Florida',

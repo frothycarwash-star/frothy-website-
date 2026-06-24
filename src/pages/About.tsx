@@ -88,7 +88,7 @@ export default function About() {
                 {stats.map((stat) => (
                   <div key={stat.label} className="bg-white rounded-xl p-4 text-center shadow-card">
                     <p className="font-heading text-2xl text-frothy-navy mb-0.5">{stat.num}</p>
-                    <p className="text-frothy-navy/50 text-xs">{stat.label}</p>
+                    <p className="text-frothy-navy/70 text-xs">{stat.label}</p>
                   </div>
                 ))}
               </div>
@@ -125,7 +125,7 @@ export default function About() {
                       <value.icon className="w-5 h-5 text-frothy-yellow" />
                     </div>
                     <h3 className="font-body font-bold text-frothy-navy mb-1">{value.title}</h3>
-                    <p className="text-frothy-navy/60 text-sm leading-relaxed">{value.desc}</p>
+                    <p className="text-frothy-navy/70 text-sm leading-relaxed">{value.desc}</p>
                   </div>
                 ))}
               </div>
@@ -173,7 +173,7 @@ export default function About() {
                 <div className="bg-white rounded-xl p-4 flex items-center gap-3 shadow-xs">
                   <Clock className="w-5 h-5 text-frothy-blue" />
                   <div>
-                    <p className="text-xs text-frothy-navy/50">Hours</p>
+                    <p className="text-xs text-frothy-navy/70">Hours</p>
                     <p className="text-sm font-semibold text-frothy-navy">8AM – 7PM Daily</p>
                   </div>
                 </div>
@@ -185,7 +185,7 @@ export default function About() {
                 >
                   <Star className="w-5 h-5 text-frothy-blue" />
                   <div>
-                    <p className="text-xs text-frothy-navy/50">Google Rating</p>
+                    <p className="text-xs text-frothy-navy/70">Google Rating</p>
                     <p className="text-sm font-semibold text-frothy-navy group-hover:text-frothy-blue transition-colors">5.0 / 5 · See Reviews →</p>
                   </div>
                 </a>

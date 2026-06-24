@@ -53,7 +53,7 @@ export default function Reviews() {
                 {[...Array(review.rating)].map((_, j) => (
                   <Star key={j} className="w-4 h-4 fill-amber-400 text-amber-400" />
                 ))}
-                <span className="text-white/30 text-xs ml-2">{review.date}</span>
+                <span className="text-white/60 text-xs ml-2">{review.date}</span>
               </div>
 
               {/* Quote */}
@@ -66,9 +66,9 @@ export default function Reviews() {
               <div className="flex items-center justify-between pt-4 border-t border-white/[0.08]">
                 <div>
                   <p className="text-frothy-foam font-semibold text-sm">{review.author}</p>
-                  <p className="text-frothy-foam/40 text-xs">{review.location}</p>
+                  <p className="text-frothy-foam/60 text-xs">{review.location}</p>
                 </div>
-                <span className="text-frothy-blue/60 text-xs font-medium bg-frothy-blue/10 px-2.5 py-1 rounded-lg">
+                <span className="text-frothy-blue text-xs font-medium bg-frothy-blue/10 px-2.5 py-1 rounded-lg">
                   {review.service}
                 </span>
               </div>
@@ -90,7 +90,7 @@ export default function Reviews() {
               ))}
             </div>
             <span className="text-frothy-foam font-semibold text-sm">5.0</span>
-            <span className="text-frothy-foam/40 text-xs">on Google</span>
+            <span className="text-frothy-foam/60 text-xs">on Google</span>
             <span className="text-frothy-blue text-xs font-bold group-hover:underline ml-1">View →</span>
           </a>
           <a

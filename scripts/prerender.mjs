@@ -13,7 +13,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const repoRoot = path.resolve(__dirname, '..')
 const distDir = path.join(repoRoot, 'dist')
 const BASE_URL = 'https://frothycarwash.com'
-const DEFAULT_OG_IMAGE = '/images/hero-car.jpg'
+const DEFAULT_OG_IMAGE = '/images/hand-car-wash-hollywood-fl.webp'
 
 const pages = [
   { route: '/', title: 'Frothy Carwash Lounge | Hand Car Wash in Hollywood, FL', description: 'Premium hand car wash, detailing & lounge in Hollywood, FL. No machines — just expert hands. Open 7 days, 8AM–7PM. Walk-ins welcome. Call (954) 510-3073.', ssrKey: 'home', kind: 'core' },

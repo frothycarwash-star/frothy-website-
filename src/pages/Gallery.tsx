@@ -150,7 +150,7 @@ export default function Gallery() {
                 className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all ${
                   activeCategory === cat
                     ? 'bg-frothy-navy text-frothy-yellow'
-                    : 'bg-white text-frothy-navy/60 hover:bg-frothy-navy/5'
+                    : 'bg-white text-frothy-navy/70 hover:bg-frothy-navy/5'
                 }`}
               >
                 {cat}

@@ -35,7 +35,7 @@ export const locationPages: Record<string, LocationPageData> = {
     h1: 'Car Wash Near Hallandale Beach, FL',
     intro:
       "If you live or work in Hallandale Beach, Frothy Carwash Lounge is the closest premium hand car wash to you — just a few minutes inland in Hollywood, FL. No tunnels, no machines, just a hand wash, full detailing, and ceramic coating done right.",
-    heroImage: '/images/exterior-after.jpg',
+    heroImage: '/images/exterior-after.webp',
     distanceLabel: '~3.5 miles · 8–10 minute drive',
     distanceText:
       'From most of Hallandale Beach — including the Three Islands area and the stretch along Hallandale Beach Blvd — Frothy Carwash Lounge at 2223 Pembroke Rd is roughly a 3 to 4 mile drive, typically 8 to 10 minutes depending on traffic on Federal Highway or I-95.',
@@ -89,7 +89,7 @@ export const locationPages: Record<string, LocationPageData> = {
     h1: 'Car Wash Near Dania Beach, FL',
     intro:
       "Frothy Carwash Lounge sits just south of Dania Beach, making us a convenient hand car wash for anyone near the marina district, the antiques row on Federal Highway, or Fort Lauderdale-Hollywood International Airport. Hand wash, full detail, or ceramic coating — all without ever touching a machine.",
-    heroImage: '/images/exterior-before.jpg',
+    heroImage: '/images/exterior-before.webp',
     distanceLabel: '~5 miles · 10–13 minute drive',
     distanceText:
       'From downtown Dania Beach and the marina area near Dania Beach Blvd, Frothy is about 5 miles south, generally a 10 to 13 minute drive via Federal Highway (US-1) or I-95.',
@@ -199,7 +199,7 @@ export const locationPages: Record<string, LocationPageData> = {
     h1: 'Car Wash Near Aventura, FL',
     intro:
       "Aventura is home to some of South Florida's nicest cars, and Frothy Carwash Lounge is the hand car wash and detailing shop those owners trust just south in Hollywood, FL. No brushes, no machines — every vehicle, from daily drivers to exotics, is washed entirely by hand.",
-    heroImage: '/images/hand-car-wash-hollywood-fl.jpg',
+    heroImage: '/images/hand-car-wash-hollywood-fl.webp',
     distanceLabel: '~11 miles · 18–22 minute drive',
     distanceText:
       'From Aventura Mall and the surrounding condo towers, Frothy is about 11 miles south, generally an 18 to 22 minute drive via Biscayne Blvd / US-1 or I-95 depending on traffic.',

@@ -124,7 +124,7 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
   }
 
   const inputClasses =
-    'w-full px-4 py-3 bg-frothy-foam border-2 border-frothy-foam rounded-xl font-body text-frothy-navy placeholder:text-frothy-navy/40 focus:outline-none focus:border-frothy-blue focus:bg-white transition-colors'
+    'w-full px-4 py-3 bg-frothy-foam border-2 border-frothy-foam rounded-xl font-body text-frothy-navy placeholder:text-frothy-navy/70 focus:outline-none focus:border-frothy-blue focus:bg-white transition-colors'
 
   return (
     <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
@@ -137,7 +137,7 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
             {status === 'success' ? 'Request Received!' : 'Book Your Appointment'}
           </h3>
           <button onClick={reset} className="p-1.5 hover:bg-frothy-foam rounded-lg transition-colors">
-            <X className="w-5 h-5 text-frothy-navy/60" />
+            <X className="w-5 h-5 text-frothy-navy/70" />
           </button>
         </div>
 
@@ -148,11 +148,11 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
               <Check className="w-8 h-8 text-green-600" />
             </div>
             <h4 className="font-heading text-lg text-frothy-navy mb-2">Booking Request Sent!</h4>
-            <p className="text-frothy-navy/60 text-sm mb-1">
+            <p className="text-frothy-navy/70 text-sm mb-1">
               We'll call you at <span className="font-semibold text-frothy-navy">{formData.phone}</span> to confirm.
             </p>
-            <p className="text-frothy-navy/40 text-xs mb-6">Reference: {referenceId}</p>
-            <p className="text-frothy-navy/50 text-xs">
+            <p className="text-frothy-navy/70 text-xs mb-6">Reference: {referenceId}</p>
+            <p className="text-frothy-navy/70 text-xs">
               Need to reach us now?{' '}
               <a href={PHONE_HREF} className="text-frothy-blue font-semibold underline">
                 Call {PHONE}
@@ -160,7 +160,7 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
             </p>
             <button
               onClick={reset}
-              className="mt-6 text-sm text-frothy-navy/40 hover:text-frothy-navy underline transition-colors"
+              className="mt-6 text-sm text-frothy-navy/70 hover:text-frothy-navy underline transition-colors"
             >
               Close
             </button>
@@ -174,7 +174,7 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
               <Phone className="w-8 h-8 text-red-500" />
             </div>
             <h4 className="font-heading text-lg text-frothy-navy mb-2">Submission failed</h4>
-            <p className="text-frothy-navy/60 text-sm mb-4">
+            <p className="text-frothy-navy/70 text-sm mb-4">
               Something went wrong on our end. Please call us directly to book:
             </p>
             <a
@@ -186,7 +186,7 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
             </a>
             <button
               onClick={() => setStatus('idle')}
-              className="block mx-auto mt-4 text-sm text-frothy-navy/40 hover:text-frothy-navy underline"
+              className="block mx-auto mt-4 text-sm text-frothy-navy/70 hover:text-frothy-navy underline"
             >
               Try again
             </button>
@@ -200,7 +200,7 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
             <div className="mx-6 mt-5 mb-1 bg-frothy-blue/10 border border-frothy-blue/20 rounded-xl px-4 py-3 flex items-center justify-between gap-3">
               <p className="text-frothy-navy text-xs font-medium">
                 Want to book instantly?{' '}
-                <span className="text-frothy-navy/50">Use our live scheduling link.</span>
+                <span className="text-frothy-navy/70">Use our live scheduling link.</span>
               </p>
               <a
                 href={SQUARE_BOOKING_URL}
@@ -247,7 +247,7 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
                           >
                             <span className="text-sm font-semibold text-frothy-navy">{group.title}</span>
                             <ChevronDown
-                              className={`w-4 h-4 text-frothy-navy/40 transition-transform ${openAddOnGroup === group.title ? 'rotate-180' : ''}`}
+                              className={`w-4 h-4 text-frothy-navy/70 transition-transform ${openAddOnGroup === group.title ? 'rotate-180' : ''}`}
                             />
                           </button>
                           {openAddOnGroup === group.title && (
@@ -278,7 +278,7 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
                         </div>
                       ))}
                     </div>
-                    <p className="text-xs text-frothy-navy/40 mt-1.5">
+                    <p className="text-xs text-frothy-navy/70 mt-1.5">
                       Exact add-on pricing depends on vehicle size, severity, or quantity — we'll confirm your total when we call to confirm.
                     </p>
                   </div>
@@ -338,7 +338,7 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
                     ← Back to service selection
                   </button>
                   <div className="bg-frothy-foam rounded-xl p-4 mb-2">
-                    <p className="text-xs text-frothy-navy/50 font-semibold uppercase tracking-wider mb-1">Booking Summary</p>
+                    <p className="text-xs text-frothy-navy/70 font-semibold uppercase tracking-wider mb-1">Booking Summary</p>
                     <p className="text-sm text-frothy-navy font-medium">{formData.service}</p>
                     {selectedAddOns.length > 0 && (
                       <ul className="mt-1.5 space-y-0.5">
@@ -403,7 +403,7 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
                       'Confirm Booking Request'
                     )}
                   </button>
-                  <p className="text-xs text-frothy-navy/40 text-center">
+                  <p className="text-xs text-frothy-navy/70 text-center">
                     We'll call you to confirm within 30 minutes during business hours.
                   </p>
                 </>

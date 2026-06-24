@@ -17,7 +17,7 @@ export default function LocationCTA() {
             <h2 className="font-heading text-3xl sm:text-4xl lg:text-[42px] text-frothy-navy leading-tight mb-4">
               Right in the heart of Hollywood.
             </h2>
-            <p className="text-frothy-navy/60 text-lg mb-8">
+            <p className="text-frothy-navy/70 text-lg mb-8">
               Easy to get to from Hollywood, Hallandale Beach, Aventura, Dania Beach, and Pembroke Pines.
             </p>
 
@@ -29,7 +29,7 @@ export default function LocationCTA() {
                 <div>
                   <p className="text-frothy-blue text-xs font-bold uppercase tracking-wider mb-1">Address</p>
                   <p className="font-semibold text-frothy-navy">2223 Pembroke Rd</p>
-                  <p className="text-frothy-navy/50 text-sm">Hollywood, FL 33020</p>
+                  <p className="text-frothy-navy/70 text-sm">Hollywood, FL 33020</p>
                 </div>
               </div>
 
@@ -40,7 +40,7 @@ export default function LocationCTA() {
                 <div>
                   <p className="text-frothy-blue text-xs font-bold uppercase tracking-wider mb-1">Hours</p>
                   <p className="font-semibold text-frothy-navy">Open Every Day</p>
-                  <p className="text-frothy-navy/50 text-sm">8:00 AM – 7:00 PM</p>
+                  <p className="text-frothy-navy/70 text-sm">8:00 AM – 7:00 PM</p>
                 </div>
               </div>
 
@@ -53,7 +53,7 @@ export default function LocationCTA() {
                   <a href="tel:9545103073" className="font-semibold text-frothy-navy hover:text-frothy-blue transition-colors">
                     (954) 510-3073
                   </a>
-                  <p className="text-frothy-navy/50 text-sm">Walk-ins welcome</p>
+                  <p className="text-frothy-navy/70 text-sm">Walk-ins welcome</p>
                 </div>
               </div>
 

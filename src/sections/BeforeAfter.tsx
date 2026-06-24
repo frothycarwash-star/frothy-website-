@@ -6,15 +6,15 @@ const comparisons = [
     id: 1,
     label: 'Exterior',
     desc: 'Soap-to-shine, the same car start to finish',
-    before: '/images/exterior-before.jpg',
-    after: '/images/exterior-after.jpg',
+    before: '/images/exterior-before.webp',
+    after: '/images/exterior-after.webp',
   },
   {
     id: 2,
     label: 'Interior',
     desc: 'Deep-cleaned cloth seats, stain by stain',
-    before: '/images/seats-before.jpg',
-    after: '/images/seats-after.jpg',
+    before: '/images/seats-before.webp',
+    after: '/images/seats-after.webp',
   },
 ]
 
@@ -107,7 +107,7 @@ export default function BeforeAfter() {
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-[42px] text-frothy-navy leading-tight mb-4">
             See the difference.
           </h2>
-          <p className="text-frothy-navy/60 text-lg max-w-xl mx-auto">
+          <p className="text-frothy-navy/70 text-lg max-w-xl mx-auto">
             Drag to compare. Every car gets the same meticulous attention to detail.
           </p>
         </div>
@@ -121,7 +121,7 @@ export default function BeforeAfter() {
               className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all ${
                 activeTab === i
                   ? 'bg-frothy-navy text-frothy-yellow'
-                  : 'bg-frothy-foam text-frothy-navy/60 hover:bg-frothy-foam/80'
+                  : 'bg-frothy-foam text-frothy-navy/70 hover:bg-frothy-foam/80'
               }`}
             >
               {comp.label}
@@ -136,7 +136,7 @@ export default function BeforeAfter() {
             after={comparisons[activeTab].after}
             label={comparisons[activeTab].label}
           />
-          <p className="text-center text-frothy-navy/50 text-sm mt-4">
+          <p className="text-center text-frothy-navy/70 text-sm mt-4">
             {comparisons[activeTab].desc}
           </p>
         </div>

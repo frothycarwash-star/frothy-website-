@@ -9,7 +9,7 @@ interface SEOProps {
 }
 
 const SITE_NAME = 'Frothy Carwash Lounge'
-const DEFAULT_OG_IMAGE = '/images/hand-car-wash-hollywood-fl.jpg'
+const DEFAULT_OG_IMAGE = '/images/hand-car-wash-hollywood-fl.webp'
 const BASE_URL = 'https://frothycarwash.com'
 
 export function useSEO({ title, description, canonical, ogImage, noindex }: SEOProps) {

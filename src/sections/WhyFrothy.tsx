@@ -52,7 +52,7 @@ export default function WhyFrothy() {
               Not just a carwash.<br />
               A place you&apos;ll actually enjoy.
             </h2>
-            <p className="text-frothy-navy/60 text-lg mb-10 max-w-md">
+            <p className="text-frothy-navy/70 text-lg mb-10 max-w-md">
               We built Frothy to be different. A place where the wait feels like part of the experience — not something to survive.
             </p>
 
@@ -71,7 +71,7 @@ export default function WhyFrothy() {
                         {reason.title}
                       </h3>
                     </div>
-                    <p className="text-frothy-navy/60 text-sm leading-relaxed">
+                    <p className="text-frothy-navy/70 text-sm leading-relaxed">
                       {reason.desc}
                     </p>
                   </div>
@@ -84,7 +84,7 @@ export default function WhyFrothy() {
           <div className="lg:sticky lg:top-24">
             <div className="relative rounded-2xl overflow-hidden mb-6">
               <img
-                src="/images/car-wash-lounge-interior-hollywood-fl.jpg"
+                src="/images/car-wash-lounge-interior-hollywood-fl.webp"
                 alt="Frothy Carwash Lounge waiting lounge interior in Hollywood, FL"
                 width={1400}
                 height={1050}

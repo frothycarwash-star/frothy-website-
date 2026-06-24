@@ -51,7 +51,7 @@ export default function Contact() {
     }
   }
 
-  const inputClasses = "w-full px-4 py-3 bg-frothy-foam border-2 border-frothy-foam rounded-xl font-body text-frothy-navy placeholder:text-frothy-navy/40 focus:outline-none focus:border-frothy-blue focus:bg-white transition-colors"
+  const inputClasses = "w-full px-4 py-3 bg-frothy-foam border-2 border-frothy-foam rounded-xl font-body text-frothy-navy placeholder:text-frothy-navy/70 focus:outline-none focus:border-frothy-blue focus:bg-white transition-colors"
 
   return (
     <>
@@ -87,7 +87,7 @@ export default function Contact() {
                     <a href="tel:9545103073" className="font-semibold text-frothy-navy text-lg hover:text-frothy-blue transition-colors">
                       (954) 510-3073
                     </a>
-                    <p className="text-frothy-navy/40 text-sm mt-0.5">Tap to call on mobile</p>
+                    <p className="text-frothy-navy/70 text-sm mt-0.5">Tap to call on mobile</p>
                   </div>
                 </div>
 
@@ -98,7 +98,7 @@ export default function Contact() {
                   <div>
                     <p className="text-frothy-blue text-xs font-bold uppercase tracking-wider mb-1">Address</p>
                     <p className="font-semibold text-frothy-navy">2223 Pembroke Rd</p>
-                    <p className="text-frothy-navy/50 text-sm">Hollywood, FL 33020</p>
+                    <p className="text-frothy-navy/70 text-sm">Hollywood, FL 33020</p>
                   </div>
                 </div>
 
@@ -121,7 +121,7 @@ export default function Contact() {
                   <div>
                     <p className="text-frothy-blue text-xs font-bold uppercase tracking-wider mb-1">Hours</p>
                     <p className="font-semibold text-frothy-navy">Monday – Sunday</p>
-                    <p className="text-frothy-navy/50 text-sm">8:00 AM – 7:00 PM, Every Day</p>
+                    <p className="text-frothy-navy/70 text-sm">8:00 AM – 7:00 PM, Every Day</p>
                   </div>
                 </div>
               </div>
@@ -134,7 +134,7 @@ export default function Contact() {
                 <Phone className="w-5 h-5" />
                 Call Now — (954) 510-3073
               </a>
-              <p className="text-center text-frothy-navy/40 text-xs mb-8">
+              <p className="text-center text-frothy-navy/70 text-xs mb-8">
                 No appointment needed for standard washes · Walk-ins welcome
               </p>
 
@@ -160,14 +160,14 @@ export default function Contact() {
                   <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <CheckCircle className="w-8 h-8 text-green-600" />
                   </div>
-                  <h3 className="font-heading text-xl text-frothy-navy mb-2">Message Sent!</h3>
-                  <p className="text-frothy-navy/60 text-sm">We&apos;ll be in touch soon.</p>
+                  <p className="font-heading text-xl text-frothy-navy mb-2">Message Sent!</p>
+                  <p className="text-frothy-navy/70 text-sm">We&apos;ll be in touch soon.</p>
                 </div>
               ) : (
                 <>
                   <div className="mb-6">
-                    <h3 className="font-heading text-xl text-frothy-navy mb-1">Send Us a Message</h3>
-                    <p className="text-frothy-navy/50 text-sm">For detailing quotes or membership inquiries</p>
+                    <p className="font-heading text-xl text-frothy-navy mb-1">Send Us a Message</p>
+                    <p className="text-frothy-navy/70 text-sm">For detailing quotes or membership inquiries</p>
                   </div>
 
                   <form onSubmit={handleSubmit} className="space-y-4">
@@ -237,7 +237,7 @@ export default function Contact() {
                       Send Message
                     </button>
 
-                    <p className="text-xs text-frothy-navy/40 text-center">
+                    <p className="text-xs text-frothy-navy/70 text-center">
                       We typically respond within 30 minutes during business hours.
                     </p>
                   </form>

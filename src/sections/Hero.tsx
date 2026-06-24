@@ -12,7 +12,7 @@ export default function Hero() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
-            src="/images/hand-car-wash-hollywood-fl.jpg"
+            src="/images/hand-car-wash-hollywood-fl.webp"
             alt="Hand car wash, auto detailing, and ceramic coating in Hollywood, FL"
             width={1536}
             height={1024}
@@ -80,7 +80,7 @@ export default function Hero() {
                     <Star key={i} className="w-4 h-4 fill-frothy-yellow text-frothy-yellow" />
                   ))}
                 </div>
-                <span className="text-frothy-foam/50 text-sm group-hover:text-frothy-yellow/70 transition-colors">
+                <span className="text-frothy-foam/60 text-sm group-hover:text-frothy-yellow/70 transition-colors">
                   5.0 · Trusted by Hollywood locals
                 </span>
               </a>
@@ -90,10 +90,10 @@ export default function Hero() {
             <div className="hidden lg:block">
               <div className="bg-white/[0.06] backdrop-blur-md border border-white/[0.12] rounded-2xl p-8 max-w-sm ml-auto">
                 <div className="mb-6">
-                  <h3 className="font-heading text-2xl text-frothy-yellow mb-1">
+                  <p className="font-heading text-2xl text-frothy-yellow mb-1">
                     Full Steam Ahead&trade;
-                  </h3>
-                  <p className="text-frothy-foam/50 text-sm">
+                  </p>
+                  <p className="text-frothy-foam/60 text-sm">
                     Hand Wash &middot; Coffee &middot; Lounge
                   </p>
                   <p className="text-frothy-yellow text-sm font-medium mt-2">
@@ -105,21 +105,21 @@ export default function Hero() {
                   <div className="text-center">
                     <Shield className="w-5 h-5 text-frothy-yellow mx-auto mb-2" />
                     <div className="font-heading text-xl text-frothy-yellow">100%</div>
-                    <div className="text-frothy-foam/40 text-[10px] uppercase tracking-wider mt-0.5">
+                    <div className="text-frothy-foam/60 text-[10px] uppercase tracking-wider mt-0.5">
                       Hand Wash
                     </div>
                   </div>
                   <div className="text-center">
                     <Clock className="w-5 h-5 text-frothy-yellow mx-auto mb-2" />
                     <div className="font-heading text-xl text-frothy-yellow">7</div>
-                    <div className="text-frothy-foam/40 text-[10px] uppercase tracking-wider mt-0.5">
+                    <div className="text-frothy-foam/60 text-[10px] uppercase tracking-wider mt-0.5">
                       Days/Week
                     </div>
                   </div>
                   <div className="text-center">
                     <Award className="w-5 h-5 text-frothy-yellow mx-auto mb-2" />
                     <div className="font-heading text-xl text-frothy-yellow">3</div>
-                    <div className="text-frothy-foam/40 text-[10px] uppercase tracking-wider mt-0.5">
+                    <div className="text-frothy-foam/60 text-[10px] uppercase tracking-wider mt-0.5">
                       Ceramic Tiers
                     </div>
                   </div>

@@ -57,7 +57,7 @@ export default function Ceramic() {
       {/* Hero */}
       <section className="relative bg-frothy-navy pt-32 pb-16">
         <div className="absolute inset-0 opacity-15">
-          <img src="/images/ceramic-coating-hollywood-fl.jpg" alt="Ceramic coating applied to car paint, water beading on the surface" className="w-full h-full object-cover" />
+          <img src="/images/ceramic-coating-hollywood-fl.webp" alt="Ceramic coating applied to car paint, water beading on the surface" className="w-full h-full object-cover" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <span className="inline-block bg-frothy-blue/20 text-frothy-blue text-[11px] font-bold tracking-[0.15em] uppercase px-3.5 py-1.5 rounded-full mb-4">
@@ -84,7 +84,7 @@ export default function Ceramic() {
             <h2 className="font-heading text-2xl sm:text-3xl text-frothy-navy mb-2">
               Three tiers of protection.
             </h2>
-            <p className="text-frothy-navy/60 text-lg max-w-xl">
+            <p className="text-frothy-navy/70 text-lg max-w-xl">
               Whether you drive daily or park it on weekends, we have a ceramic package built for your car and your budget.
             </p>
           </div>

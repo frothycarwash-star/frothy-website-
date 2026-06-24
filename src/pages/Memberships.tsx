@@ -92,7 +92,7 @@ export default function Memberships() {
       {/* Hero */}
       <section className="relative bg-frothy-navy pt-32 pb-16">
         <div className="absolute inset-0 opacity-10">
-          <img src="/images/hand-car-wash-hollywood-fl.jpg" alt="Clean car after a Frothy Carwash Lounge membership wash" className="w-full h-full object-cover" />
+          <img src="/images/hand-car-wash-hollywood-fl.webp" alt="Clean car after a Frothy Carwash Lounge membership wash" className="w-full h-full object-cover" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <span className="inline-block bg-frothy-blue/20 text-frothy-blue text-[11px] font-bold tracking-[0.15em] uppercase px-3.5 py-1.5 rounded-full mb-4">
@@ -113,12 +113,12 @@ export default function Memberships() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Vehicle Toggle */}
           <div className="flex flex-col items-center mb-10">
-            <p className="text-frothy-navy/60 text-sm font-semibold mb-3">Select your vehicle type to see accurate pricing</p>
+            <p className="text-frothy-navy/70 text-sm font-semibold mb-3">Select your vehicle type to see accurate pricing</p>
             <div className="inline-flex bg-white rounded-xl shadow-card p-1.5 gap-1">
               <button
                 onClick={() => setVehicle('sedan')}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-bold text-sm transition-all ${
-                  vehicle === 'sedan' ? 'bg-frothy-navy text-frothy-yellow' : 'text-frothy-navy/50 hover:text-frothy-navy'
+                  vehicle === 'sedan' ? 'bg-frothy-navy text-frothy-yellow' : 'text-frothy-navy/70 hover:text-frothy-navy'
                 }`}
               >
                 <Car className="w-4 h-4" />
@@ -127,7 +127,7 @@ export default function Memberships() {
               <button
                 onClick={() => setVehicle('suv')}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-bold text-sm transition-all ${
-                  vehicle === 'suv' ? 'bg-frothy-navy text-frothy-yellow' : 'text-frothy-navy/50 hover:text-frothy-navy'
+                  vehicle === 'suv' ? 'bg-frothy-navy text-frothy-yellow' : 'text-frothy-navy/70 hover:text-frothy-navy'
                 }`}
               >
                 <Truck className="w-4 h-4" />
@@ -156,9 +156,9 @@ export default function Memberships() {
                     <p className={`text-xs font-bold tracking-[0.15em] uppercase mb-2 ${plan.accentColor}`}>
                       {plan.name}
                     </p>
-                    <h3 className={`font-heading text-2xl ${plan.accentColor} mb-1`}>
+                    <p className={`font-heading text-2xl ${plan.accentColor} mb-1`}>
                       {plan.name} Plan
-                    </h3>
+                    </p>
                     <p className="font-heading text-5xl font-bold text-white mb-1">${price}</p>
                     <p className="text-white/60 text-sm mb-3">per month · {vehicle === 'sedan' ? 'sedan' : 'SUV/truck'}</p>
                     <span className={`inline-block ${plan.badgeBg} ${plan.badgeText} text-[11px] font-bold px-3 py-1.5 rounded-full`}>
@@ -180,7 +180,7 @@ export default function Memberships() {
                     </ul>
 
                     <div className="border-t border-frothy-foam pt-4 mb-5">
-                      <p className="text-xs text-frothy-navy/50">
+                      <p className="text-xs text-frothy-navy/70">
                         <span className="font-semibold text-frothy-navy/70">Best for:</span> {plan.bestFor}
                       </p>
                     </div>
@@ -197,7 +197,7 @@ export default function Memberships() {
                     >
                       Sign Up Online — ${price}/mo
                     </a>
-                    <p className="text-center text-xs text-frothy-navy/40 mt-2">Secure checkout via Square · cancel anytime</p>
+                    <p className="text-center text-xs text-frothy-navy/70 mt-2">Secure checkout via Square · cancel anytime</p>
                   </div>
                 </div>
               )
@@ -228,7 +228,7 @@ export default function Memberships() {
 
           {/* CTA */}
           <div className="text-center">
-            <p className="text-frothy-navy/60 text-sm mb-4">Prefer to sign up in person or have questions first?</p>
+            <p className="text-frothy-navy/70 text-sm mb-4">Prefer to sign up in person or have questions first?</p>
             <a
               href="tel:9545103073"
               className="inline-flex items-center gap-2 bg-frothy-yellow text-frothy-navy font-bold text-lg px-8 py-4 rounded-xl hover:scale-105 transition-transform"
