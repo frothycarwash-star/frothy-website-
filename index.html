@@ -19,12 +19,9 @@
     <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Font loading: preconnect + non-blocking stylesheet -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Montagu+Slab:opsz,wght@12..64,400;12..64,500;12..64,600&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Montagu+Slab:opsz,wght@12..64,400;12..64,500;12..64,600&display=swap" media="print" onload="this.media='all'" />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Montagu+Slab:opsz,wght@12..64,400;12..64,500;12..64,600&display=swap" /></noscript>
+    <!-- Self-hosted fonts: preload the two above-the-fold weights -->
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/dm-sans-latin-400-normal.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/montagu-slab-latin-400-normal.woff2" crossorigin />
 
     <!-- Primary SEO (overridden per-page by useSEO hook) -->
     <title>Frothy Carwash Lounge | Hand Car Wash in Hollywood, FL</title>

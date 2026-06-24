@@ -46,6 +46,12 @@ function injectHead(html, page) {
   }
   html = html.replace(/<meta name="twitter:title"[^>]*>/, `<meta name="twitter:title" content="${page.title}" />`)
   html = html.replace(/<meta name="twitter:description"[^>]*>/, `<meta name="twitter:description" content="${page.description}" />`)
+  if (page.route === '/') {
+    html = html.replace(
+      '</head>',
+      `<link rel="preload" as="image" href="/images/hand-car-wash-hollywood-fl-1024w.webp" imagesrcset="/images/hand-car-wash-hollywood-fl-640w.webp 640w, /images/hand-car-wash-hollywood-fl-1024w.webp 1024w, /images/hand-car-wash-hollywood-fl-1536w.webp 1536w" imagesizes="100vw" fetchpriority="high" />\n</head>`
+    )
+  }
   return html
 }
 

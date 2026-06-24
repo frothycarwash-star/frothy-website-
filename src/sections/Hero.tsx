@@ -13,6 +13,8 @@ export default function Hero() {
         <div className="absolute inset-0">
           <img
             src="/images/hand-car-wash-hollywood-fl.webp"
+            srcSet="/images/hand-car-wash-hollywood-fl-640w.webp 640w, /images/hand-car-wash-hollywood-fl-1024w.webp 1024w, /images/hand-car-wash-hollywood-fl-1536w.webp 1536w"
+            sizes="100vw"
             alt="Hand car wash, auto detailing, and ceramic coating in Hollywood, FL"
             width={1536}
             height={1024}
