@@ -1,6 +1,7 @@
 import { useSEO, PAGE_SEO } from '../hooks/useSEO'
 import { useState } from 'react'
 import { X, Camera } from 'lucide-react'
+import RelatedLinks from '../components/RelatedLinks'
 
 const categories = ['All', 'Hand Wash', 'Full Detail', 'Interior', 'Fleet & Luxury', 'Our Lounge']
 
@@ -162,6 +163,15 @@ export default function Gallery() {
               <PhotoTile key={i} src={photo.src} alt={photo.alt} onClick={() => setLightbox(photo.src)} />
             ))}
           </div>
+
+          <RelatedLinks
+            links={[
+              { label: 'View All Services & Pricing', to: '/services' },
+              { label: 'Ceramic Coating Packages', to: '/ceramic' },
+              { label: 'Car Detailing in Hollywood, FL', to: '/car-detailing-hollywood-fl' },
+              { label: 'Book Now', to: '/contact' },
+            ]}
+          />
         </div>
       </section>
 

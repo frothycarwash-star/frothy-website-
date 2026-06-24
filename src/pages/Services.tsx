@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useSEO, PAGE_SEO } from '../hooks/useSEO'
 import { Check, ChevronDown, Phone, Star, Car, Truck } from 'lucide-react'
 import BookingModal from '../components/BookingModal'
+import RelatedLinks from '../components/RelatedLinks'
 import {
   interiorAddOns,
   exteriorAddOns,
@@ -306,8 +307,17 @@ export default function Services() {
             </div>
           </div>
 
+          <RelatedLinks
+            links={[
+              { label: 'Ceramic Coating Packages', to: '/ceramic' },
+              { label: 'Monthly Memberships', to: '/memberships' },
+              { label: 'Hand Car Wash in Hollywood, FL', to: '/hand-car-wash-hollywood-fl' },
+              { label: 'Car Detailing in Hollywood, FL', to: '/car-detailing-hollywood-fl' },
+            ]}
+          />
+
           {/* CTA */}
-          <div className="bg-frothy-navy rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="bg-frothy-navy rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6 mt-10">
             <div>
               <h3 className="font-heading text-xl text-frothy-yellow mb-1">Not sure which service?</h3>
               <p className="text-frothy-foam/60 text-sm">Call us — we'll recommend the right package for your car and budget.</p>

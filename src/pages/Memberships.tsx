@@ -2,6 +2,7 @@ import { useSEO, PAGE_SEO } from '../hooks/useSEO'
 import { useState } from 'react'
 import { Check, Phone, Star, Calendar, CreditCard, XCircle, HelpCircle, Car, Truck } from 'lucide-react'
 import BookingModal from '../components/BookingModal'
+import RelatedLinks from '../components/RelatedLinks'
 
 type Vehicle = 'sedan' | 'suv'
 
@@ -202,8 +203,17 @@ export default function Memberships() {
             })}
           </div>
 
+          <RelatedLinks
+            links={[
+              { label: 'View All Services & Pricing', to: '/services' },
+              { label: 'Ceramic Coating Packages', to: '/ceramic' },
+              { label: 'Hand Car Wash in Hollywood, FL', to: '/hand-car-wash-hollywood-fl' },
+              { label: 'See Our Work', to: '/gallery' },
+            ]}
+          />
+
           {/* Rules */}
-          <div className="bg-frothy-navy rounded-2xl p-8 noise-bg mb-10">
+          <div className="bg-frothy-navy rounded-2xl p-8 noise-bg mb-10 mt-10">
             <h3 className="font-heading text-xl text-frothy-yellow mb-6">How Memberships Work</h3>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {rules.map((rule) => (

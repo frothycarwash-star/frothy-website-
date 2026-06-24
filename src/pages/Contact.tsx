@@ -1,6 +1,7 @@
 import { useSEO, PAGE_SEO } from '../hooks/useSEO'
 import { useState } from 'react'
 import { Phone, Mail, MapPin, Clock, CheckCircle, Send, MessageSquare, User, Car } from 'lucide-react'
+import RelatedLinks from '../components/RelatedLinks'
 
 const services = [
   'Hand Wash',
@@ -243,6 +244,15 @@ export default function Contact() {
               )}
             </div>
           </div>
+
+          <RelatedLinks
+            links={[
+              { label: 'View All Services & Pricing', to: '/services' },
+              { label: 'Ceramic Coating Packages', to: '/ceramic' },
+              { label: 'Monthly Memberships', to: '/memberships' },
+              { label: 'About Frothy Carwash Lounge', to: '/about' },
+            ]}
+          />
         </div>
       </div>
     </>

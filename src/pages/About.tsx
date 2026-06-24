@@ -1,6 +1,7 @@
 import { useSEO, PAGE_SEO } from '../hooks/useSEO'
 import { Link } from 'react-router-dom'
 import { Handshake, Zap, Sun, TrendingUp, Phone, Star, MapPin, Clock } from 'lucide-react'
+import RelatedLinks from '../components/RelatedLinks'
 
 const values = [
   {
@@ -190,6 +191,15 @@ export default function About() {
               </div>
             </div>
           </div>
+
+          <RelatedLinks
+            links={[
+              { label: 'View All Services & Pricing', to: '/services' },
+              { label: 'Ceramic Coating Packages', to: '/ceramic' },
+              { label: 'Monthly Memberships', to: '/memberships' },
+              { label: 'See Our Work', to: '/gallery' },
+            ]}
+          />
         </div>
       </div>
     </>

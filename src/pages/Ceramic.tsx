@@ -2,6 +2,7 @@ import { useSEO, PAGE_SEO } from '../hooks/useSEO'
 import { useState } from 'react'
 import { Check, Phone, ArrowRight, Droplets, Sun, Shield, Sparkles } from 'lucide-react'
 import BookingModal from '../components/BookingModal'
+import RelatedLinks from '../components/RelatedLinks'
 
 const tiers = [
   {
@@ -189,6 +190,15 @@ export default function Ceramic() {
               </div>
             </div>
           </div>
+
+          <RelatedLinks
+            links={[
+              { label: 'Ceramic Coating in Hollywood, FL', to: '/ceramic-coating-hollywood-fl' },
+              { label: 'View All Services & Pricing', to: '/services' },
+              { label: 'Monthly Memberships', to: '/memberships' },
+              { label: 'Car Detailing in Hollywood, FL', to: '/car-detailing-hollywood-fl' },
+            ]}
+          />
 
           {/* CTA */}
           <div className="mt-10 text-center">
