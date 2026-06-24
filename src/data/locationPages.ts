@@ -65,6 +65,7 @@ export const locationPages: Record<string, LocationPageData> = {
         paragraphs: [
           "From Three Islands, the Golden Isles, or anywhere along Hallandale Beach Blvd, the drive to Frothy is straightforward: head west to Federal Highway (US-1) or I-95, then south toward Pembroke Road. There's no need to plan a special trip — most customers fold a hand wash into a grocery run, a trip to the gym, or a commute toward Hollywood or Aventura.",
           "Whether you're maintaining a daily driver, prepping a car for a Gulfstream Park event, or just tired of sand in the floor mats, Frothy is the closest hand wash that treats Hallandale Beach vehicles the way coastal driving demands.",
+          "We also offer monthly memberships if you find yourself making the drive from Hallandale Beach regularly — locking in a set number of hand washes or details each month works out cheaper than paying walk-in pricing every time, especially if you're trying to stay ahead of salt air and beach sand year-round. Call ahead and our team can recommend the plan that best matches how often you're making the trip.",
         ],
       },
     ],
@@ -119,6 +120,7 @@ export const locationPages: Record<string, LocationPageData> = {
         paragraphs: [
           "From downtown Dania Beach, the marina district, or the streets around the airport, reaching Frothy is a quick trip south on Federal Highway (US-1) or I-95 to Pembroke Road. It's an easy stop before a flight, after pulling the boat out of the water, or on a regular errand run through Hollywood.",
           "Whether you're a daily commuter, a weekend boater, or just passing through Dania Beach on your way south, Frothy gives you a thorough hand wash without the wait or the brushes of a tunnel wash.",
+          "If a trip to the marina or the airport is part of your regular routine, a Frothy membership can make sense — it bundles several hand washes or details into one monthly price so you're not paying full walk-in rates every time salt spray or boat ramp grime needs to come off your car.",
         ],
       },
     ],
@@ -142,7 +144,7 @@ export const locationPages: Record<string, LocationPageData> = {
     h1: 'Car Wash Near Pembroke Pines, FL',
     intro:
       "Frothy Carwash Lounge is a short drive east from Pembroke Pines, and for families and commuters tired of automatic tunnel washes, it's worth the trip. Every vehicle is washed entirely by hand — no brushes, no machines — with detailing and ceramic coating available for cars that need more than a quick rinse.",
-    heroImage: '/images/gallery-44.jpg',
+    heroImage: '/images/black-corvette-front-three-quarter-view.jpg',
     distanceLabel: '~8 miles · 15–20 minute drive',
     distanceText:
       'From central Pembroke Pines near Pines Blvd and Flamingo Road, Frothy is roughly 8 miles east, typically a 15 to 20 minute drive via Pines Blvd to Hollywood, or I-75 to I-595 depending on the time of day.',
@@ -173,6 +175,7 @@ export const locationPages: Record<string, LocationPageData> = {
         paragraphs: [
           "From central Pembroke Pines, the most direct route is east on Pines Blvd toward Hollywood, or I-75 to I-595 if you're coming from the western edges of the city. Either way, it's a manageable drive that most customers pair with a commute, a shopping trip, or a visit to family in Hollywood or Hallandale.",
           "For Pembroke Pines drivers who want their car looking its best without resorting to an automatic tunnel wash, the extra few miles east to Frothy is consistently worth it — especially once a membership makes repeat visits effortless.",
+          "If you're weighing whether the drive is worth it, most Pembroke Pines customers tell us the same thing: the quality difference is obvious the first time, and the lounge makes the wait genuinely enjoyable instead of something to plan around.",
         ],
       },
     ],
@@ -196,7 +199,7 @@ export const locationPages: Record<string, LocationPageData> = {
     h1: 'Car Wash Near Aventura, FL',
     intro:
       "Aventura is home to some of South Florida's nicest cars, and Frothy Carwash Lounge is the hand car wash and detailing shop those owners trust just south in Hollywood, FL. No brushes, no machines — every vehicle, from daily drivers to exotics, is washed entirely by hand.",
-    heroImage: '/images/hero-car.jpg',
+    heroImage: '/images/hand-car-wash-hollywood-fl.jpg',
     distanceLabel: '~11 miles · 18–22 minute drive',
     distanceText:
       'From Aventura Mall and the surrounding condo towers, Frothy is about 11 miles south, generally an 18 to 22 minute drive via Biscayne Blvd / US-1 or I-95 depending on traffic.',

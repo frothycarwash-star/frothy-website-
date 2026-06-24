@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Check, Phone, Star, Calendar, CreditCard, XCircle, HelpCircle, Car, Truck } from 'lucide-react'
 import BookingModal from '../components/BookingModal'
 import RelatedLinks from '../components/RelatedLinks'
+import MembershipsSEOContent from '../sections/MembershipsSEOContent'
 
 type Vehicle = 'sedan' | 'suv'
 
@@ -91,7 +92,7 @@ export default function Memberships() {
       {/* Hero */}
       <section className="relative bg-frothy-navy pt-32 pb-16">
         <div className="absolute inset-0 opacity-10">
-          <img src="/images/hero-car.jpg" alt="Clean car after a Frothy Carwash Lounge membership wash" className="w-full h-full object-cover" />
+          <img src="/images/hand-car-wash-hollywood-fl.jpg" alt="Clean car after a Frothy Carwash Lounge membership wash" className="w-full h-full object-cover" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <span className="inline-block bg-frothy-blue/20 text-frothy-blue text-[11px] font-bold tracking-[0.15em] uppercase px-3.5 py-1.5 rounded-full mb-4">
@@ -238,6 +239,8 @@ export default function Memberships() {
           </div>
         </div>
       </div>
+
+      <MembershipsSEOContent />
 
       <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} preselectedService="Membership Sign-Up" />
     </>

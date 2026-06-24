@@ -9,7 +9,7 @@ interface SEOProps {
 }
 
 const SITE_NAME = 'Frothy Carwash Lounge'
-const DEFAULT_OG_IMAGE = '/images/hero-car.jpg'
+const DEFAULT_OG_IMAGE = '/images/hand-car-wash-hollywood-fl.jpg'
 const BASE_URL = 'https://frothycarwash.com'
 
 export function useSEO({ title, description, canonical, ogImage, noindex }: SEOProps) {
@@ -79,7 +79,7 @@ export const PAGE_SEO = {
   },
   ceramic: {
     title: 'Ceramic Coating Hollywood FL | Frothy Carwash Lounge',
-    description: 'Professional ceramic coating in Hollywood, FL. 1-year, 3-year, and 5-year packages from $149. UV protection, hydrophobic finish, and enhanced gloss. Call for a free quote.',
+    description: 'Professional ceramic coating in Hollywood, FL. 1, 3, and 5-year packages from $149 with UV protection and hydrophobic finish. Call for a free quote.',
     canonical: '/ceramic',
   },
   memberships: {

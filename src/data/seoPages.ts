@@ -37,7 +37,7 @@ export const seoPages: Record<string, SEOPageData> = {
     h1: 'Hand Car Wash in Hollywood, FL',
     intro:
       "Frothy Carwash Lounge is Hollywood's premium hand car wash — every vehicle is washed entirely by hand, never run through a machine or tunnel. If you've been searching for a hand wash car wash in Hollywood that actually treats your paint with care, you've found it.",
-    heroImage: '/images/hand-wash.jpg',
+    heroImage: '/images/hand-car-wash-service-hollywood-fl.jpg',
     sections: [
       {
         heading: 'Why a hand car wash beats an automatic wash',
@@ -99,12 +99,12 @@ export const seoPages: Record<string, SEOPageData> = {
     slug: '/car-detailing-hollywood-fl',
     title: 'Car Detailing Hollywood FL | Interior & Exterior Detailing | Frothy',
     description:
-      'Professional car detailing in Hollywood, FL. Interior detailing, exterior detailing, and full showroom packages from $65. Book your detail at Frothy Carwash Lounge.',
+      'Professional car detailing in Hollywood, FL. Interior & exterior detailing and showroom packages from $65. Book your detail at Frothy Carwash Lounge.',
     badge: 'Auto Detailing · Hollywood, FL',
     h1: 'Car Detailing in Hollywood, FL',
     intro:
       "Frothy Carwash Lounge offers professional car detailing in Hollywood, FL — full interior detailing, exterior detailing, and complete showroom-quality packages. Whether your car needs a deep clean or a full restoration of that new-car feel, our detailing team handles it by hand, panel by panel.",
-    heroImage: '/images/interior-after.jpg',
+    heroImage: '/images/seats-after.jpg',
     sections: [
       {
         heading: 'Interior detailing that goes beyond a vacuum',
@@ -126,6 +126,8 @@ export const seoPages: Record<string, SEOPageData> = {
         paragraphs: [
           'Full details at Frothy start at $65 and go up to $299 for our showroom-level packages, with separate sedan and SUV pricing. Every detailing package can be paired with ceramic coating for long-term protection once the correction work is done — see full pricing on our services page.',
           "Detailing is by appointment so we can give your vehicle the time it needs — book online or call us directly and we'll walk you through which package fits your car best.",
+          "Many of our Hollywood, FL detailing customers start with a Signature Detail or Executive Finish and move up to a Full Detail or Showroom package once they see the difference paint correction and proper interior treatment makes. If you're not sure which tier your car needs, send us a few photos when you call and we'll recommend a starting point.",
+          "Detailing pairs especially well with our monthly memberships — Gold and Platinum members get a Signature Detail or Executive Finish included every month, so the deeper clean becomes part of your regular routine instead of an occasional splurge.",
         ],
       },
     ],
@@ -165,12 +167,12 @@ export const seoPages: Record<string, SEOPageData> = {
     slug: '/ceramic-coating-hollywood-fl',
     title: 'Ceramic Coating Hollywood FL | Paint Protection Near Me | Frothy',
     description:
-      'Ceramic coating in Hollywood, FL from $149. 1, 3, and 5-year paint protection packages with hydrophobic finish and UV protection. Free quotes at Frothy Carwash Lounge.',
+      'Ceramic coating in Hollywood, FL from $149. 1, 3, and 5-year paint protection packages with hydrophobic finish and UV gloss. Free quotes at Frothy.',
     badge: 'Paint Protection · Hollywood, FL',
     h1: 'Ceramic Coating in Hollywood, FL',
     intro:
       "Searching for ceramic coating near you in South Florida? Frothy Carwash Lounge applies professional-grade ceramic coatings in Hollywood, FL, with packages ranging from a 1-year spray sealant to a 5-year ultimate protection package. Every coating is applied by hand after a full paint decontamination.",
-    heroImage: '/images/ceramic-coating.jpg.png',
+    heroImage: '/images/ceramic-coating-hollywood-fl.jpg',
     sections: [
       {
         heading: 'Why ceramic coating matters in South Florida',
@@ -191,6 +193,7 @@ export const seoPages: Record<string, SEOPageData> = {
         heading: 'What to expect after coating',
         paragraphs: [
           "Once applied, ceramic coating needs a short cure time before the vehicle gets wet. After that, maintenance is simple: regular hand washes (never automatic tunnel washes, which can introduce swirl marks that dull the coating's gloss) keep the surface performing at its best for the full length of the warranty period.",
+          "We recommend a maintenance hand wash every one to two weeks for coated vehicles, along with an annual inspection so we can top off any high-wear areas before the coating's protection starts to fade. Most Hollywood, FL customers find that a coated car needs noticeably less scrubbing to come clean, since dirt and grime no longer bond directly to the paint.",
           'Call ahead or stop by for a free quote — pricing depends on vehicle size and condition, and we\'ll recommend the right tier for your car and budget.',
         ],
       },

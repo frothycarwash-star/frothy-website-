@@ -84,8 +84,8 @@ export default function WhyFrothy() {
           <div className="lg:sticky lg:top-24">
             <div className="relative rounded-2xl overflow-hidden mb-6">
               <img
-                src="/images/lounge-interior.jpg"
-                alt="Frothy Carwash Lounge interior"
+                src="/images/car-wash-lounge-interior-hollywood-fl.jpg"
+                alt="Frothy Carwash Lounge waiting lounge interior in Hollywood, FL"
                 width={1400}
                 height={1050}
                 loading="lazy"

@@ -74,8 +74,8 @@ export default function CeramicCTA() {
           <div className="relative">
             <div className="rounded-2xl overflow-hidden shadow-frothy-lg">
               <img
-                src="/images/ceramic-coating.jpg"
-                alt="Ceramic coating water beading effect"
+                src="/images/ceramic-coating-hollywood-fl.jpg"
+                alt="Ceramic coating water beading on a car in Hollywood, FL"
                 width={1400}
                 height={933}
                 loading="lazy"

@@ -12,8 +12,8 @@ export default function Hero() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
-            src="/images/hero-car.jpg"
-            alt="Premium hand car wash"
+            src="/images/hand-car-wash-hollywood-fl.jpg"
+            alt="Hand car wash, auto detailing, and ceramic coating in Hollywood, FL"
             width={1536}
             height={1024}
             fetchPriority="high"
@@ -40,14 +40,14 @@ export default function Hero() {
 
               {/* Headline */}
               <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl text-frothy-foam leading-[1.1] mb-6">
-                Where clean cars meet{' '}
-                <span className="text-frothy-yellow">good company.</span>
+                Hand Car Wash, Auto Detailing &amp; Ceramic Coating in{' '}
+                <span className="text-frothy-yellow">Hollywood, FL</span>
               </h1>
 
               {/* Subhead */}
               <p className="text-frothy-foam/70 text-lg leading-relaxed mb-8 max-w-md">
-                Hand car wash, specialty coffee, and a lounge worth lingering in. 
-                Pull up, settle in, and enjoy the atmosphere.
+                Where clean cars meet good company. Specialty coffee and a lounge worth lingering in —
+                pull up, settle in, and enjoy the atmosphere while we take care of your car.
               </p>
 
               {/* CTAs */}

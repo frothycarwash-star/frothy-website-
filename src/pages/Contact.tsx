@@ -2,6 +2,7 @@ import { useSEO, PAGE_SEO } from '../hooks/useSEO'
 import { useState } from 'react'
 import { Phone, Mail, MapPin, Clock, CheckCircle, Send, MessageSquare, User, Car } from 'lucide-react'
 import RelatedLinks from '../components/RelatedLinks'
+import ContactSEOContent from '../sections/ContactSEOContent'
 
 const services = [
   'Hand Wash',
@@ -255,6 +256,8 @@ export default function Contact() {
           />
         </div>
       </div>
+
+      <ContactSEOContent />
     </>
   )
 }
