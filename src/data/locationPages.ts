@@ -144,7 +144,7 @@ export const locationPages: Record<string, LocationPageData> = {
     h1: 'Car Wash Near Pembroke Pines, FL',
     intro:
       "Frothy Carwash Lounge is a short drive east from Pembroke Pines, and for families and commuters tired of automatic tunnel washes, it's worth the trip. Every vehicle is washed entirely by hand — no brushes, no machines — with detailing and ceramic coating available for cars that need more than a quick rinse.",
-    heroImage: '/images/black-corvette-front-three-quarter-view.jpg',
+    heroImage: '/images/black-corvette-front-three-quarter-view.webp',
     distanceLabel: '~8 miles · 15–20 minute drive',
     distanceText:
       'From central Pembroke Pines near Pines Blvd and Flamingo Road, Frothy is roughly 8 miles east, typically a 15 to 20 minute drive via Pines Blvd to Hollywood, or I-75 to I-595 depending on the time of day.',

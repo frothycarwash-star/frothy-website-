@@ -41,7 +41,7 @@ export default function About() {
       {/* Hero */}
       <section className="relative bg-frothy-navy pt-32 pb-16">
         <div className="absolute inset-0 opacity-10">
-          <img src="/images/frothy-carwash-team-hollywood-fl.jpg" alt="The Frothy Carwash Lounge team in Hollywood, FL" className="w-full h-full object-cover" />
+          <img src="/images/frothy-carwash-team-hollywood-fl.webp" alt="The Frothy Carwash Lounge team in Hollywood, FL" className="w-full h-full object-cover" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <span className="inline-block bg-frothy-blue/20 text-frothy-blue text-[11px] font-bold tracking-[0.15em] uppercase px-3.5 py-1.5 rounded-full mb-4">
@@ -96,7 +96,7 @@ export default function About() {
               {/* Team Image */}
               <div className="mt-8 rounded-2xl overflow-hidden shadow-card">
                 <img
-                  src="/images/frothy-carwash-team-hollywood-fl.jpg"
+                  src="/images/frothy-carwash-team-hollywood-fl.webp"
                   alt="The Frothy Carwash Lounge team in Hollywood, FL"
                   width={1400}
                   height={933}
@@ -133,7 +133,7 @@ export default function About() {
               {/* Hand wash image */}
               <div className="rounded-2xl overflow-hidden shadow-card mb-8">
                 <img
-                  src="/images/hand-car-wash-service-hollywood-fl.jpg"
+                  src="/images/hand-car-wash-service-hollywood-fl.webp"
                   alt="Hand washing a car exterior at Frothy Carwash Lounge in Hollywood, FL"
                   width={1200}
                   height={1600}

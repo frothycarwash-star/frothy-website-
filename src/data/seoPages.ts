@@ -37,7 +37,7 @@ export const seoPages: Record<string, SEOPageData> = {
     h1: 'Hand Car Wash in Hollywood, FL',
     intro:
       "Frothy Carwash Lounge is Hollywood's premium hand car wash — every vehicle is washed entirely by hand, never run through a machine or tunnel. If you've been searching for a hand wash car wash in Hollywood that actually treats your paint with care, you've found it.",
-    heroImage: '/images/hand-car-wash-service-hollywood-fl.jpg',
+    heroImage: '/images/hand-car-wash-service-hollywood-fl.webp',
     sections: [
       {
         heading: 'Why a hand car wash beats an automatic wash',
