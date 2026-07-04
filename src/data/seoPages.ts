@@ -1,4 +1,5 @@
-export interface FAQItem {  question: string
+export interface FAQItem { 
+    question: string
   answer: string
 }
 
