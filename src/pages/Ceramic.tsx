@@ -1,6 +1,7 @@
 import { useSEO, PAGE_SEO } from '../hooks/useSEO'
 import { useState } from 'react'
 import { Check, Phone, ArrowRight, Droplets, Sun, Shield, Sparkles } from 'lucide-react'
+import BreadcrumbNav from '../components/BreadcrumbNav'
 import BookingModal from '../components/BookingModal'
 import RelatedLinks from '../components/RelatedLinks'
 import CeramicSEOContent from '../sections/CeramicSEOContent'
@@ -18,7 +19,7 @@ const tiers = [
     tier: '1-Year Protection',
     name: 'Ceramic Coating — 1 Year',
     price: '$299–$499',
-    features: ['1-year ceramic bond coating', 'Hydrophobic formula', 'UV + oxidation protection', 'Chemical resistance', 'Paint decontamination prep', 'Full exterior coat'],
+    features: ['1-year ceramic coating', 'Hydrophobic formula', 'UV + oxidation protection', 'Chemical resistance', 'Paint decontamination prep', 'Full exterior coat'],
     featured: false,
     span: false,
   },
@@ -48,12 +49,50 @@ const benefits = [
   { icon: Sparkles, title: 'Enhanced Gloss', desc: 'Gives your paint a deeper, richer shine that lasts for years.' },
 ]
 
+const faqs = [
+  {
+    question: 'How long does ceramic coating actually last?',
+    answer: 'Our coatings last 1-5 years depending on the tier you choose and how well you maintain your car. The timeframe assumes proper washing and occasional maintenance. High-exposure vehicles (frequent highway driving, outdoor parking) may see slightly faster wear.'
+  },
+  {
+    question: 'What maintenance is required after ceramic coating?',
+    answer: 'Ceramic coating is much easier to maintain than regular paint. Wash your car every 2 weeks with pH-neutral soap, avoid abrasive sponges, and dry with a microfiber towel. Every 6-12 months, apply a ceramic maintenance spray to extend protection. Avoid automatic car washes with harsh chemicals.'
+  },
+  {
+    question: 'Can ceramic coating be applied over existing wax?',
+    answer: 'No. We always perform full paint decontamination and prep before application. Any old wax, sealant, or contaminants are removed so the coating bonds properly to your paint.'
+  },
+  {
+    question: 'Will ceramic coating hide scratches or swirl marks?',
+    answer: 'No. Ceramic coating protects against future damage but doesn\'t repair existing damage. If your paint has scratches or swirl marks, we can perform paint correction before applying the coating for a flawless finish.'
+  },
+  {
+    question: 'Is ceramic coating worth the investment?',
+    answer: 'If you plan to keep your car looking showroom-fresh with minimal maintenance, absolutely. Over 3-5 years, ceramic coating saves time on washing, reduces the need for detail work, and protects your paint value far better than traditional wax.'
+  }
+]
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(faq => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer
+    }
+  }))
+}
+
 export default function Ceramic() {
   useSEO(PAGE_SEO.ceramic)
   const [bookingOpen, setBookingOpen] = useState(false)
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+
       {/* Hero */}
       <section className="relative bg-frothy-navy pt-32 pb-16">
         <div className="absolute inset-0 opacity-15">
@@ -67,12 +106,18 @@ export default function Ceramic() {
             Ceramic Coating.
           </h1>
           <p className="text-frothy-foam/70 text-lg max-w-xl">
-            A permanent bond with your paint. Repels water, blocks UV, resists scratches, and keeps your car looking like day one — for years.
+            Professional ceramic coating that bonds with your paint to repel water, block UV, and resist scratches — lasting 1–5+ years depending on your tier.
           </p>
         </div>
       </section>
 
       <div className="h-1 bg-gradient-to-r from-frothy-yellow to-frothy-blue" />
+
+      <div className="bg-frothy-cream py-4 px-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <BreadcrumbNav items={[{ label: 'Home', path: '/' }, { label: 'Services', path: '/services' }, { label: 'Ceramic Coating' }]} />
+        </div>
+      </div>
 
       <div className="bg-frothy-cream section-padding">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -82,7 +127,7 @@ export default function Ceramic() {
               Choose Your Level
             </span>
             <h2 className="font-heading text-2xl sm:text-3xl text-frothy-navy mb-2">
-              Three tiers of protection.
+              Four tiers of protection.
             </h2>
             <p className="text-frothy-navy/70 text-lg max-w-xl">
               Whether you drive daily or park it on weekends, we have a ceramic package built for your car and your budget.
@@ -174,7 +219,7 @@ export default function Ceramic() {
             <h3 className="font-heading text-2xl text-frothy-yellow mb-6">What is ceramic coating?</h3>
             <div className="grid lg:grid-cols-2 gap-8">
               <p className="text-frothy-foam/75 text-[15px] leading-relaxed">
-                Ceramic coating is a liquid polymer applied to the exterior of your vehicle. It chemically bonds with your factory paint, creating a layer of protection that doesn&apos;t wash away or break down. Unlike traditional wax, it&apos;s semi-permanent — lasting from 1 to 5+ years depending on the tier.
+                Ceramic coating is a liquid polymer applied to the exterior of your vehicle. It chemically bonds with your factory paint, creating a protective layer that lasts significantly longer than traditional wax. Depending on the tier and maintenance, professional ceramic coatings last 1 to 5+ years. It&apos;s not permanent, but it&apos;s a serious upgrade over standard car care.
               </p>
               <div className="grid sm:grid-cols-2 gap-4">
                 {benefits.map((b) => (
@@ -189,6 +234,26 @@ export default function Ceramic() {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+
+          {/* Ceramic Aftercare & FAQ */}
+          <div className="mt-14 mb-10">
+            <span className="inline-block bg-frothy-navy text-frothy-yellow text-[11px] font-bold tracking-[0.15em] uppercase px-3.5 py-1.5 rounded-full mb-4">
+              Maintenance & Care
+            </span>
+            <h2 className="font-heading text-2xl sm:text-3xl text-frothy-navy mb-6">Ceramic Coating Aftercare</h2>
+            
+            <div className="space-y-6 mb-10">
+              {faqs.map((faq, idx) => (
+                <details key={idx} className="bg-white p-6 rounded-lg border-2 border-gray-100 hover:border-frothy-blue cursor-pointer group">
+                  <summary className="font-bold text-frothy-navy group-hover:text-frothy-blue flex items-center justify-between">
+                    {faq.question}
+                    <span className="text-frothy-blue ml-4">▼</span>
+                  </summary>
+                  <p className="text-frothy-navy/70 mt-4 leading-relaxed text-sm">{faq.answer}</p>
+                </details>
+              ))}
             </div>
           </div>
 
@@ -208,7 +273,7 @@ export default function Ceramic() {
               className="inline-flex items-center gap-2 bg-frothy-yellow text-frothy-navy font-bold text-base px-8 py-4 rounded-xl hover:scale-105 transition-transform"
             >
               <Phone className="w-4 h-4" />
-              Call for a Free Quote — (954) 510-3073
+              Get a Free Ceramic Coating Quote — (954) 510-3073
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>
