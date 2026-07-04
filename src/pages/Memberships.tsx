@@ -19,7 +19,7 @@ const plans = [
     suvPrice: 139,
     sedanLink: 'https://square.link/u/18XnOa8I',
     suvLink: 'https://square.link/u/ojjyVr7P',
-    savings: 'Walk-in value ~$160 · Save ~$41',
+    savings: '2 full washes + 2 exterior touch-ups every month',
     features: [
       '2× Inside & Out ($40 each · 35 min)',
       'Full interior + exterior hand wash',
@@ -39,7 +39,7 @@ const plans = [
     suvPrice: 199,
     sedanLink: 'https://square.link/u/TfrwVKKt',
     suvLink: 'https://square.link/u/HCgmJglV',
-    savings: 'Walk-in value ~$285 · Save ~$106',
+    savings: 'Unlimited full washes + wax + monthly detail',
     popular: true,
     features: [
       '4× Inside & Out ($40 each · 35 min)',
@@ -61,7 +61,7 @@ const plans = [
     suvPrice: 249,
     sedanLink: 'https://square.link/u/a3JZmF41',
     suvLink: 'https://square.link/u/uYVlji14',
-    savings: 'Walk-in value ~$335 · Save ~$106',
+    savings: 'Premium tier service + executive finish included',
     features: [
       '4× Inside & Out ($40 each · 35 min)',
       '1× Executive Finish ($95 · 1 hour)',

@@ -17,7 +17,6 @@ const CarDetailingHollywood = lazy(() => import('./pages/CarDetailingHollywood')
 const CeramicCoatingHollywood = lazy(() => import('./pages/CeramicCoatingHollywood'))
 const CarWashHallandaleBeach = lazy(() => import('./pages/CarWashHallandaleBeach'))
 const CarWashDaniaBeach = lazy(() => import('./pages/CarWashDaniaBeach'))
-const InteriorDetailing = lazy(() => import('./pages/InteriorDetailing'))
 const CarWashPembrokePines = lazy(() => import('./pages/CarWashPembrokePines'))
 const CarWashAventura = lazy(() => import('./pages/CarWashAventura'))
 const AreasWeServe = lazy(() => import('./pages/AreasWeServe'))
@@ -36,10 +35,9 @@ export default function App() {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/gallery" element={<Gallery />} />
-                        <Route path="/areas-we-serve" element={<AreasWeServe />} />
+            <Route path="/areas-we-serve" element={<AreasWeServe />} />
             <Route path="/hand-car-wash-hollywood-fl" element={<HandCarWashHollywood />} />
             <Route path="/car-detailing-hollywood-fl" element={<CarDetailingHollywood />} />
-                        <Route path="/interior-detailing-hollywood-fl" element={<InteriorDetailing />} />
             <Route path="/ceramic-coating-hollywood-fl" element={<CeramicCoatingHollywood />} />
             <Route path="/car-wash-hallandale-beach-fl" element={<CarWashHallandaleBeach />} />
             <Route path="/car-wash-dania-beach-fl" element={<CarWashDaniaBeach />} />
