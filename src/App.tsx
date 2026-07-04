@@ -20,6 +20,16 @@ const CarWashDaniaBeach = lazy(() => import('./pages/CarWashDaniaBeach'))
 const CarWashPembrokePines = lazy(() => import('./pages/CarWashPembrokePines'))
 const CarWashAventura = lazy(() => import('./pages/CarWashAventura'))
 const AreasWeServe = lazy(() => import('./pages/AreasWeServe'))
+const PaintCorrection = lazy(() => import('./pages/PaintCorrection'))
+const PetHairRemoval = lazy(() => import('./pages/PetHairRemoval'))
+const SmokeOdorRemoval = lazy(() => import('./pages/SmokeOdorRemoval'))
+const EngineBayCleaning = lazy(() => import('./pages/EngineBayCleaning'))
+const HeadlightRestoration = lazy(() => import('./pages/HeadlightRestoration'))
+const CarWashFortLauderdale = lazy(() => import('./pages/CarWashFortLauderdale'))
+const CarWashDavie = lazy(() => import('./pages/CarWashDavie'))
+const CarWashCooperCity = lazy(() => import('./pages/CarWashCooperCity'))
+const CarWashSunnyIsles = lazy(() => import('./pages/CarWashSunnyIsles'))
+const CarWashNorthMiamiBeach = lazy(() => import('./pages/CarWashNorthMiamiBeach'))
 
 export default function App() {
   return (
@@ -43,6 +53,16 @@ export default function App() {
             <Route path="/car-wash-dania-beach-fl" element={<CarWashDaniaBeach />} />
             <Route path="/car-wash-pembroke-pines-fl" element={<CarWashPembrokePines />} />
             <Route path="/car-wash-aventura-fl" element={<CarWashAventura />} />
+            <Route path="/paint-correction-hollywood-fl" element={<PaintCorrection />} />
+            <Route path="/pet-hair-removal-hollywood-fl" element={<PetHairRemoval />} />
+            <Route path="/smoke-odor-removal-hollywood-fl" element={<SmokeOdorRemoval />} />
+            <Route path="/engine-bay-cleaning-hollywood-fl" element={<EngineBayCleaning />} />
+            <Route path="/headlight-restoration-hollywood-fl" element={<HeadlightRestoration />} />
+            <Route path="/car-wash-fort-lauderdale-fl" element={<CarWashFortLauderdale />} />
+            <Route path="/car-wash-davie-fl" element={<CarWashDavie />} />
+            <Route path="/car-wash-cooper-city-fl" element={<CarWashCooperCity />} />
+            <Route path="/car-wash-sunny-isles-fl" element={<CarWashSunnyIsles />} />
+            <Route path="/car-wash-north-miami-beach-fl" element={<CarWashNorthMiamiBeach />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
