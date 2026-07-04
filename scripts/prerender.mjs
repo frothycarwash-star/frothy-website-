@@ -23,6 +23,7 @@ const pages = [
   { route: '/about', title: 'About Us | Frothy Carwash Lounge | Hollywood, FL', description: "Hollywood's premium hand car wash and lounge. Built for people who care about their car and their time. Coffee, great work, and a place worth lingering in.", ssrKey: 'about', kind: 'core' },
   { route: '/contact', title: 'Contact & Book | Frothy Carwash Lounge | Hollywood, FL', description: 'Book a hand wash or detailing appointment at Frothy Carwash Lounge. Call (954) 510-3073 or stop by at 2223 Pembroke Rd, Hollywood FL. Open 7 days.', ssrKey: 'contact', kind: 'core' },
   { route: '/gallery', title: 'Photo Gallery | Frothy Carwash Lounge | Hollywood, FL', description: 'See our work — hand washes, full details, and ceramic coatings in Hollywood, FL. Browse photos from the Frothy Carwash Lounge.', ssrKey: 'gallery', kind: 'core' },
+  { route: '/areas-we-serve', title: 'Service Areas | Frothy Carwash Lounge | Hollywood, FL', description: 'Serving Hollywood, Davie, Dania Beach, Cooper City, Fort Lauderdale, Pembroke Pines, Aventura, Sunny Isles, and North Miami Beach in South Florida.', ssrKey: 'areas-we-serve', kind: 'core' },
   { route: '/hand-car-wash-hollywood-fl', title: 'Hand Car Wash Hollywood FL | Frothy Carwash Lounge', description: 'Premium hand car wash in Hollywood, FL. No machines, no brushes — every car washed by hand. Walk-ins welcome, 7 days a week. Call (954) 510-3073.', ssrKey: 'handCarWash' },
   { route: '/car-detailing-hollywood-fl', title: 'Car Detailing Hollywood FL | Interior & Exterior Detailing | Frothy', description: 'Professional car detailing in Hollywood, FL. Interior & exterior detailing and showroom packages from $65. Book your detail at Frothy Carwash Lounge.', ssrKey: 'carDetailing' },
   { route: '/ceramic-coating-hollywood-fl', title: 'Ceramic Coating Hollywood FL | Paint Protection Near Me | Frothy', description: 'Ceramic coating in Hollywood, FL from $149. 1, 3, and 5-year paint protection packages with hydrophobic finish and UV gloss. Free quotes at Frothy.', ssrKey: 'ceramicCoatingSEO' },
@@ -30,16 +31,16 @@ const pages = [
   { route: '/car-wash-dania-beach-fl', title: 'Car Wash Near Dania Beach, FL | Frothy Carwash Lounge', description: 'Hand car wash, detailing & ceramic coating minutes from Dania Beach, FL. Walk-ins welcome, indoor lounge with coffee & Wi-Fi while you wait.', ssrKey: 'daniaBeach', kind: 'location' },
   { route: '/car-wash-pembroke-pines-fl', title: 'Car Wash Near Pembroke Pines, FL | Frothy Carwash Lounge', description: 'Hand car wash, detailing & ceramic coating a short drive from Pembroke Pines, FL. Walk-ins welcome, indoor lounge with coffee & Wi-Fi while you wait.', ssrKey: 'pembrokePines', kind: 'location' },
   { route: '/car-wash-aventura-fl', title: 'Car Wash Near Aventura, FL | Frothy Carwash Lounge', description: 'Hand car wash, detailing & ceramic coating minutes from Aventura, FL. Walk-ins welcome, indoor lounge with coffee & Wi-Fi while you wait.', ssrKey: 'aventura', kind: 'location' },
-  { route: '/paint-correction-hollywood-fl', title: 'Paint Correction in Hollywood, FL | Remove Swirl Marks | Frothy', description: 'Professional paint correction in Hollywood, FL. Remove swirl marks and scratches. Expert detailing at Frothy Carwash.' },
-  { route: '/pet-hair-removal-hollywood-fl', title: 'Pet Hair Removal in Hollywood, FL | Interior Cleaning | Frothy', description: 'Professional pet hair removal service in Hollywood, FL. Deep clean interior, remove pet odor. Book now.' },
-  { route: '/smoke-odor-removal-hollywood-fl', title: 'Smoke Odor Removal Hollywood FL | Interior Deodorizing | Frothy', description: 'Smoke odor removal service in Hollywood, FL. Professional deodorizing treatments for cigarette and cigar smoke.' },
-  { route: '/engine-bay-cleaning-hollywood-fl', title: 'Engine Bay Cleaning in Hollywood, FL | Detailed Engine Wash | Frothy', description: 'Professional engine bay cleaning in Hollywood, FL. Detailed engine wash and degreasing service.' },
-  { route: '/headlight-restoration-hollywood-fl', title: 'Headlight Restoration in Hollywood, FL | Headlight Polishing | Frothy', description: 'Professional headlight restoration in Hollywood, FL. Restore cloudy, oxidized headlights to clarity.' },
-  { route: '/car-wash-fort-lauderdale-fl', title: 'Car Wash Near Fort Lauderdale, FL | Hand Wash | Frothy', description: 'Hand car wash and detailing near Fort Lauderdale, FL. Professional service, lounge with coffee, walk-ins welcome.' },
-  { route: '/car-wash-davie-fl', title: 'Car Wash Near Davie, FL | Hand Wash & Detailing | Frothy', description: 'Professional hand car wash and detailing near Davie, FL. No machines, expert care for all vehicles.' },
-  { route: '/car-wash-cooper-city-fl', title: 'Car Wash Near Cooper City, FL | Hand Wash | Frothy', description: 'Hand car wash and detailing near Cooper City, FL. Premium ceramic coating packages available.' },
-  { route: '/car-wash-sunny-isles-fl', title: 'Car Wash Near Sunny Isles Beach, FL | Hand Wash | Frothy', description: 'Premium hand car wash near Sunny Isles Beach, FL. No machines. Ceramic coating & memberships.' },
-  { route: '/car-wash-north-miami-beach-fl', title: 'Car Wash Near North Miami Beach, FL | Hand Wash | Frothy', description: 'Professional hand car wash near North Miami Beach, FL. No machines, ceramic coating, memberships.' }]
+  { route: '/paint-correction-hollywood-fl', title: 'Paint Correction in Hollywood, FL | Remove Swirl Marks | Frothy', description: 'Professional paint correction in Hollywood, FL. Remove swirl marks and scratches. Expert detailing at Frothy Carwash.', ssrKey: 'paintCorrection', kind: 'newService' },
+  { route: '/pet-hair-removal-hollywood-fl', title: 'Pet Hair Removal in Hollywood, FL | Interior Cleaning | Frothy', description: 'Professional pet hair removal service in Hollywood, FL. Deep clean interior, remove pet odor. Book now.', ssrKey: 'petHairRemoval', kind: 'newService' },
+  { route: '/smoke-odor-removal-hollywood-fl', title: 'Smoke Odor Removal Hollywood FL | Interior Deodorizing | Frothy', description: 'Smoke odor removal service in Hollywood, FL. Professional deodorizing treatments for cigarette and cigar smoke.', ssrKey: 'smokeOdorRemoval', kind: 'newService' },
+  { route: '/engine-bay-cleaning-hollywood-fl', title: 'Engine Bay Cleaning in Hollywood, FL | Detailed Engine Wash | Frothy', description: 'Professional engine bay cleaning in Hollywood, FL. Detailed engine wash and degreasing service.', ssrKey: 'engineBayCleaning', kind: 'newService' },
+  { route: '/headlight-restoration-hollywood-fl', title: 'Headlight Restoration in Hollywood, FL | Headlight Polishing | Frothy', description: 'Professional headlight restoration in Hollywood, FL. Restore cloudy, oxidized headlights to clarity.', ssrKey: 'headlightRestoration', kind: 'newService' },
+  { route: '/car-wash-fort-lauderdale-fl', title: 'Car Wash Near Fort Lauderdale, FL | Hand Wash | Frothy', description: 'Hand car wash and detailing near Fort Lauderdale, FL. Professional service, lounge with coffee, walk-ins welcome.', ssrKey: 'carWashFortLauderdale', kind: 'newService' },
+  { route: '/car-wash-davie-fl', title: 'Car Wash Near Davie, FL | Hand Wash & Detailing | Frothy', description: 'Professional hand car wash and detailing near Davie, FL. No machines, expert care for all vehicles.', ssrKey: 'carWashDavie', kind: 'newService' },
+  { route: '/car-wash-cooper-city-fl', title: 'Car Wash Near Cooper City, FL | Hand Wash | Frothy', description: 'Hand car wash and detailing near Cooper City, FL. Premium ceramic coating packages available.', ssrKey: 'carWashCooperCity', kind: 'newService' },
+  { route: '/car-wash-sunny-isles-fl', title: 'Car Wash Near Sunny Isles Beach, FL | Hand Wash | Frothy', description: 'Premium hand car wash near Sunny Isles Beach, FL. No machines. Ceramic coating & memberships.', ssrKey: 'carWashSunnyIsles', kind: 'newService' },
+  { route: '/car-wash-north-miami-beach-fl', title: 'Car Wash Near North Miami Beach, FL | Hand Wash | Frothy', description: 'Professional hand car wash near North Miami Beach, FL. No machines, ceramic coating, memberships.', ssrKey: 'carWashNorthMiamiBeach', kind: 'newService' }]
 
 function injectHead(html, page) {
   const canonical = `${BASE_URL}${page.route}`
@@ -80,6 +81,8 @@ async function main() {
         ? ssrModule.renderLocationPage(page.ssrKey)
         : page.kind === 'core'
         ? ssrModule.renderCorePage(page.ssrKey)
+        : page.kind === 'newService'
+        ? ssrModule.renderNewServicePage(page.ssrKey)
         : ssrModule.renderSeoPage(page.ssrKey)
       html = html.replace('<div id="root"></div>', `<div id="root">${bodyHtml}</div>`)
     }
