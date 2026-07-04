@@ -1,4 +1,4 @@
-import { useSEO, PAGE_SEO } from '../hooks/useSEO'
+himport { useSEO, PAGE_SEO } from '../hooks/useSEO'
 import { useState } from 'react'
 import { Check, Phone, Star, Calendar, CreditCard, XCircle, HelpCircle, Car, Truck } from 'lucide-react'
 import BookingModal from '../components/BookingModal'
@@ -137,14 +137,14 @@ export default function Memberships() {
           </div>
 
           {/* Plans Grid */}
-          <div className="grid lg:grid-cols-3 gap-6 mb-12">
+          <div className="grid lg:grid-cols-3 gap-6 mb-12 lg:auto-rows-fr">
             {plans.map((plan) => {
               const price = vehicle === 'sedan' ? plan.sedanPrice : plan.suvPrice
               const signupLink = vehicle === 'sedan' ? plan.sedanLink : plan.suvLink
               return (
                 <div
                   key={plan.name}
-                  className={`h-full flex flex-col rounded-2xl overflow-hidden shadow-card ${plan.popular ? 'ring-2 ring-amber-400 lg:scale-105 lg:-my-4' : ''}`}
+                  className={`h-full flex flex-col rounded-2xl overflow-hidden shadow-card ${plan.popular ? 'ring-2 ring-amber-400 lg:scale-105 ' : ''}`}
                 >
                   {/* Header */}
                   <div className={`${plan.headerBg} px-6 py-6 text-center`}>
