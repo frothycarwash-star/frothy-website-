@@ -4,6 +4,7 @@ import { Check, Phone, Star, Calendar, CreditCard, XCircle, HelpCircle, Car, Tru
 import BookingModal from '../components/BookingModal'
 import RelatedLinks from '../components/RelatedLinks'
 import MembershipsSEOContent from '../sections/MembershipsSEOContent'
+import BreadcrumbNav from '../components/BreadcrumbNav'
 
 type Vehicle = 'sedan' | 'suv'
 
@@ -108,6 +109,11 @@ export default function Memberships() {
       </section>
 
       <div className="h-1 bg-gradient-to-r from-frothy-yellow to-frothy-blue" />
+      <div className="bg-frothy-cream py-4 px-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <BreadcrumbNav items={[{ label: "Home", path: "/" }, { label: "Memberships" }]} />
+        </div>
+      </div>
 
       <div className="bg-frothy-cream section-padding">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

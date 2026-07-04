@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { X, Camera } from 'lucide-react'
 import RelatedLinks from '../components/RelatedLinks'
 import GallerySEOContent from '../sections/GallerySEOContent'
+import BreadcrumbNav from '../components/BreadcrumbNav'
 
 const categories = ['All', 'Hand Wash', 'Full Detail', 'Interior', 'Fleet & Luxury', 'Our Lounge']
 
@@ -140,6 +141,11 @@ export default function Gallery() {
       </section>
 
       {/* Filter tabs */}
+      <div className="bg-frothy-cream py-4 px-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <BreadcrumbNav items={[{ label: "Home", path: "/" }, { label: "Gallery" }]} />
+        </div>
+      </div>
       <section className="bg-frothy-foam py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap justify-center gap-3 mb-10">

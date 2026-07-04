@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Handshake, Zap, Sun, TrendingUp, Phone, Star, MapPin, Clock } from 'lucide-react'
 import RelatedLinks from '../components/RelatedLinks'
 import AboutSEOContent from '../sections/AboutSEOContent'
+import BreadcrumbNav from '../components/BreadcrumbNav'
 
 const values = [
   {
@@ -57,6 +58,11 @@ export default function About() {
       </section>
 
       <div className="h-1 bg-gradient-to-r from-frothy-yellow to-frothy-blue" />
+      <div className="bg-frothy-cream py-4 px-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <BreadcrumbNav items={[{ label: "Home", path: "/" }, { label: "About" }]} />
+        </div>
+      </div>
 
       <div className="bg-frothy-cream section-padding">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

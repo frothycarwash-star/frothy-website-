@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Phone, ArrowRight } from 'lucide-react'
 import BookingModal from '../components/BookingModal'
+import BreadcrumbNav from '../components/BreadcrumbNav'
 import type { SEOPageData } from '../data/seoPages'
 
 export default function SEOLandingPage({ data }: { data: SEOPageData }) {
@@ -50,6 +51,11 @@ export default function SEOLandingPage({ data }: { data: SEOPageData }) {
       </section>
 
       <div className="h-1 bg-gradient-to-r from-frothy-yellow to-frothy-blue" />
+      <div className="bg-frothy-cream py-4 px-4">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <BreadcrumbNav items={[{ label: "Home", path: "/" }, { label: "Services", path: "/services" }, { label: data.h1 }]} />
+        </div>
+      </div>
 
       <div className="bg-frothy-cream section-padding">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">

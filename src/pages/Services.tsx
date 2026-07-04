@@ -4,6 +4,7 @@ import { Check, ChevronDown, Phone, Star, Car, Truck } from 'lucide-react'
 import BookingModal from '../components/BookingModal'
 import RelatedLinks from '../components/RelatedLinks'
 import ServicesSEOContent from '../sections/ServicesSEOContent'
+import BreadcrumbNav from '../components/BreadcrumbNav'
 import {
   interiorAddOns,
   exteriorAddOns,
@@ -205,6 +206,11 @@ export default function Services() {
       </section>
 
       <div className="h-1 bg-gradient-to-r from-frothy-yellow to-frothy-blue" />
+      <div className="bg-frothy-cream py-4 px-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <BreadcrumbNav items={[{ label: "Home", path: "/" }, { label: "Services" }]} />
+        </div>
+      </div>
 
       <div className="bg-frothy-cream section-padding">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
