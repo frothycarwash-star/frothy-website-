@@ -1,4 +1,4 @@
-himport { useSEO, PAGE_SEO } from '../hooks/useSEO'
+import { useSEO, PAGE_SEO } from '../hooks/useSEO'
 import { useState } from 'react'
 import { Check, Phone, Star, Calendar, CreditCard, XCircle, HelpCircle, Car, Truck } from 'lucide-react'
 import BookingModal from '../components/BookingModal'
