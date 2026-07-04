@@ -1,4 +1,4 @@
-export interface FAQItem {
+hexport interface FAQItem {
   question: string
   answer: string
 }
@@ -52,7 +52,7 @@ export const seoPages: Record<string, SEOPageData> = {
         paragraphs: [
           'Our hand wash packages start with a thorough pre-rinse and bug/tar pre-treatment, followed by a hand wash of the entire exterior using soft wash mitts and premium car-safe soap. We hand-dry with plush microfiber towels to avoid water spotting — something an automatic dryer can never fully prevent.',
           'Interior service is included on most packages: vacuuming carpets and seats, wiping down the dash and console, cleaning interior glass, and tire shine for a finished look inside and out. Sedan and SUV pricing is available, and you can see exact pricing on our services page.',
-          "Need a quick rinse between full washes, or want to step it up to a full detail or ceramic coating? We offer all three under one roof, so your car gets exactly the level of care it needs at the time.",
+          "Need a quick rinse between full washes, or want to step it up to a Signature Detail or ceramic coating? We offer all three under one roof, so your car gets exactly the level of care it needs at the time.",
         ],
       },
       {
@@ -67,12 +67,12 @@ export const seoPages: Record<string, SEOPageData> = {
       {
         question: 'How long does a hand car wash take?',
         answer:
-          'A standard hand wash typically takes 20–30 minutes. Full detail packages take longer, generally 60–90 minutes depending on the size of the vehicle and the package selected.',
+          'A standard hand wash typically takes 20–30 minutes. Signature Detail packages take longer, generally 60–90 minutes depending on the size of the vehicle and the package selected.',
       },
       {
         question: 'Do I need an appointment for a hand wash?',
         answer:
-          'No — walk-ins are welcome for hand washes 7 days a week, 8AM to 7PM. Full detailing and ceramic coating appointments are recommended so we can allocate enough time for your vehicle.',
+          'No — walk-ins are welcome for hand washes 7 days a week, 8AM to 7PM. Signature Detailing and ceramic coating appointments are recommended so we can allocate enough time for your vehicle.',
       },
       {
         question: 'Is a hand car wash better than an automatic wash?',
@@ -124,18 +124,18 @@ export const seoPages: Record<string, SEOPageData> = {
       {
         heading: 'Showroom packages and pricing',
         paragraphs: [
-          'Full details at Frothy start at $65 and go up to $299 for our showroom-level packages, with separate sedan and SUV pricing. Every detailing package can be paired with ceramic coating for long-term protection once the correction work is done — see full pricing on our services page.',
+          'Signature Details at Frothy start at $65 and go up to $299 for our showroom-level packages, with separate sedan and SUV pricing. Every detailing package can be paired with ceramic coating for long-term protection once the correction work is done — see full pricing on our services page.',
           "Detailing is by appointment so we can give your vehicle the time it needs — book online or call us directly and we'll walk you through which package fits your car best.",
-          "Many of our Hollywood, FL detailing customers start with a Signature Detail or Executive Finish and move up to a Full Detail or Showroom package once they see the difference paint correction and proper interior treatment makes. If you're not sure which tier your car needs, send us a few photos when you call and we'll recommend a starting point.",
+          "Many of our Hollywood, FL detailing customers start with a Signature Detail or Executive Finish and move up to a Signature Detail or Showroom package once they see the difference paint correction and proper interior treatment makes. If you're not sure which tier your car needs, send us a few photos when you call and we'll recommend a starting point.",
           "Detailing pairs especially well with our monthly memberships — Gold and Platinum members get a Signature Detail or Executive Finish included every month, so the deeper clean becomes part of your regular routine instead of an occasional splurge.",
         ],
       },
     ],
     faq: [
       {
-        question: 'What is included in a full detail?',
+        question: 'What is included in a Signature Detail?',
         answer:
-          'A full detail includes a complete hand wash, interior vacuuming and wipe-down, interior glass cleaning, exterior wheel and tire cleaning, and a protective wax or sealant application. Higher tiers add paint correction, leather conditioning, and steam cleaning.',
+          'A Signature Detail includes a complete hand wash, interior vacuuming and wipe-down, interior glass cleaning, exterior wheel and tire cleaning, and a protective wax or sealant application. Higher tiers add paint correction, leather conditioning, and steam cleaning.',
       },
       {
         question: 'How long does interior detailing take?',
@@ -150,7 +150,7 @@ export const seoPages: Record<string, SEOPageData> = {
       {
         question: 'Can detailing be combined with ceramic coating?',
         answer:
-          'Yes — most customers pair a full detail with ceramic coating, since the detail (including paint correction) prepares the surface for the best possible ceramic bond and finish.',
+          'Yes — most customers pair a Signature Detail with ceramic coating, since the detail (including paint correction) prepares the surface for the best possible ceramic bond and finish.',
       },
     ],
     internalLinks: [
