@@ -20,6 +20,11 @@ export default function AreasWeServe() {
     { name: 'Cooper City, FL', path: '/car-wash-cooper-city-fl', description: 'Ceramic coating and paint protection in Cooper City' },
     { name: 'Sunny Isles, FL', path: '/car-wash-sunny-isles-fl', description: 'Premium hand car wash near Sunny Isles' },
     { name: 'North Miami Beach, FL', path: '/car-wash-north-miami-beach-fl', description: 'Professional detailing in North Miami Beach' },
+    { name: 'Fort Lauderdale, FL', path: '/car-wash-fort-lauderdale-fl', description: 'Professional hand car wash and detailing near Fort Lauderdale'},
+    { name: 'Davie, FL', path: '/car-wash-davie-fl', description: 'Expert hand wash and ceramic coating in Davie'},
+    { name: 'Cooper City, FL', path: '/car-wash-cooper-city-fl', description: 'Premium hand car wash and paint protection near Cooper City'},
+    { name: 'Sunny Isles Beach, FL', path: '/car-wash-sunny-isles-fl', description: 'Professional hand car wash near Sunny Isles'},
+    { name: 'North Miami Beach, FL', path: '/car-wash-north-miami-beach-fl', description: 'Expert hand car wash and detailing in North Miami Beach'}
   ]
 
   return (
