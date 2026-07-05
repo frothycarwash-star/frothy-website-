@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react'
+import { useState, useEffect } from 'react'
 
 interface Review {
   author: string
@@ -7,31 +7,26 @@ interface Review {
   text: string
   time: string
   relative_time: string
-  profilePhotoUrl?: string
 }
 
 export default function GoogleReviewsSlider() {
   const [reviews, setReviews] = useState<Review[]>([])
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
   const [currentIndex, setCurrentIndex] = useState(0)
 
   useEffect(() => {
+    // Fetch from our API endpoint
     const fetchReviews = async () => {
       try {
-        setLoading(true)
         const response = await fetch('/api/reviews')
-        
-        if (!response.ok) throw new Error('Failed to fetch reviews')
-        
-        const data = await response.json()
-        
-        if (data.reviews && Array.isArray(data.reviews)) {
-          setReviews(data.reviews)
+        if (response.ok) {
+          const data = await response.json()
+          if (data.reviews && Array.isArray(data.reviews)) {
+            setReviews(data.reviews)
+          }
         }
-      } catch (err) {
-        console.error('Error fetching reviews:', err)
-        setError('Unable to load reviews at this moment')
+      } catch (error) {
+        console.error('Error loading reviews:', error)
       } finally {
         setLoading(false)
       }
@@ -41,6 +36,7 @@ export default function GoogleReviewsSlider() {
   }, [])
 
   const moveSlide = (direction: 'left' | 'right') => {
+    if (reviews.length === 0) return
     if (direction === 'left') {
       setCurrentIndex((prev) => (prev === 0 ? reviews.length - 1 : prev - 1))
     } else {
@@ -55,32 +51,38 @@ export default function GoogleReviewsSlider() {
           <h2 className="text-3xl sm:text-4xl font-bold text-white text-center mb-12">
             Customer Reviews
           </h2>
-          <div className="flex justify-center items-center h-64">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-frothy-blue" />
+          <div className="flex justify-center items-center h-48">
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-frothy-blue mx-auto mb-4" />
+              <p className="text-gray-300">Loading reviews...</p>
+            </div>
           </div>
         </div>
       </section>
     )
   }
 
-  if (error || reviews.length === 0) {
+  if (reviews.length === 0) {
     return (
       <section className="py-16 bg-frothy-navy-light">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl sm:text-4xl font-bold text-white text-center mb-4">
             Customer Reviews
           </h2>
-          <p className="text-center text-gray-400">
-            Check out our{' '}
+          <p className="text-center text-gray-300 mb-8">
+            Trusted by hundreds of happy customers. See what they say:
+          </p>
+          <div className="text-center">
             <a
               href="https://www.google.com/maps/place/Frothy+Carwash+Lounge"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-frothy-blue hover:text-frothy-blue/80 underline"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-frothy-blue text-frothy-navy font-bold rounded-lg hover:bg-frothy-blue/90 transition text-lg"
             >
-              reviews on Google
+              Read 223+ Google Reviews
+              <Star className="w-5 h-5 fill-current" />
             </a>
-          </p>
+          </div>
         </div>
       </section>
     )
@@ -109,7 +111,11 @@ export default function GoogleReviewsSlider() {
                 <Star
                   key={i}
                   size={20}
-                  className={i < currentReview.rating ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}
+                  className={
+                    i < currentReview.rating
+                      ? 'fill-yellow-400 text-yellow-400'
+                      : 'text-gray-300'
+                  }
                 />
               ))}
             </div>
@@ -122,9 +128,7 @@ export default function GoogleReviewsSlider() {
             {/* Author */}
             <div className="border-t pt-4">
               <p className="font-bold text-frothy-navy mb-1">{currentReview.author}</p>
-              <p className="text-sm text-gray-500">
-                {currentReview.relative_time || new Date(currentReview.time * 1000).toLocaleDateString()}
-              </p>
+              <p className="text-sm text-gray-500">{currentReview.relative_time}</p>
             </div>
           </div>
 
@@ -146,27 +150,8 @@ export default function GoogleReviewsSlider() {
           </button>
         </div>
 
-        {/* Indicators */}
-        <div className="flex justify-center gap-2 mt-8">
-          {reviews.slice(0, Math.min(5, reviews.length)).map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`h-2 rounded-full transition ${
-                index === currentIndex % reviews.length ? 'bg-frothy-blue w-8' : 'bg-gray-500 w-2'
-              }`}
-              aria-label={`Go to review ${index + 1}`}
-            />
-          ))}
-          {reviews.length > 5 && (
-            <span className="text-gray-400 text-sm self-center ml-2">
-              +{reviews.length - 5} more
-            </span>
-          )}
-        </div>
-
         {/* Review Count */}
-        <p className="text-center text-gray-400 mt-6">
+        <p className="text-center text-gray-400 mt-8">
           {currentIndex + 1} of {reviews.length} reviews
         </p>
 
@@ -178,7 +163,7 @@ export default function GoogleReviewsSlider() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 bg-frothy-blue text-frothy-navy font-bold rounded-lg hover:bg-frothy-blue/90 transition"
           >
-            View all reviews on Google
+            View all {reviews.length} reviews on Google
           </a>
         </div>
       </div>
