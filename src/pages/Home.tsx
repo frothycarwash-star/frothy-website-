@@ -116,26 +116,30 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       {/* Hero Section with Background Image */}
-      <section className="relative min-h-screen flex items-center overflow-hidden bg-gray-900" style={{
-        backgroundImage: `linear-gradient(135deg, rgba(10, 30, 60, 0.75) 0%, rgba(25, 50, 100, 0.65) 100%), url('/images/white-mercedes-amg-g63-front-view.webp')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center right',
-        backgroundAttachment: 'fixed',
-        backgroundRepeat: 'no-repeat'
-      }}>
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-blue-900/70 to-transparent"></div>
+      <section 
+        className="relative min-h-screen flex items-center overflow-hidden"
+        style={{
+          backgroundImage: `url('/images/white-mercedes-amg-g63-front-view.webp')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center right',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/85 via-blue-900/75 to-transparent"></div>
+        
         <div className="relative max-w-7xl mx-auto px-4 w-full py-20 z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div>
               {/* Location Badge */}
-              <div className="inline-flex items-center gap-2 bg-blue-500/30 border border-blue-400/60 rounded-full px-4 py-2 mb-6 text-blue-300 text-sm font-semibold backdrop-blur-sm">
-                <span className="w-2 h-2 bg-blue-400 rounded-full"></span>
+              <div className="inline-flex items-center gap-2 bg-blue-500/40 border border-blue-400/70 rounded-full px-4 py-2 mb-6 text-blue-200 text-sm font-bold backdrop-blur-md">
+                <span className="w-2 h-2 bg-blue-300 rounded-full animate-pulse"></span>
                 HOLLYWOOD, FL - OPEN 7 DAYS
               </div>
 
               {/* Main Headline */}
-              <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight">
+              <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-8 leading-tight">
                 Hand Car Wash,<br />
                 Auto Detailing &<br />
                 <span className="text-yellow-300">Ceramic Coating</span> in<br />
@@ -143,17 +147,17 @@ export default function Home() {
               </h1>
 
               {/* Description */}
-              <p className="text-lg md:text-xl text-gray-100 mb-8 leading-relaxed max-w-lg font-light">
+              <p className="text-xl text-gray-100 mb-10 leading-relaxed max-w-xl font-light">
                 Where clean cars meet good company. Specialty coffee and a lounge worth lingering in — pull up, settle in, and enjoy the atmosphere while we take care of your car.
               </p>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <a href="tel:+19545103073" className="inline-flex items-center justify-center gap-2 bg-yellow-400 text-slate-900 px-8 py-4 rounded-lg font-bold hover:bg-yellow-300 transition-all hover:shadow-lg transform hover:scale-105">
+              <div className="flex flex-col sm:flex-row gap-4 mb-10">
+                <a href="tel:+19545103073" className="inline-flex items-center justify-center gap-2 bg-yellow-400 text-slate-900 px-8 py-4 rounded-lg font-bold hover:bg-yellow-300 transition-all hover:shadow-lg">
                   <Phone className="w-5 h-5" /> Book Now
                 </a>
-                <Link to="/memberships" className="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white/10 transition-all backdrop-blur-sm">
-                  See Pricing <span>→</span>
+                <Link to="/memberships" className="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white/20 transition-all backdrop-blur-sm">
+                  See Pricing <span className="ml-1">→</span>
                 </Link>
               </div>
 
@@ -165,35 +169,35 @@ export default function Home() {
                   ))}
                 </div>
                 <span className="text-white font-bold text-lg">5.0</span>
-                <span className="text-gray-200">Trusted by Hollywood locals</span>
+                <span className="text-gray-200 font-semibold">Trusted by Hollywood locals</span>
               </div>
             </div>
 
-            {/* Right Card - Full Steam Ahead */}
+            {/* Right Card - Full Steam Ahead (Desktop Only) */}
             <div className="hidden lg:block">
-              <div className="bg-gradient-to-br from-slate-900/90 to-blue-900/80 backdrop-blur-md border border-gray-600/40 rounded-2xl p-10 text-white shadow-2xl">
+              <div className="bg-gradient-to-br from-slate-900/95 to-blue-900/85 backdrop-blur-lg border border-gray-600/50 rounded-3xl p-10 text-white shadow-2xl">
                 <h3 className="text-3xl font-bold text-yellow-300 mb-2">Full Steam Ahead™</h3>
-                <p className="text-gray-300 text-base mb-8 font-light">Hand Wash • Coffee • Lounge</p>
+                <p className="text-gray-300 text-base mb-8">Hand Wash • Coffee • Lounge</p>
 
                 {/* Pricing */}
-                <div className="mb-10 pb-10 border-b border-gray-600/50">
-                  <p className="text-yellow-300 font-bold text-lg mb-2">Exterior Wash from <span className="text-3xl">$25</span></p>
-                  <p className="text-yellow-300 font-bold text-lg">Details from <span className="text-3xl">$65</span></p>
+                <div className="mb-10 pb-10 border-b border-gray-600/60">
+                  <p className="text-yellow-300 font-bold text-lg mb-2">Exterior Wash from <span className="text-3xl font-black">$25</span></p>
+                  <p className="text-yellow-300 font-bold text-lg">Details from <span className="text-3xl font-black">$65</span></p>
                 </div>
 
                 {/* Stats */}
                 <div className="grid grid-cols-3 gap-6">
                   <div className="text-center">
-                    <div className="text-4xl font-bold text-white mb-3">100%</div>
-                    <div className="text-xs text-gray-400 uppercase tracking-widest font-semibold">Hand Wash</div>
+                    <div className="text-4xl font-black text-white mb-3">100%</div>
+                    <div className="text-xs text-gray-400 uppercase tracking-widest font-bold">Hand Wash</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-4xl font-bold text-white mb-3">7</div>
-                    <div className="text-xs text-gray-400 uppercase tracking-widest font-semibold">Days/Week</div>
+                    <div className="text-4xl font-black text-white mb-3">7</div>
+                    <div className="text-xs text-gray-400 uppercase tracking-widest font-bold">Days/Week</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-4xl font-bold text-white mb-3">3</div>
-                    <div className="text-xs text-gray-400 uppercase tracking-widest font-semibold">Ceramic Tiers</div>
+                    <div className="text-4xl font-black text-white mb-3">3</div>
+                    <div className="text-xs text-gray-400 uppercase tracking-widest font-bold">Ceramic Tiers</div>
                   </div>
                 </div>
               </div>
