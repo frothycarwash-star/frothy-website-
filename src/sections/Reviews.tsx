@@ -24,7 +24,7 @@ const reviews = [
   },
 ]
 
-const googleReviewsURL = "https://www.google.com/maps/place/Frothy+Carwash+Lounge/@25.9966814,-80.1515841,17z/data=!3m1!4b1!4m6!3m5!1s0x88d9aba47b6f6c3b:0x89aa8be2bfcce51d!8m2!3d25.9966814!4d-80.1515841"
+const googleReviewsURL = "https://www.google.com/maps/search/Frothy+Carwash+Lounge+2223+Pembroke+Road+Hollywood+FL+33020"
 
 export default function Reviews() {
   return (
