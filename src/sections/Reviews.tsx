@@ -73,7 +73,7 @@ export default function Reviews() {
         {/* Google Badge + CTA */}
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
-            href="https://www.google.com/maps/place/Frothy+Carwash+Lounge"
+            href="https://search.google.com/local/reviews?placeid=ChIJe_YX9kPxw4gRYzQB_l9WYDU"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 bg-white/[0.06] border border-white/[0.08] rounded-xl px-5 py-3 hover:bg-white/[0.10] hover:border-white/[0.15] transition-colors group"
@@ -88,7 +88,7 @@ export default function Reviews() {
             <span className="text-frothy-blue text-xs font-bold group-hover:underline ml-1">View →</span>
           </a>
           <a
-            href="https://www.google.com/maps/place/Frothy+Carwash+Lounge"
+            href="https://search.google.com/local/reviews?placeid=ChIJe_YX9kPxw4gRYzQB_l9WYDU"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 border border-frothy-yellow/30 text-frothy-yellow font-bold text-sm px-5 py-3 rounded-xl hover:bg-frothy-yellow/10 hover:border-frothy-yellow/50 transition-colors"
