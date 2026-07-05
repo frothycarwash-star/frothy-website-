@@ -109,28 +109,87 @@ export default function Home() {
   })
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+    <main className="min-h-screen bg-white">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
-      {/* Hero Section with H1 */}
-      <section className="relative bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white py-20 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-            Premium Hand Car Wash in Hollywood, FL
-          </h1>
-          <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto">
-            No machine brushes. Hand-washed perfection. Free lounge with espresso, massage chairs & AC.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="tel:+19545103073" className="inline-flex items-center gap-2 bg-white text-blue-700 px-8 py-4 rounded-lg font-bold hover:bg-blue-50 transition-colors">
-              <Phone className="w-5 h-5" /> Call Now: (954) 510-3073
-            </a>
-            <Link to="/memberships" className="inline-flex items-center gap-2 bg-yellow-400 text-blue-900 px-8 py-4 rounded-lg font-bold hover:bg-yellow-300 transition-colors">
-              View Memberships
-            </Link>
+      {/* Hero Section with Background Image */}
+      <section className="relative h-screen bg-cover bg-center bg-no-repeat flex items-center overflow-hidden" style={{
+        backgroundImage: 'linear-gradient(135deg, rgba(17, 24, 39, 0.7) 0%, rgba(30, 58, 138, 0.6) 100%), url("https://images.unsplash.com/photo-1601584942197-04bbb2b033e1?auto=format&fit=crop&w=2000&q=80")',
+      }}>
+        <div className="max-w-7xl mx-auto px-4 w-full py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div>
+              {/* Location Badge */}
+              <div className="inline-flex items-center gap-2 bg-blue-900/40 border border-blue-400/50 rounded-full px-4 py-2 mb-6 text-blue-300 text-sm font-semibold">
+                <span className="w-2 h-2 bg-blue-400 rounded-full"></span>
+                HOLLYWOOD, FL - OPEN 7 DAYS
+              </div>
+
+              {/* Main Headline */}
+              <h1 className="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                Hand Car Wash,<br />
+                Auto Detailing &<br />
+                <span className="text-yellow-400">Ceramic Coating</span> in<br />
+                <span className="text-yellow-400">Hollywood, FL</span>
+              </h1>
+
+              {/* Description */}
+              <p className="text-lg text-gray-200 mb-8 leading-relaxed max-w-lg">
+                Where clean cars meet good company. Specialty coffee and a lounge worth lingering in — pull up, settle in, and enjoy the atmosphere while we take care of your car.
+              </p>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                <a href="tel:+19545103073" className="inline-flex items-center justify-center gap-2 bg-yellow-400 text-blue-900 px-8 py-4 rounded-lg font-bold hover:bg-yellow-300 transition-colors">
+                  <Phone className="w-5 h-5" /> Book Now
+                </a>
+                <Link to="/memberships" className="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white/10 transition-colors">
+                  See Pricing <span>→</span>
+                </Link>
+              </div>
+
+              {/* Star Rating */}
+              <div className="flex items-center gap-2">
+                <div className="flex gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                <span className="text-white font-semibold">5.0</span>
+                <span className="text-gray-300">Trusted by Hollywood locals</span>
+              </div>
+            </div>
+
+            {/* Right Card - Full Steam Ahead */}
+            <div className="bg-gradient-to-br from-gray-900/80 to-blue-900/80 backdrop-blur border border-gray-700/50 rounded-2xl p-8 text-white">
+              <h3 className="text-2xl font-bold text-yellow-400 mb-1">Full Steam Ahead™</h3>
+              <p className="text-gray-400 text-sm mb-6">Hand Wash • Coffee • Lounge</p>
+
+              {/* Pricing */}
+              <div className="mb-8 pb-8 border-b border-gray-600">
+                <p className="text-yellow-400 font-bold mb-1">Exterior Wash from <span className="text-2xl">$25</span> • Details from <span className="text-2xl">$65</span></p>
+              </div>
+
+              {/* Stats */}
+              <div className="grid grid-cols-3 gap-4">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-white mb-2">100%</div>
+                  <div className="text-xs text-gray-400 uppercase tracking-wide">Hand Wash</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-white mb-2">7</div>
+                  <div className="text-xs text-gray-400 uppercase tracking-wide">Days/Week</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-white mb-2">3</div>
+                  <div className="text-xs text-gray-400 uppercase tracking-wide">Ceramic Tiers</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
