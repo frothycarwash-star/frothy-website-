@@ -2,28 +2,25 @@ import { Star, Quote } from 'lucide-react'
 
 const reviews = [
   {
-    text: "Best hand car wash I've been to in South Florida. The lounge is a vibe — got my coffee, sat down, and my car came out spotless. Will definitely be back.",
-    author: 'Carlos M.',
+    text: "Absolutely the best car wash experience I've had. The comfort area feels very VIP — they have massage chairs, a lounge area, and free beverages. The staff is attentive, professional, and the washing is thorough.",
+    author: 'breynner yt',
+    location: 'Local Guide',
+    rating: 5,
+    date: 'a month ago',
+  },
+  {
+    text: "Amazing service from start to finish. The staff was professional, fast, and paid attention to every detail. The facility is clean and modern with great amenities.",
+    author: 'Serhiy Yuryk',
     location: 'Hollywood, FL',
-    service: 'Inside & Out',
     rating: 5,
-    date: '2 weeks ago',
+    date: 'a month ago',
   },
   {
-    text: "Took my Porsche here for the ceramic coating. The team was professional and the result is incredible. Worth every penny. Paint looks better than the day I bought it.",
-    author: 'Jessica R.',
-    location: 'Aventura, FL',
-    service: 'Ceramic Coating',
+    text: "Very amazing work! This is hands down the best Carwash I've come across, the staff are highly knowledgeable and friendly.",
+    author: 'GanjaFb',
+    location: 'Hollywood, FL',
     rating: 5,
-    date: '1 month ago',
-  },
-  {
-    text: "Finally a car wash that feels like it was designed for people who care. The monthly membership pays for itself. Love this place.",
-    author: 'Marcus T.',
-    location: 'Hallandale Beach, FL',
-    service: 'Gold Membership',
-    rating: 5,
-    date: '3 weeks ago',
+    date: '3 months ago',
   },
 ]
 
@@ -68,9 +65,6 @@ export default function Reviews() {
                   <p className="text-frothy-foam font-semibold text-sm">{review.author}</p>
                   <p className="text-frothy-foam/60 text-xs">{review.location}</p>
                 </div>
-                <span className="text-frothy-blue text-xs font-medium bg-frothy-blue/10 px-2.5 py-1 rounded-lg">
-                  {review.service}
-                </span>
               </div>
             </div>
           ))}
@@ -79,7 +73,7 @@ export default function Reviews() {
         {/* Google Badge + CTA */}
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
-            href="https://g.page/r/CR3lzL_ii6qJEBM/review"
+            href="https://www.google.com/maps/place/Frothy+Carwash+Lounge"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 bg-white/[0.06] border border-white/[0.08] rounded-xl px-5 py-3 hover:bg-white/[0.10] hover:border-white/[0.15] transition-colors group"
@@ -90,11 +84,11 @@ export default function Reviews() {
               ))}
             </div>
             <span className="text-frothy-foam font-semibold text-sm">5.0</span>
-            <span className="text-frothy-foam/60 text-xs">on Google</span>
+            <span className="text-frothy-foam/60 text-xs">223 Reviews</span>
             <span className="text-frothy-blue text-xs font-bold group-hover:underline ml-1">View →</span>
           </a>
           <a
-            href="https://g.page/r/CR3lzL_ii6qJEBM/review"
+            href="https://www.google.com/maps/place/Frothy+Carwash+Lounge"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 border border-frothy-yellow/30 text-frothy-yellow font-bold text-sm px-5 py-3 rounded-xl hover:bg-frothy-yellow/10 hover:border-frothy-yellow/50 transition-colors"
