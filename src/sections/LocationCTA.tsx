@@ -26,17 +26,22 @@ export default function LocationCTA() {
 
             {/* Info Boxes */}
             <div className="space-y-4 mb-8">
-              {/* Address */}
-              <div className="bg-gray-50 p-6 rounded-xl">
+              {/* Address - Clickable */}
+              <a
+                href="https://maps.google.com/?q=2223+Pembroke+Road+Hollywood+FL+33020"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gray-50 p-6 rounded-xl hover:bg-gray-100 transition block"
+              >
                 <div className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-frothy-blue flex-shrink-0 mt-1" />
                   <div>
                     <p className="text-xs font-bold text-frothy-blue uppercase tracking-wider mb-1">Address</p>
-                    <p className="text-frothy-navy font-semibold">2223 Pembroke Rd</p>
+                    <p className="text-frothy-navy font-semibold hover:text-frothy-blue transition">2223 Pembroke Rd</p>
                     <p className="text-gray-600">Hollywood, FL 33020</p>
                   </div>
                 </div>
-              </div>
+              </a>
 
               {/* Hours */}
               <div className="bg-gray-50 p-6 rounded-xl">
@@ -50,28 +55,34 @@ export default function LocationCTA() {
                 </div>
               </div>
 
-              {/* Phone */}
-              <div className="bg-gray-50 p-6 rounded-xl">
+              {/* Phone - Clickable */}
+              <a
+                href="tel:+19545103073"
+                className="bg-gray-50 p-6 rounded-xl hover:bg-gray-100 transition block"
+              >
                 <div className="flex items-start gap-3">
                   <Phone className="w-5 h-5 text-frothy-blue flex-shrink-0 mt-1" />
                   <div>
                     <p className="text-xs font-bold text-frothy-blue uppercase tracking-wider mb-1">Phone</p>
-                    <p className="text-frothy-navy font-semibold">(954) 510-3073</p>
+                    <p className="text-frothy-navy font-semibold hover:text-frothy-blue transition">(954) 510-3073</p>
                     <p className="text-gray-600">Walk-ins welcome</p>
                   </div>
                 </div>
-              </div>
+              </a>
 
-              {/* Email */}
-              <div className="bg-gray-50 p-6 rounded-xl">
+              {/* Email - Clickable */}
+              <a
+                href="mailto:info@frothycarwash.com"
+                className="bg-gray-50 p-6 rounded-xl hover:bg-gray-100 transition block"
+              >
                 <div className="flex items-start gap-3">
                   <Mail className="w-5 h-5 text-frothy-blue flex-shrink-0 mt-1" />
                   <div>
                     <p className="text-xs font-bold text-frothy-blue uppercase tracking-wider mb-1">Email</p>
-                    <p className="text-frothy-navy font-semibold">info@frothycarwash.com</p>
+                    <p className="text-frothy-navy font-semibold hover:text-frothy-blue transition">info@frothycarwash.com</p>
                   </div>
                 </div>
-              </div>
+              </a>
             </div>
 
             {/* CTA Buttons */}

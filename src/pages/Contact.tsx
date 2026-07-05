@@ -20,56 +20,69 @@ export default function Contact() {
           {/* Left Column - Contact Info */}
           <div>
             <div className="space-y-8">
-              {/* Address */}
-              <div className="bg-frothy-navy-light p-8 rounded-xl">
-                <div className="flex items-start gap-4 mb-4">
+              {/* Address - Clickable */}
+              <a
+                href="https://maps.google.com/?q=2223+Pembroke+Road+Hollywood+FL+33020"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-frothy-navy-light p-8 rounded-xl hover:bg-frothy-navy-light/80 transition block"
+              >
+                <div className="flex items-start gap-4">
                   <MapPin className="w-6 h-6 text-frothy-blue flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="text-xl font-bold text-white mb-2">Location</h3>
-                    <p className="text-gray-300">
+                    <p className="text-gray-300 hover:text-frothy-blue transition">
                       2223 Pembroke Road<br />
                       Hollywood, FL 33020<br />
                       United States
                     </p>
                   </div>
                 </div>
-              </div>
+              </a>
 
-              {/* Phone */}
-              <div className="bg-frothy-navy-light p-8 rounded-xl">
-                <div className="flex items-start gap-4 mb-4">
+              {/* Phone - Clickable with visible number */}
+              <a
+                href="tel:+19545103073"
+                className="bg-frothy-navy-light p-8 rounded-xl hover:bg-frothy-navy-light/80 transition block"
+              >
+                <div className="flex items-start gap-4">
                   <Phone className="w-6 h-6 text-frothy-blue flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="text-xl font-bold text-white mb-2">Phone</h3>
-                    <a href="tel:+1234567890" className="text-frothy-blue hover:text-frothy-blue/80">
-                      Call us for service inquiries
-                    </a>
+                    <p className="text-frothy-blue hover:text-frothy-blue/80 transition font-semibold text-lg">
+                      (954) 510-3073
+                    </p>
+                    <p className="text-gray-400 text-sm mt-1">Tap to call • Walk-ins welcome</p>
                   </div>
                 </div>
-              </div>
+              </a>
 
               {/* Email */}
-              <div className="bg-frothy-navy-light p-8 rounded-xl">
-                <div className="flex items-start gap-4 mb-4">
+              <a
+                href="mailto:info@frothycarwash.com"
+                className="bg-frothy-navy-light p-8 rounded-xl hover:bg-frothy-navy-light/80 transition block"
+              >
+                <div className="flex items-start gap-4">
                   <Mail className="w-6 h-6 text-frothy-blue flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="text-xl font-bold text-white mb-2">Email</h3>
-                    <a href="mailto:info@frothycarwash.com" className="text-frothy-blue hover:text-frothy-blue/80">
+                    <p className="text-frothy-blue hover:text-frothy-blue/80 transition">
                       info@frothycarwash.com
-                    </a>
+                    </p>
                   </div>
                 </div>
-              </div>
+              </a>
 
-              {/* Hours */}
+              {/* Hours - Now showing actual times */}
               <div className="bg-frothy-navy-light p-8 rounded-xl">
-                <div className="flex items-start gap-4 mb-4">
+                <div className="flex items-start gap-4">
                   <Clock className="w-6 h-6 text-frothy-blue flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="text-xl font-bold text-white mb-2">Hours</h3>
                     <p className="text-gray-300">
-                      Open 7 Days a Week<br />
-                      Check our website for hours
+                      <span className="font-semibold text-frothy-blue">Open 7 Days a Week</span><br />
+                      Monday - Sunday<br />
+                      <span className="text-frothy-blue font-semibold">8:00 AM – 7:00 PM</span>
                     </p>
                   </div>
                 </div>
