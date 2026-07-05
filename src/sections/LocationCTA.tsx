@@ -77,7 +77,7 @@ export default function LocationCTA() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="https://maps.google.com/?q=26.011468,-80.131643"
+                href="https://maps.google.com/?q=2223+Pembroke+Road+Hollywood+FL+33020"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-frothy-navy text-white font-bold rounded-lg hover:bg-frothy-navy/90 transition"
@@ -96,16 +96,15 @@ export default function LocationCTA() {
           </div>
 
           {/* Right - Map */}
-          <div className="rounded-2xl overflow-hidden shadow-card h-96">
+          <div className="rounded-2xl overflow-hidden shadow-card" style={{ height: '420px' }}>
             <iframe
-              src="https://maps.google.com/maps?q=26.011468,-80.131643&z=15&output=embed"
+              title="Frothy Carwash Lounge Location"
               width="100%"
-              height="100%"
-              style={{ border: 0 }}
+              height="420"
+              frameBorder="0"
+              src="https://www.google.com/maps?q=2223+Pembroke+Road+Hollywood+FL+33020&output=embed"
               allowFullScreen={true}
               loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Frothy Carwash Lounge Location"
             />
           </div>
         </div>

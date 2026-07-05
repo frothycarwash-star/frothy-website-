@@ -89,16 +89,15 @@ export default function Contact() {
           <div>
             <div className="space-y-8">
               {/* Map */}
-              <div className="rounded-2xl overflow-hidden shadow-card h-96">
+              <div className="rounded-2xl overflow-hidden shadow-card" style={{ height: '400px' }}>
                 <iframe
-                  src="https://maps.google.com/maps?q=26.011468,-80.131643&z=15&output=embed"
+                  title="Frothy Carwash Lounge Location Map"
                   width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
+                  height="400"
+                  frameBorder="0"
+                  src="https://www.google.com/maps?q=2223+Pembroke+Road+Hollywood+FL+33020&output=embed"
                   allowFullScreen={true}
                   loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Frothy Carwash Lounge - 2223 Pembroke Road, Hollywood, FL 33020"
                 />
               </div>
 
