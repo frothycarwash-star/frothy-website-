@@ -1,14 +1,6 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TEGKNGS3QS"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-TEGKNGS3QS');
-    </script>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -18,6 +10,11 @@
     <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
     <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Resource hints for critical paths -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
     <!-- Self-hosted fonts: preload the two above-the-fold weights -->
     <link rel="preload" as="font" type="font/woff2" href="/fonts/dm-sans-latin-400-normal.woff2" crossorigin />
@@ -165,6 +162,15 @@
         }
       ]
     }
+    </script>
+
+    <!-- Google Analytics - Deferred loading to not block rendering -->
+    <script async defer src="https://www.googletagmanager.com/gtag/js?id=G-TEGKNGS3QS"></script>
+    <script defer>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-TEGKNGS3QS');
     </script>
   </head>
   <body>
