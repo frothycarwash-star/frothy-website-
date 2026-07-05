@@ -6,7 +6,7 @@ interface Review {
   rating: number
   text: string
   time: string
-  authorUrl?: string
+  relative_time: string
   profilePhotoUrl?: string
 }
 
@@ -20,25 +20,14 @@ export default function GoogleReviewsSlider() {
     const fetchReviews = async () => {
       try {
         setLoading(true)
-        const response = await fetch(
-          `https://places.googleapis.com/v1/places/ChIJe_YX9kPxw4gRYzQB_l9WYDU?fields=reviews&key=AIzaSyCOjKzJHrE9eVb4ichqTJQRCO80FPowT4E`
-        )
+        const response = await fetch('/api/reviews')
         
         if (!response.ok) throw new Error('Failed to fetch reviews')
         
         const data = await response.json()
         
         if (data.reviews && Array.isArray(data.reviews)) {
-          const formattedReviews = data.reviews.map((review: any) => ({
-            author: review.authorAttribution?.displayName || 'Anonymous',
-            rating: review.rating || 5,
-            text: review.text || '',
-            time: review.publishTime || '',
-            authorUrl: review.authorAttribution?.uri,
-            profilePhotoUrl: review.authorAttribution?.photoUri
-          }))
-          
-          setReviews(formattedReviews)
+          setReviews(data.reviews)
         }
       } catch (err) {
         console.error('Error fetching reviews:', err)
@@ -89,7 +78,7 @@ export default function GoogleReviewsSlider() {
               rel="noopener noreferrer"
               className="text-frothy-blue hover:text-frothy-blue/80 underline"
             >
-              223+ reviews on Google
+              reviews on Google
             </a>
           </p>
         </div>
@@ -134,11 +123,7 @@ export default function GoogleReviewsSlider() {
             <div className="border-t pt-4">
               <p className="font-bold text-frothy-navy mb-1">{currentReview.author}</p>
               <p className="text-sm text-gray-500">
-                {new Date(currentReview.time).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'short',
-                  day: 'numeric'
-                })}
+                {currentReview.relative_time || new Date(currentReview.time * 1000).toLocaleDateString()}
               </p>
             </div>
           </div>
@@ -193,7 +178,7 @@ export default function GoogleReviewsSlider() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 bg-frothy-blue text-frothy-navy font-bold rounded-lg hover:bg-frothy-blue/90 transition"
           >
-            View all {reviews.length} reviews on Google
+            View all reviews on Google
           </a>
         </div>
       </div>
