@@ -24,6 +24,8 @@ const reviews = [
   },
 ]
 
+const googleReviewsURL = "https://www.google.com/maps/place/Frothy+Carwash+Lounge/@25.9966814,-80.1515841,17z/data=!3m1!4b1!4m6!3m5!1s0x88d9aba47b6f6c3b:0x89aa8be2bfcce51d!8m2!3d25.9966814!4d-80.1515841"
+
 export default function Reviews() {
   return (
     <section className="section-padding bg-frothy-navy noise-bg">
@@ -73,7 +75,7 @@ export default function Reviews() {
         {/* Google Badge + CTA */}
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
-            href="https://search.google.com/local/reviews?placeid=ChIJe_YX9kPxw4gRYzQB_l9WYDU"
+            href={googleReviewsURL}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 bg-white/[0.06] border border-white/[0.08] rounded-xl px-5 py-3 hover:bg-white/[0.10] hover:border-white/[0.15] transition-colors group"
@@ -88,7 +90,7 @@ export default function Reviews() {
             <span className="text-frothy-blue text-xs font-bold group-hover:underline ml-1">View →</span>
           </a>
           <a
-            href="https://search.google.com/local/reviews?placeid=ChIJe_YX9kPxw4gRYzQB_l9WYDU"
+            href={googleReviewsURL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 border border-frothy-yellow/30 text-frothy-yellow font-bold text-sm px-5 py-3 rounded-xl hover:bg-frothy-yellow/10 hover:border-frothy-yellow/50 transition-colors"
