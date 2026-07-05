@@ -1,0 +1,922 @@
+{
+  "Car-Exterior-Front-002.webp": {
+    "width": 1350,
+    "height": 1960,
+    "size_kb": 346.8
+  },
+  "Car-Exterior-Front-012.webp": {
+    "width": 1080,
+    "height": 1440,
+    "size_kb": 264.8
+  },
+  "Car-Exterior-Front-022.webp": {
+    "width": 4032,
+    "height": 3024,
+    "size_kb": 1852.6
+  },
+  "Car-Exterior-Front-032.webp": {
+    "width": 3024,
+    "height": 4032,
+    "size_kb": 1086.0
+  },
+  "Car-Exterior-Front-042.webp": {
+    "width": 3024,
+    "height": 4032,
+    "size_kb": 1311.3
+  },
+  "Car-Exterior-Front-052.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 406.6
+  },
+  "Car-Exterior-Front-062.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 148.0
+  },
+  "Car-Exterior-Front-072.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 116.1
+  },
+  "Car-Exterior-Front-082.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 300.6
+  },
+  "Car-Exterior-Front-092.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 270.2
+  },
+  "Car-Exterior-Front-102.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 129.4
+  },
+  "Car-Exterior-Front-112.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 314.4
+  },
+  "Car-Exterior-Front-122.webp": {
+    "width": 911,
+    "height": 1600,
+    "size_kb": 226.4
+  },
+  "Car-Exterior-Front-132.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 183.1
+  },
+  "Car-Exterior-Front-142.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 290.3
+  },
+  "Car-Exterior-Front-152.webp": {
+    "width": 2000,
+    "height": 1500,
+    "size_kb": 108.5
+  },
+  "Car-Exterior-Front-162.webp": {
+    "width": 2000,
+    "height": 1500,
+    "size_kb": 58.0
+  },
+  "Car-Exterior-Front-172.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 130.9
+  },
+  "Car-Exterior-Front-182.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 96.5
+  },
+  "Car-Exterior-Full-001.webp": {
+    "width": 1536,
+    "height": 1024,
+    "size_kb": 104.5
+  },
+  "Car-Exterior-Full-011.webp": {
+    "width": 1080,
+    "height": 1440,
+    "size_kb": 320.6
+  },
+  "Car-Exterior-Full-021.webp": {
+    "width": 4032,
+    "height": 3024,
+    "size_kb": 1883.1
+  },
+  "Car-Exterior-Full-031.webp": {
+    "width": 4032,
+    "height": 3024,
+    "size_kb": 764.8
+  },
+  "Car-Exterior-Full-041.webp": {
+    "width": 4032,
+    "height": 3024,
+    "size_kb": 1403.9
+  },
+  "Car-Exterior-Full-051.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 632.7
+  },
+  "Car-Exterior-Full-061.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 222.9
+  },
+  "Car-Exterior-Full-071.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 587.7
+  },
+  "Car-Exterior-Full-081.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 292.3
+  },
+  "Car-Exterior-Full-091.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 270.9
+  },
+  "Car-Exterior-Full-101.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 345.5
+  },
+  "Car-Exterior-Full-111.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 233.4
+  },
+  "Car-Exterior-Full-121.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 195.6
+  },
+  "Car-Exterior-Full-131.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 189.7
+  },
+  "Car-Exterior-Full-141.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 118.3
+  },
+  "Car-Exterior-Full-151.webp": {
+    "width": 2000,
+    "height": 1500,
+    "size_kb": 100.4
+  },
+  "Car-Exterior-Full-161.webp": {
+    "width": 1500,
+    "height": 2000,
+    "size_kb": 104.1
+  },
+  "Car-Exterior-Full-171.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 161.7
+  },
+  "Car-Exterior-Full-181.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 60.0
+  },
+  "Car-Exterior-Rear-004.webp": {
+    "width": 1536,
+    "height": 1024,
+    "size_kb": 161.0
+  },
+  "Car-Exterior-Rear-014.webp": {
+    "width": 1080,
+    "height": 1440,
+    "size_kb": 224.1
+  },
+  "Car-Exterior-Rear-024.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 154.6
+  },
+  "Car-Exterior-Rear-034.webp": {
+    "width": 4032,
+    "height": 3024,
+    "size_kb": 573.1
+  },
+  "Car-Exterior-Rear-044.webp": {
+    "width": 4032,
+    "height": 3024,
+    "size_kb": 1933.6
+  },
+  "Car-Exterior-Rear-054.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 377.0
+  },
+  "Car-Exterior-Rear-064.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 362.9
+  },
+  "Car-Exterior-Rear-074.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 434.5
+  },
+  "Car-Exterior-Rear-084.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 330.1
+  },
+  "Car-Exterior-Rear-094.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 435.6
+  },
+  "Car-Exterior-Rear-104.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 201.8
+  },
+  "Car-Exterior-Rear-114.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 407.2
+  },
+  "Car-Exterior-Rear-124.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 181.5
+  },
+  "Car-Exterior-Rear-134.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 180.3
+  },
+  "Car-Exterior-Rear-144.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 325.3
+  },
+  "Car-Exterior-Rear-154.webp": {
+    "width": 2000,
+    "height": 1500,
+    "size_kb": 207.6
+  },
+  "Car-Exterior-Rear-164.webp": {
+    "width": 2000,
+    "height": 1500,
+    "size_kb": 527.9
+  },
+  "Car-Exterior-Rear-174.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 171.0
+  },
+  "Car-Exterior-Rear-184.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 153.0
+  },
+  "Car-Exterior-Side-013.webp": {
+    "width": 1080,
+    "height": 1440,
+    "size_kb": 148.9
+  },
+  "Car-Exterior-Side-023.webp": {
+    "width": 4032,
+    "height": 3024,
+    "size_kb": 1455.3
+  },
+  "Car-Exterior-Side-033.webp": {
+    "width": 3024,
+    "height": 4032,
+    "size_kb": 901.6
+  },
+  "Car-Exterior-Side-043.webp": {
+    "width": 768,
+    "height": 1024,
+    "size_kb": 179.7
+  },
+  "Car-Exterior-Side-053.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 212.7
+  },
+  "Car-Exterior-Side-063.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 318.5
+  },
+  "Car-Exterior-Side-073.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 432.7
+  },
+  "Car-Exterior-Side-083.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 227.3
+  },
+  "Car-Exterior-Side-093.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 319.9
+  },
+  "Car-Exterior-Side-103.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 341.5
+  },
+  "Car-Exterior-Side-113.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 471.3
+  },
+  "Car-Exterior-Side-123.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 229.7
+  },
+  "Car-Exterior-Side-133.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 170.8
+  },
+  "Car-Exterior-Side-143.webp": {
+    "width": 1199,
+    "height": 1600,
+    "size_kb": 144.2
+  },
+  "Car-Exterior-Side-153.webp": {
+    "width": 2000,
+    "height": 1500,
+    "size_kb": 110.0
+  },
+  "Car-Exterior-Side-163.webp": {
+    "width": 2000,
+    "height": 1500,
+    "size_kb": 133.8
+  },
+  "Car-Exterior-Side-173.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 175.5
+  },
+  "Car-Exterior-Side-183.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 120.7
+  },
+  "Car-Exterior-Top-010.webp": {
+    "width": 4032,
+    "height": 3024,
+    "size_kb": 1194.9
+  },
+  "Car-Exterior-Top-020.webp": {
+    "width": 4032,
+    "height": 3024,
+    "size_kb": 1374.0
+  },
+  "Car-Exterior-Top-030.webp": {
+    "width": 3024,
+    "height": 4032,
+    "size_kb": 921.4
+  },
+  "Car-Exterior-Top-040.webp": {
+    "width": 3024,
+    "height": 4032,
+    "size_kb": 634.9
+  },
+  "Car-Exterior-Top-050.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 393.8
+  },
+  "Car-Exterior-Top-060.webp": {
+    "width": 738,
+    "height": 1600,
+    "size_kb": 194.6
+  },
+  "Car-Exterior-Top-070.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 285.3
+  },
+  "Car-Exterior-Top-080.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 289.8
+  },
+  "Car-Exterior-Top-090.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 250.4
+  },
+  "Car-Exterior-Top-100.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 230.9
+  },
+  "Car-Exterior-Top-110.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 200.7
+  },
+  "Car-Exterior-Top-120.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 263.3
+  },
+  "Car-Exterior-Top-130.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 254.7
+  },
+  "Car-Exterior-Top-140.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 282.8
+  },
+  "Car-Exterior-Top-150.webp": {
+    "width": 1500,
+    "height": 2000,
+    "size_kb": 92.4
+  },
+  "Car-Exterior-Top-160.webp": {
+    "width": 1500,
+    "height": 2000,
+    "size_kb": 128.9
+  },
+  "Car-Exterior-Top-170.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 150.2
+  },
+  "Car-Exterior-Top-180.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 156.5
+  },
+  "Car-Feature-Detail-009.webp": {
+    "width": 3024,
+    "height": 4032,
+    "size_kb": 832.6
+  },
+  "Car-Feature-Detail-019.webp": {
+    "width": 4032,
+    "height": 3024,
+    "size_kb": 1062.1
+  },
+  "Car-Feature-Detail-029.webp": {
+    "width": 4032,
+    "height": 3024,
+    "size_kb": 2162.6
+  },
+  "Car-Feature-Detail-039.webp": {
+    "width": 4032,
+    "height": 3024,
+    "size_kb": 808.8
+  },
+  "Car-Feature-Detail-049.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 227.6
+  },
+  "Car-Feature-Detail-059.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 420.9
+  },
+  "Car-Feature-Detail-069.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 340.3
+  },
+  "Car-Feature-Detail-079.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 390.5
+  },
+  "Car-Feature-Detail-089.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 387.8
+  },
+  "Car-Feature-Detail-099.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 272.0
+  },
+  "Car-Feature-Detail-109.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 277.9
+  },
+  "Car-Feature-Detail-119.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 264.9
+  },
+  "Car-Feature-Detail-129.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 190.5
+  },
+  "Car-Feature-Detail-139.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 344.8
+  },
+  "Car-Feature-Detail-149.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 227.4
+  },
+  "Car-Feature-Detail-159.webp": {
+    "width": 2000,
+    "height": 1500,
+    "size_kb": 133.8
+  },
+  "Car-Feature-Detail-169.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 123.0
+  },
+  "Car-Feature-Detail-179.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 169.1
+  },
+  "Car-Interior-Dashboard-005.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 93.9
+  },
+  "Car-Interior-Dashboard-015.webp": {
+    "width": 1024,
+    "height": 768,
+    "size_kb": 155.1
+  },
+  "Car-Interior-Dashboard-025.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 186.4
+  },
+  "Car-Interior-Dashboard-035.webp": {
+    "width": 4032,
+    "height": 3024,
+    "size_kb": 1083.0
+  },
+  "Car-Interior-Dashboard-045.webp": {
+    "width": 1024,
+    "height": 768,
+    "size_kb": 69.3
+  },
+  "Car-Interior-Dashboard-055.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 477.9
+  },
+  "Car-Interior-Dashboard-065.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 231.1
+  },
+  "Car-Interior-Dashboard-075.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 140.4
+  },
+  "Car-Interior-Dashboard-085.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 299.9
+  },
+  "Car-Interior-Dashboard-095.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 377.0
+  },
+  "Car-Interior-Dashboard-105.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 206.7
+  },
+  "Car-Interior-Dashboard-115.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 276.1
+  },
+  "Car-Interior-Dashboard-125.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 126.4
+  },
+  "Car-Interior-Dashboard-135.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 221.0
+  },
+  "Car-Interior-Dashboard-145.webp": {
+    "width": 1199,
+    "height": 1600,
+    "size_kb": 245.5
+  },
+  "Car-Interior-Dashboard-155.webp": {
+    "width": 1500,
+    "height": 2000,
+    "size_kb": 116.8
+  },
+  "Car-Interior-Dashboard-165.webp": {
+    "width": 2000,
+    "height": 1500,
+    "size_kb": 530.4
+  },
+  "Car-Interior-Dashboard-175.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 133.0
+  },
+  "Car-Interior-Dashboard-185.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 93.3
+  },
+  "Car-Interior-Seats-006.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 61.4
+  },
+  "Car-Interior-Seats-016.webp": {
+    "width": 3024,
+    "height": 4032,
+    "size_kb": 1011.3
+  },
+  "Car-Interior-Seats-026.webp": {
+    "width": 4032,
+    "height": 3024,
+    "size_kb": 1154.8
+  },
+  "Car-Interior-Seats-036.webp": {
+    "width": 4032,
+    "height": 3024,
+    "size_kb": 1524.2
+  },
+  "Car-Interior-Seats-046.webp": {
+    "width": 768,
+    "height": 1024,
+    "size_kb": 73.9
+  },
+  "Car-Interior-Seats-056.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 233.3
+  },
+  "Car-Interior-Seats-066.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 272.9
+  },
+  "Car-Interior-Seats-076.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 301.0
+  },
+  "Car-Interior-Seats-086.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 236.5
+  },
+  "Car-Interior-Seats-096.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 416.4
+  },
+  "Car-Interior-Seats-106.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 511.9
+  },
+  "Car-Interior-Seats-116.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 305.8
+  },
+  "Car-Interior-Seats-126.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 140.5
+  },
+  "Car-Interior-Seats-136.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 193.8
+  },
+  "Car-Interior-Seats-146.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 192.6
+  },
+  "Car-Interior-Seats-156.webp": {
+    "width": 1500,
+    "height": 2000,
+    "size_kb": 108.7
+  },
+  "Car-Interior-Seats-166.webp": {
+    "width": 1500,
+    "height": 2000,
+    "size_kb": 191.5
+  },
+  "Car-Interior-Seats-176.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 169.1
+  },
+  "Car-Interior-Steering-007.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 95.7
+  },
+  "Car-Interior-Steering-017.webp": {
+    "width": 4032,
+    "height": 3024,
+    "size_kb": 1455.3
+  },
+  "Car-Interior-Steering-027.webp": {
+    "width": 3024,
+    "height": 4032,
+    "size_kb": 713.1
+  },
+  "Car-Interior-Steering-037.webp": {
+    "width": 4032,
+    "height": 3024,
+    "size_kb": 1068.2
+  },
+  "Car-Interior-Steering-047.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 227.8
+  },
+  "Car-Interior-Steering-057.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 447.3
+  },
+  "Car-Interior-Steering-067.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 246.7
+  },
+  "Car-Interior-Steering-077.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 412.7
+  },
+  "Car-Interior-Steering-087.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 380.3
+  },
+  "Car-Interior-Steering-097.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 316.7
+  },
+  "Car-Interior-Steering-107.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 299.4
+  },
+  "Car-Interior-Steering-117.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 251.4
+  },
+  "Car-Interior-Steering-127.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 257.0
+  },
+  "Car-Interior-Steering-137.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 156.2
+  },
+  "Car-Interior-Steering-147.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 251.6
+  },
+  "Car-Interior-Steering-157.webp": {
+    "width": 1500,
+    "height": 2000,
+    "size_kb": 152.4
+  },
+  "Car-Interior-Steering-167.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 171.0
+  },
+  "Car-Interior-Steering-177.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 153.8
+  },
+  "Car-Wheel-Detail-008.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 97.8
+  },
+  "Car-Wheel-Detail-018.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 194.9
+  },
+  "Car-Wheel-Detail-028.webp": {
+    "width": 3024,
+    "height": 4032,
+    "size_kb": 1819.9
+  },
+  "Car-Wheel-Detail-038.webp": {
+    "width": 3024,
+    "height": 4032,
+    "size_kb": 1334.1
+  },
+  "Car-Wheel-Detail-048.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 169.0
+  },
+  "Car-Wheel-Detail-058.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 467.3
+  },
+  "Car-Wheel-Detail-068.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 461.1
+  },
+  "Car-Wheel-Detail-078.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 125.4
+  },
+  "Car-Wheel-Detail-088.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 231.2
+  },
+  "Car-Wheel-Detail-098.webp": {
+    "width": 1600,
+    "height": 1200,
+    "size_kb": 325.5
+  },
+  "Car-Wheel-Detail-108.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 253.8
+  },
+  "Car-Wheel-Detail-118.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 444.1
+  },
+  "Car-Wheel-Detail-128.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 226.1
+  },
+  "Car-Wheel-Detail-138.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 239.2
+  },
+  "Car-Wheel-Detail-148.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 449.7
+  },
+  "Car-Wheel-Detail-158.webp": {
+    "width": 1500,
+    "height": 2000,
+    "size_kb": 121.1
+  },
+  "Car-Wheel-Detail-168.webp": {
+    "width": 900,
+    "height": 1600,
+    "size_kb": 102.6
+  },
+  "Car-Wheel-Detail-178.webp": {
+    "width": 1200,
+    "height": 1600,
+    "size_kb": 129.8
+  }
+}
