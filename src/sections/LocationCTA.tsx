@@ -1,111 +1,115 @@
-import { useState } from 'react'
-import { MapPin, Clock, Phone, Navigation, Mail } from 'lucide-react'
-import BookingModal from '../components/BookingModal'
+import { MapPin, Phone, Mail, Clock, ArrowRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 export default function LocationCTA() {
-  const [bookingOpen, setBookingOpen] = useState(false)
-
   return (
-    <section className="section-padding bg-white">
+    <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        {/* Content */}
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left - Info */}
           <div>
-            <span className="inline-block bg-frothy-blue text-white text-[11px] font-bold tracking-[0.15em] uppercase px-3.5 py-1.5 rounded-full mb-4">
-              Find Us
-            </span>
-            <h2 className="font-heading text-3xl sm:text-4xl lg:text-[42px] text-frothy-navy leading-tight mb-4">
+            <div className="inline-flex items-center gap-2 bg-frothy-blue/10 border border-frothy-blue/20 rounded-full px-4 py-1.5 mb-6">
+              <span className="w-1.5 h-1.5 bg-frothy-blue rounded-full" />
+              <span className="text-frothy-blue text-xs font-bold tracking-[0.15em] uppercase">
+                Find Us
+              </span>
+            </div>
+
+            <h2 className="text-4xl sm:text-5xl font-bold text-frothy-navy mb-6">
               Right in the heart of Hollywood.
             </h2>
-            <p className="text-frothy-navy/70 text-lg mb-8">
+
+            <p className="text-lg text-gray-600 mb-12">
               Easy to get to from Hollywood, Hallandale Beach, Aventura, Dania Beach, and Pembroke Pines.
             </p>
 
+            {/* Info Boxes */}
             <div className="space-y-4 mb-8">
-              <div className="bg-frothy-foam rounded-xl p-5 flex items-start gap-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-frothy-blue/10 rounded-lg flex items-center justify-center">
-                  <MapPin className="w-5 h-5 text-frothy-blue" />
-                </div>
-                <div>
-                  <p className="text-frothy-blue text-xs font-bold uppercase tracking-wider mb-1">Address</p>
-                  <p className="font-semibold text-frothy-navy">2223 Pembroke Rd</p>
-                  <p className="text-frothy-navy/70 text-sm">Hollywood, FL 33020</p>
-                </div>
-              </div>
-
-              <div className="bg-frothy-foam rounded-xl p-5 flex items-start gap-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-frothy-blue/10 rounded-lg flex items-center justify-center">
-                  <Clock className="w-5 h-5 text-frothy-blue" />
-                </div>
-                <div>
-                  <p className="text-frothy-blue text-xs font-bold uppercase tracking-wider mb-1">Hours</p>
-                  <p className="font-semibold text-frothy-navy">Open Every Day</p>
-                  <p className="text-frothy-navy/70 text-sm">8:00 AM – 7:00 PM</p>
+              {/* Address */}
+              <div className="bg-gray-50 p-6 rounded-xl">
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-frothy-blue flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="text-xs font-bold text-frothy-blue uppercase tracking-wider mb-1">Address</p>
+                    <p className="text-frothy-navy font-semibold">2223 Pembroke Rd</p>
+                    <p className="text-gray-600">Hollywood, FL 33020</p>
+                  </div>
                 </div>
               </div>
 
-              <div className="bg-frothy-foam rounded-xl p-5 flex items-start gap-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-frothy-blue/10 rounded-lg flex items-center justify-center">
-                  <Phone className="w-5 h-5 text-frothy-blue" />
-                </div>
-                <div>
-                  <p className="text-frothy-blue text-xs font-bold uppercase tracking-wider mb-1">Phone</p>
-                  <a href="tel:9545103073" className="font-semibold text-frothy-navy hover:text-frothy-blue transition-colors">
-                    (954) 510-3073
-                  </a>
-                  <p className="text-frothy-navy/70 text-sm">Walk-ins welcome</p>
+              {/* Hours */}
+              <div className="bg-gray-50 p-6 rounded-xl">
+                <div className="flex items-start gap-3">
+                  <Clock className="w-5 h-5 text-frothy-blue flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="text-xs font-bold text-frothy-blue uppercase tracking-wider mb-1">Hours</p>
+                    <p className="text-frothy-navy font-semibold">Open Every Day</p>
+                    <p className="text-gray-600">8:00 AM – 7:00 PM</p>
+                  </div>
                 </div>
               </div>
 
-              <div className="bg-frothy-foam rounded-xl p-5 flex items-start gap-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-frothy-blue/10 rounded-lg flex items-center justify-center">
-                  <Mail className="w-5 h-5 text-frothy-blue" />
+              {/* Phone */}
+              <div className="bg-gray-50 p-6 rounded-xl">
+                <div className="flex items-start gap-3">
+                  <Phone className="w-5 h-5 text-frothy-blue flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="text-xs font-bold text-frothy-blue uppercase tracking-wider mb-1">Phone</p>
+                    <p className="text-frothy-navy font-semibold">(954) 510-3073</p>
+                    <p className="text-gray-600">Walk-ins welcome</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-frothy-blue text-xs font-bold uppercase tracking-wider mb-1">Email</p>
-                  <a href="mailto:info@frothycarwash.com" className="font-semibold text-frothy-navy hover:text-frothy-blue transition-colors">
-                    info@frothycarwash.com
-                  </a>
+              </div>
+
+              {/* Email */}
+              <div className="bg-gray-50 p-6 rounded-xl">
+                <div className="flex items-start gap-3">
+                  <Mail className="w-5 h-5 text-frothy-blue flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="text-xs font-bold text-frothy-blue uppercase tracking-wider mb-1">Email</p>
+                    <p className="text-frothy-navy font-semibold">info@frothycarwash.com</p>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-3">
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="https://maps.google.com/?q=2223+Pembroke+Rd+Hollywood+FL+33020"
+                href="https://maps.google.com/?q=2223+Pembroke+Rd,+Hollywood,+FL+33020"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-frothy-navy text-frothy-yellow font-bold text-sm px-6 py-3 rounded-xl hover:bg-frothy-navy-light transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-frothy-navy text-white font-bold rounded-lg hover:bg-frothy-navy/90 transition"
               >
-                <Navigation className="w-4 h-4" />
+                <MapPin className="w-5 h-5" />
                 Get Directions
               </a>
-              <button
-                onClick={() => setBookingOpen(true)}
-                className="inline-flex items-center gap-2 bg-frothy-yellow text-frothy-navy font-bold text-sm px-6 py-3 rounded-xl hover:scale-105 transition-transform"
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-frothy-blue text-frothy-navy font-bold rounded-lg hover:bg-frothy-blue/90 transition"
               >
-                <Phone className="w-4 h-4" />
                 Book Appointment
-              </button>
+                <ArrowRight className="w-5 h-5" />
+              </Link>
             </div>
           </div>
 
           {/* Right - Map */}
-          <div className="rounded-2xl overflow-hidden shadow-card">
+          <div className="rounded-2xl overflow-hidden shadow-card h-96">
             <iframe
-              src="https://www.google.com/maps?q=2223+Pembroke+Rd,+Hollywood,+FL+33020&output=embed"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3515.824748!2d-80.131643!3d26.011468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9a34d8d8d8d8d%3A0x1234567890abcdef!2s2223%20Pembroke%20Rd%2C%20Hollywood%2C%20FL%2033020!5e0!3m2!1sen!2sus!4v1700000000000"
               width="100%"
-              height="420"
-              className="border-0 block"
+              height="100%"
+              style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Frothy Carwash Lounge location"
+              title="Frothy Carwash Lounge Location"
             />
           </div>
         </div>
       </div>
-      <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} />
     </section>
   )
 }

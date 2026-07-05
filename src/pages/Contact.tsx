@@ -89,11 +89,11 @@ export default function Contact() {
           <div>
             <div className="space-y-8">
               {/* Map */}
-              <div className="rounded-2xl overflow-hidden shadow-card">
+              <div className="rounded-2xl overflow-hidden shadow-card h-96">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3515.8247!2d-80.1316!3d26.0115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9a2f5c5c5c5c5%3A0x1234567890abcdef!2s2223%20Pembroke%20Rd%2C%20Hollywood%2C%20FL%2033020!5e0!3m2!1sen!2sus!4v1700000000000"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3515.824748!2d-80.131643!3d26.011468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9a34d8d8d8d8d%3A0x1234567890abcdef!2s2223%20Pembroke%20Rd%2C%20Hollywood%2C%20FL%2033020!5e0!3m2!1sen!2sus!4v1700000000000"
                   width="100%"
-                  height="300"
+                  height="100%"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
