@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Phone, Mail, MapPin, Clock } from 'lucide-react'
+import { Phone, Mail, MapPin, Clock, Instagram, Music } from 'lucide-react'
 
 const serviceLinks = [
   { label: 'Hand Wash', to: '/services' },
@@ -23,6 +23,21 @@ const areaLinks = [
   { label: 'Pembroke Pines, FL', to: '/car-wash-pembroke-pines-fl' },
 ]
 
+const socialLinks = [
+  {
+    name: 'Instagram',
+    url: 'https://www.instagram.com/frothycarwashlounge/',
+    icon: Instagram,
+    label: '@frothycarwashlounge'
+  },
+  {
+    name: 'TikTok',
+    url: 'https://www.tiktok.com/@frothy.carwash',
+    icon: Music,
+    label: '@frothy.carwash'
+  }
+]
+
 export default function Footer() {
   return (
     <footer className="bg-frothy-navy text-frothy-foam">
@@ -44,7 +59,7 @@ export default function Footer() {
             <p className="text-frothy-foam/60 text-sm leading-relaxed mb-6 max-w-sm">
               Where clean cars meet good company. Hollywood&apos;s premium hand car wash and lounge experience.
             </p>
-            <div className="space-y-3">
+            <div className="space-y-3 mb-8">
               <a
                 href="tel:9545103073"
                 className="flex items-center gap-2 text-frothy-blue font-semibold text-base hover:text-frothy-yellow transition-colors"
@@ -68,6 +83,28 @@ export default function Footer() {
                 <Mail className="w-4 h-4" />
                 info@frothycarwash.com
               </a>
+            </div>
+
+            {/* Social Media Links */}
+            <h4 className="text-frothy-yellow text-xs font-bold tracking-[0.15em] uppercase mb-4">
+              Follow Us
+            </h4>
+            <div className="flex gap-4">
+              {socialLinks.map((social) => {
+                const Icon = social.icon
+                return (
+                  <a
+                    key={social.name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={social.label}
+                    className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/[0.08] hover:bg-frothy-blue hover:text-frothy-navy transition-all"
+                  >
+                    <Icon className="w-5 h-5" />
+                  </a>
+                )
+              })}
             </div>
           </div>
 

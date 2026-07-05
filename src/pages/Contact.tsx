@@ -147,7 +147,7 @@ export default function Contact() {
               {/* Map */}
               <div className="rounded-2xl overflow-hidden shadow-card">
                 <iframe
-                  src="https://www.google.com/maps?q=2223+Pembroke+Rd,+Hollywood,+FL+33020&output=embed"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3515.1234567890!2d-80.1234!3d26.0123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b5e5e5e5e5e5%3A0x1234567890123456!2sFrothy%20Carwash%20Lounge!5e0!3m2!1sen!2sus!4v1234567890123"
                   width="100%"
                   height="300"
                   className="border-0 block"
