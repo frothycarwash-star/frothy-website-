@@ -1,269 +1,139 @@
-import { useSEO, PAGE_SEO } from '../hooks/useSEO'
+import { Phone, Mail, MapPin, Clock } from 'lucide-react'
 import { useState } from 'react'
-import { Phone, Mail, MapPin, Clock, CheckCircle, Send, MessageSquare, User, Car } from 'lucide-react'
-import RelatedLinks from '../components/RelatedLinks'
-import ContactSEOContent from '../sections/ContactSEOContent'
-import BreadcrumbNav from '../components/BreadcrumbNav'
-
-const services = [
-  'Hand Wash',
-  'Full Detail',
-  'Ceramic Coating',
-  'Membership',
-  'Other',
-]
+import BookingModal from '../components/BookingModal'
 
 export default function Contact() {
-  useSEO(PAGE_SEO.contact)
-  const [submitted, setSubmitted] = useState(false)
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    service: 'Hand Wash',
-    message: '',
-  })
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    try {
-      const res = await fetch('https://formspree.io/f/mdavkzej', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          ...formData,
-          _subject: `Contact form: ${formData.service} inquiry from ${formData.name}`,
-        }),
-      })
-      if (res.ok || true) { // remove "|| true" once Formspree ID is set
-        setSubmitted(true)
-        setTimeout(() => {
-          setSubmitted(false)
-          setFormData({ name: '', phone: '', service: 'Hand Wash', message: '' })
-        }, 5000)
-      }
-    } catch (err) {
-      console.error('Contact form error:', err)
-      // Fall back gracefully — still show success to user, log for ops
-      setSubmitted(true)
-      setTimeout(() => {
-        setSubmitted(false)
-        setFormData({ name: '', phone: '', service: 'Hand Wash', message: '' })
-      }, 5000)
-    }
-  }
-
-  const inputClasses = "w-full px-4 py-3 bg-frothy-foam border-2 border-frothy-foam rounded-xl font-body text-frothy-navy placeholder:text-frothy-navy/70 focus:outline-none focus:border-frothy-blue focus:bg-white transition-colors"
+  const [bookingOpen, setBookingOpen] = useState(false)
 
   return (
-    <>
-      {/* Hero */}
-      <section className="relative bg-frothy-navy pt-32 pb-16">
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <span className="inline-block bg-frothy-blue/20 text-frothy-blue text-[11px] font-bold tracking-[0.15em] uppercase px-3.5 py-1.5 rounded-full mb-4">
-            Get In Touch
-          </span>
-          <h1 className="font-heading text-4xl sm:text-5xl lg:text-[56px] text-frothy-yellow leading-[1.1] mb-4">
-            Book or Contact Us.
-          </h1>
-          <p className="text-frothy-foam/70 text-lg max-w-xl">
-            Call us to book or stop by during business hours. No appointment needed for standard washes.
+    <div className="min-h-screen bg-frothy-navy pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">Get in Touch</h1>
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+            Have questions about our car wash or detailing services? We're here to help!
           </p>
         </div>
-      </section>
 
-      <div className="h-1 bg-gradient-to-r from-frothy-yellow to-frothy-blue" />
-      <div className="bg-frothy-cream py-4 px-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <BreadcrumbNav items={[{ label: "Home", path: "/" }, { label: "Contact" }]} />
-        </div>
-      </div>
-
-      <div className="bg-frothy-cream section-padding">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16">
-            {/* Left - Info */}
-            <div>
-              <div className="space-y-4 mb-8">
-                <div className="bg-white rounded-2xl p-5 flex items-start gap-4 shadow-card">
-                  <div className="flex-shrink-0 w-11 h-11 bg-frothy-blue/10 rounded-xl flex items-center justify-center">
-                    <Phone className="w-5 h-5 text-frothy-blue" />
-                  </div>
+        <div className="grid lg:grid-cols-2 gap-12 mb-16">
+          {/* Left Column - Contact Info */}
+          <div>
+            <div className="space-y-8">
+              {/* Address */}
+              <div className="bg-frothy-navy-light p-8 rounded-xl">
+                <div className="flex items-start gap-4 mb-4">
+                  <MapPin className="w-6 h-6 text-frothy-blue flex-shrink-0 mt-1" />
                   <div>
-                    <p className="text-frothy-blue text-xs font-bold uppercase tracking-wider mb-1">Phone</p>
-                    <a href="tel:9545103073" className="font-semibold text-frothy-navy text-lg hover:text-frothy-blue transition-colors">
-                      (954) 510-3073
+                    <h3 className="text-xl font-bold text-white mb-2">Location</h3>
+                    <p className="text-gray-300">
+                      Hollywood, Florida<br />
+                      United States
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Phone */}
+              <div className="bg-frothy-navy-light p-8 rounded-xl">
+                <div className="flex items-start gap-4 mb-4">
+                  <Phone className="w-6 h-6 text-frothy-blue flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="text-xl font-bold text-white mb-2">Phone</h3>
+                    <a href="tel:+1234567890" className="text-frothy-blue hover:text-frothy-blue/80">
+                      Call us for service inquiries
                     </a>
-                    <p className="text-frothy-navy/70 text-sm mt-0.5">Tap to call on mobile</p>
                   </div>
                 </div>
+              </div>
 
-                <div className="bg-white rounded-2xl p-5 flex items-start gap-4 shadow-card">
-                  <div className="flex-shrink-0 w-11 h-11 bg-frothy-blue/10 rounded-xl flex items-center justify-center">
-                    <MapPin className="w-5 h-5 text-frothy-blue" />
-                  </div>
+              {/* Email */}
+              <div className="bg-frothy-navy-light p-8 rounded-xl">
+                <div className="flex items-start gap-4 mb-4">
+                  <Mail className="w-6 h-6 text-frothy-blue flex-shrink-0 mt-1" />
                   <div>
-                    <p className="text-frothy-blue text-xs font-bold uppercase tracking-wider mb-1">Address</p>
-                    <p className="font-semibold text-frothy-navy">2223 Pembroke Rd</p>
-                    <p className="text-frothy-navy/70 text-sm">Hollywood, FL 33020</p>
-                  </div>
-                </div>
-
-                <div className="bg-white rounded-2xl p-5 flex items-start gap-4 shadow-card">
-                  <div className="flex-shrink-0 w-11 h-11 bg-frothy-blue/10 rounded-xl flex items-center justify-center">
-                    <Mail className="w-5 h-5 text-frothy-blue" />
-                  </div>
-                  <div>
-                    <p className="text-frothy-blue text-xs font-bold uppercase tracking-wider mb-1">Email</p>
-                    <a href="mailto:info@frothycarwash.com" className="font-semibold text-frothy-navy text-lg hover:text-frothy-blue transition-colors">
+                    <h3 className="text-xl font-bold text-white mb-2">Email</h3>
+                    <a href="mailto:info@frothycarwash.com" className="text-frothy-blue hover:text-frothy-blue/80">
                       info@frothycarwash.com
                     </a>
                   </div>
                 </div>
+              </div>
 
-                <div className="bg-white rounded-2xl p-5 flex items-start gap-4 shadow-card">
-                  <div className="flex-shrink-0 w-11 h-11 bg-frothy-blue/10 rounded-xl flex items-center justify-center">
-                    <Clock className="w-5 h-5 text-frothy-blue" />
-                  </div>
+              {/* Hours */}
+              <div className="bg-frothy-navy-light p-8 rounded-xl">
+                <div className="flex items-start gap-4 mb-4">
+                  <Clock className="w-6 h-6 text-frothy-blue flex-shrink-0 mt-1" />
                   <div>
-                    <p className="text-frothy-blue text-xs font-bold uppercase tracking-wider mb-1">Hours</p>
-                    <p className="font-semibold text-frothy-navy">Monday – Sunday</p>
-                    <p className="text-frothy-navy/70 text-sm">8:00 AM – 7:00 PM, Every Day</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Quick CTA */}
-              <a
-                href="tel:9545103073"
-                className="flex items-center justify-center gap-2 bg-frothy-blue text-white font-bold text-lg py-4 rounded-xl hover:bg-frothy-blue/90 transition-colors mb-3"
-              >
-                <Phone className="w-5 h-5" />
-                Call Now — (954) 510-3073
-              </a>
-              <p className="text-center text-frothy-navy/70 text-xs mb-8">
-                No appointment needed for standard washes · Walk-ins welcome
-              </p>
-
-              {/* Map */}
-              <div className="rounded-2xl overflow-hidden shadow-card">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3515.1234567890!2d-80.1234!3d26.0123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b5e5e5e5e5e5%3A0x1234567890123456!2sFrothy%20Carwash%20Lounge!5e0!3m2!1sen!2sus!4v1234567890123"
-                  width="100%"
-                  height="300"
-                  className="border-0 block"
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Frothy Carwash Lounge map"
-                />
-              </div>
-            </div>
-
-            {/* Right - Form */}
-            <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-card">
-              {submitted ? (
-                <div className="text-center py-12">
-                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <CheckCircle className="w-8 h-8 text-green-600" />
-                  </div>
-                  <p className="font-heading text-xl text-frothy-navy mb-2">Message Sent!</p>
-                  <p className="text-frothy-navy/70 text-sm">We&apos;ll be in touch soon.</p>
-                </div>
-              ) : (
-                <>
-                  <div className="mb-6">
-                    <p className="font-heading text-xl text-frothy-navy mb-1">Send Us a Message</p>
-                    <p className="text-frothy-navy/70 text-sm">For detailing quotes or membership inquiries</p>
-                  </div>
-
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                      <label className="flex items-center gap-2 text-sm font-semibold text-frothy-navy mb-2">
-                        <User className="w-4 h-4 text-frothy-blue" />
-                        Full Name
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        placeholder="Your name"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className={inputClasses}
-                      />
-                    </div>
-
-                    <div>
-                      <label className="flex items-center gap-2 text-sm font-semibold text-frothy-navy mb-2">
-                        <Phone className="w-4 h-4 text-frothy-blue" />
-                        Phone Number
-                      </label>
-                      <input
-                        type="tel"
-                        placeholder="(954) 000-0000"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className={inputClasses}
-                      />
-                    </div>
-
-                    <div>
-                      <label className="flex items-center gap-2 text-sm font-semibold text-frothy-navy mb-2">
-                        <Car className="w-4 h-4 text-frothy-blue" />
-                        Service Interested In
-                      </label>
-                      <select
-                        value={formData.service}
-                        onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                        className={inputClasses}
-                      >
-                        {services.map((s) => (
-                          <option key={s} value={s}>{s}</option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="flex items-center gap-2 text-sm font-semibold text-frothy-navy mb-2">
-                        <MessageSquare className="w-4 h-4 text-frothy-blue" />
-                        Message
-                      </label>
-                      <textarea
-                        placeholder="Tell us about your car or ask a question..."
-                        value={formData.message}
-                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        className={`${inputClasses} h-28 resize-none`}
-                      />
-                    </div>
-
-                    <button
-                      type="submit"
-                      className="w-full flex items-center justify-center gap-2 bg-frothy-yellow text-frothy-navy font-bold py-3.5 rounded-xl hover:scale-[1.02] hover:shadow-lg transition-all"
-                    >
-                      <Send className="w-4 h-4" />
-                      Send Message
-                    </button>
-
-                    <p className="text-xs text-frothy-navy/70 text-center">
-                      We typically respond within 30 minutes during business hours.
+                    <h3 className="text-xl font-bold text-white mb-2">Hours</h3>
+                    <p className="text-gray-300">
+                      Open 7 Days a Week<br />
+                      Check our website for hours
                     </p>
-                  </form>
-                </>
-              )}
+                  </div>
+                </div>
+              </div>
+
+              {/* CTA Button */}
+              <button
+                onClick={() => setBookingOpen(true)}
+                className="w-full px-8 py-4 bg-frothy-blue text-frothy-navy font-bold rounded-lg hover:bg-frothy-blue/90 transition"
+              >
+                Book a Service
+              </button>
             </div>
           </div>
 
-          <RelatedLinks
-            links={[
-              { label: 'View All Services & Pricing', to: '/services' },
-              { label: 'Ceramic Coating Packages', to: '/ceramic' },
-              { label: 'Monthly Memberships', to: '/memberships' },
-              { label: 'About Frothy Carwash Lounge', to: '/about' },
-            ]}
-          />
+          {/* Right Column - Map & Message */}
+          <div>
+            <div className="space-y-8">
+              {/* Map */}
+              <div className="rounded-2xl overflow-hidden shadow-card">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3515.4082123456!2d-80.12019!3d26.01125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1sHollywood%2C%20Florida!2s26.0112%2C-80.1202!5e0!3m2!1sen!2sus!4v1700000000000"
+                  width="100%"
+                  height="300"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Frothy Carwash Lounge in Hollywood, Florida"
+                />
+              </div>
+
+              {/* Message */}
+              <div className="bg-frothy-navy-light p-8 rounded-xl">
+                <h3 className="text-xl font-bold text-white mb-4">Quick Message</h3>
+                <form className="space-y-4">
+                  <input
+                    type="text"
+                    placeholder="Your Name"
+                    className="w-full px-4 py-3 rounded-lg bg-frothy-navy border border-gray-600 text-white placeholder-gray-500 focus:outline-none focus:border-frothy-blue"
+                  />
+                  <input
+                    type="email"
+                    placeholder="Your Email"
+                    className="w-full px-4 py-3 rounded-lg bg-frothy-navy border border-gray-600 text-white placeholder-gray-500 focus:outline-none focus:border-frothy-blue"
+                  />
+                  <textarea
+                    placeholder="Your Message"
+                    rows={4}
+                    className="w-full px-4 py-3 rounded-lg bg-frothy-navy border border-gray-600 text-white placeholder-gray-500 focus:outline-none focus:border-frothy-blue resize-none"
+                  />
+                  <button
+                    type="submit"
+                    className="w-full px-6 py-3 bg-frothy-blue text-frothy-navy font-bold rounded-lg hover:bg-frothy-blue/90 transition"
+                  >
+                    Send Message
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <ContactSEOContent />
-    </>
+      <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} />
+    </div>
   )
 }
