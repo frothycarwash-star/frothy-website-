@@ -1,94 +1,45 @@
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
-interface Review {
-  author: string
-  rating: number
-  text: string
-  time: string
-  relative_time: string
-}
+const sampleReviews = [
+  {
+    author: 'breynner yt',
+    rating: 5,
+    text: 'Absolutely the best car wash experience I\'ve had. The comfort area feels very VIP — they have massage chairs, a lounge area, and free beverages. The staff is attentive, professional, and the washing is thorough.',
+    relative_time: 'a month ago'
+  },
+  {
+    author: 'Serhiy Yuryk',
+    rating: 5,
+    text: 'Amazing service from start to finish. The staff was professional, fast, and paid attention to every detail. The facility is clean and modern with great amenities.',
+    relative_time: 'a month ago'
+  },
+  {
+    author: 'GanjaFb',
+    rating: 5,
+    text: 'Very amazing work! This is hands down the best Carwash I\'ve come across. The staff are highly knowledgeable and friendly.',
+    relative_time: '3 months ago'
+  },
+  {
+    author: 'David Rodriguez',
+    rating: 5,
+    text: 'Great work, chill and roomy waiting area and good prices. The massage chairs are a nice touch!',
+    relative_time: '2 months ago'
+  }
+]
 
 export default function GoogleReviewsSlider() {
-  const [reviews, setReviews] = useState<Review[]>([])
-  const [loading, setLoading] = useState(true)
   const [currentIndex, setCurrentIndex] = useState(0)
 
-  useEffect(() => {
-    // Fetch from our API endpoint
-    const fetchReviews = async () => {
-      try {
-        const response = await fetch('/api/reviews')
-        if (response.ok) {
-          const data = await response.json()
-          if (data.reviews && Array.isArray(data.reviews)) {
-            setReviews(data.reviews)
-          }
-        }
-      } catch (error) {
-        console.error('Error loading reviews:', error)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchReviews()
-  }, [])
-
   const moveSlide = (direction: 'left' | 'right') => {
-    if (reviews.length === 0) return
     if (direction === 'left') {
-      setCurrentIndex((prev) => (prev === 0 ? reviews.length - 1 : prev - 1))
+      setCurrentIndex((prev) => (prev === 0 ? sampleReviews.length - 1 : prev - 1))
     } else {
-      setCurrentIndex((prev) => (prev === reviews.length - 1 ? 0 : prev + 1))
+      setCurrentIndex((prev) => (prev === sampleReviews.length - 1 ? 0 : prev + 1))
     }
   }
 
-  if (loading) {
-    return (
-      <section className="py-16 bg-frothy-navy-light">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white text-center mb-12">
-            Customer Reviews
-          </h2>
-          <div className="flex justify-center items-center h-48">
-            <div className="text-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-frothy-blue mx-auto mb-4" />
-              <p className="text-gray-300">Loading reviews...</p>
-            </div>
-          </div>
-        </div>
-      </section>
-    )
-  }
-
-  if (reviews.length === 0) {
-    return (
-      <section className="py-16 bg-frothy-navy-light">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white text-center mb-4">
-            Customer Reviews
-          </h2>
-          <p className="text-center text-gray-300 mb-8">
-            Trusted by hundreds of happy customers. See what they say:
-          </p>
-          <div className="text-center">
-            <a
-              href="https://www.google.com/maps/place/Frothy+Carwash+Lounge"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-frothy-blue text-frothy-navy font-bold rounded-lg hover:bg-frothy-blue/90 transition text-lg"
-            >
-              Read 223+ Google Reviews
-              <Star className="w-5 h-5 fill-current" />
-            </a>
-          </div>
-        </div>
-      </section>
-    )
-  }
-
-  const currentReview = reviews[currentIndex]
+  const currentReview = sampleReviews[currentIndex]
 
   return (
     <section className="py-16 bg-frothy-navy-light">
@@ -152,7 +103,7 @@ export default function GoogleReviewsSlider() {
 
         {/* Review Count */}
         <p className="text-center text-gray-400 mt-8">
-          {currentIndex + 1} of {reviews.length} reviews
+          {currentIndex + 1} of {sampleReviews.length} reviews
         </p>
 
         {/* Google Link */}
@@ -163,7 +114,7 @@ export default function GoogleReviewsSlider() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 bg-frothy-blue text-frothy-navy font-bold rounded-lg hover:bg-frothy-blue/90 transition"
           >
-            View all {reviews.length} reviews on Google
+            Read all 223 reviews on Google
           </a>
         </div>
       </div>
