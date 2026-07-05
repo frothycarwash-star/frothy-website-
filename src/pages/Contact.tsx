@@ -27,7 +27,8 @@ export default function Contact() {
                   <div>
                     <h3 className="text-xl font-bold text-white mb-2">Location</h3>
                     <p className="text-gray-300">
-                      Hollywood, Florida<br />
+                      2223 Pembroke Road<br />
+                      Hollywood, FL 33020<br />
                       United States
                     </p>
                   </div>
@@ -90,14 +91,14 @@ export default function Contact() {
               {/* Map */}
               <div className="rounded-2xl overflow-hidden shadow-card">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3515.4082123456!2d-80.12019!3d26.01125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1sHollywood%2C%20Florida!2s26.0112%2C-80.1202!5e0!3m2!1sen!2sus!4v1700000000000"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3515.8247!2d-80.1316!3d26.0115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9a2f5c5c5c5c5%3A0x1234567890abcdef!2s2223%20Pembroke%20Rd%2C%20Hollywood%2C%20FL%2033020!5e0!3m2!1sen!2sus!4v1700000000000"
                   width="100%"
                   height="300"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Frothy Carwash Lounge in Hollywood, Florida"
+                  title="Frothy Carwash Lounge - 2223 Pembroke Road, Hollywood, FL 33020"
                 />
               </div>
 
