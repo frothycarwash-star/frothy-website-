@@ -4,7 +4,6 @@ import InfoBar from '../sections/InfoBar'
 import ServicesPreview from '../sections/ServicesPreview'
 import BeforeAfter from '../sections/BeforeAfter'
 import WhyFrothy from '../sections/WhyFrothy'
-import GoogleReviewsSlider from '../components/GoogleReviewsSlider'
 import CeramicCTA from '../sections/CeramicCTA'
 import LocationCTA from '../sections/LocationCTA'
 import HomeSEOContent from '../sections/HomeSEOContent'
@@ -18,7 +17,6 @@ export default function Home() {
       <ServicesPreview />
       <BeforeAfter />
       <WhyFrothy />
-      <GoogleReviewsSlider />
       <CeramicCTA />
       <HomeSEOContent />
       <LocationCTA />
