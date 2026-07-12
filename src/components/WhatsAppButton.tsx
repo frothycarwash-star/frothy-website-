@@ -1,3 +1,6 @@
+// Single unified WhatsApp floating button component
+// Desktop: pill-shaped button with emoji + text
+// Mobile: circular button with emoji only
 export default function WhatsAppButton() {
   const phoneNumber = '19545103073'
   const message = 'Hi Frothy Car Wash! I would like information about your car wash and detailing services.'
