@@ -5,30 +5,20 @@ export default function WhatsAppButton() {
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`
 
   return (
-    <>
-      {/* Desktop: Button with text */}
-      <a
-        href={whatsappUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Chat with Frothy Car Wash on WhatsApp"
-        className="hidden sm:fixed sm:bottom-6 sm:right-6 sm:flex items-center gap-3 px-6 py-3 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-lg font-semibold text-sm z-40"
-        title="Chat with us on WhatsApp"
-      >
-        Chat with us
-      </a>
-
-      {/* Mobile: Icon only */}
-      <a
-        href={whatsappUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Chat with Frothy Car Wash on WhatsApp"
-        className="sm:hidden fixed bottom-6 right-6 flex items-center justify-center w-14 h-14 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-full z-40 text-2xl"
-        title="Chat with us on WhatsApp"
-      >
-        💬
-      </a>
-    </>
+    <a
+      href={whatsappUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Chat with Frothy Car Wash on WhatsApp"
+      className="fixed bottom-6 right-6 flex items-center justify-center px-4 py-3 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-full z-40 font-medium"
+      title="Chat with us on WhatsApp"
+      style={{
+        minWidth: 'fit-content',
+        whiteSpace: 'nowrap',
+        fontSize: '14px'
+      }}
+    >
+      Chat with us
+    </a>
   )
 }
