@@ -12,7 +12,7 @@ export default function WhatsAppButton() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with Frothy Car Wash on WhatsApp"
-        className="hidden sm:flex fixed bottom-6 right-6 items-center justify-center px-6 py-3 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-full shadow-lg hover:shadow-xl transition-shadow duration-200 z-40 font-semibold text-sm"
+        className="hidden sm:fixed sm:bottom-6 sm:right-6 sm:flex items-center gap-3 px-6 py-3 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-lg font-semibold text-sm z-40"
         title="Chat with us on WhatsApp"
       >
         Chat with us
@@ -24,7 +24,7 @@ export default function WhatsAppButton() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with Frothy Car Wash on WhatsApp"
-        className="sm:hidden fixed bottom-6 right-6 flex items-center justify-center w-14 h-14 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-full shadow-lg hover:shadow-xl transition-shadow duration-200 z-40 text-lg font-bold"
+        className="sm:hidden fixed bottom-6 right-6 flex items-center justify-center w-14 h-14 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-full z-40 text-2xl"
         title="Chat with us on WhatsApp"
       >
         💬
