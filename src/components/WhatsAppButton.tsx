@@ -10,12 +10,32 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with Frothy Car Wash on WhatsApp"
-      className="fixed bottom-6 right-6 flex items-center justify-center px-4 py-3 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-full z-40 font-medium"
       title="Chat with us on WhatsApp"
       style={{
-        minWidth: 'fit-content',
+        position: 'fixed',
+        bottom: '24px',
+        right: '24px',
+        padding: '12px 20px',
+        backgroundColor: '#25D366',
+        color: 'white',
+        textDecoration: 'none',
+        borderRadius: '8px',
+        fontWeight: '500',
+        fontSize: '14px',
+        zIndex: 40,
+        border: 'none',
+        cursor: 'pointer',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         whiteSpace: 'nowrap',
-        fontSize: '14px'
+        boxSizing: 'border-box',
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.backgroundColor = '#20BA5A'
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.backgroundColor = '#25D366'
       }}
     >
       Chat with us
