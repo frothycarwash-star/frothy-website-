@@ -3,7 +3,6 @@ import { Routes, Route } from 'react-router-dom'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import WhatsAppButton from './components/WhatsAppButton'
 import Home from './pages/Home'
 
 const Services = lazy(() => import('./pages/Services'))
@@ -69,7 +68,7 @@ export default function App() {
         </Suspense>
       </main>
       <Footer />
-            <WhatsAppButton /><SpeedInsights />
+                  <a href="https://wa.me/19545103073?text=Hi%20Frothy%20Carwash%2C%20I'd%20like%20to%20book%20a%20wash" target="_blank" rel="noopener noreferrer" className="fixed bottom-6 right-6 w-16 h-16 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center text-3xl shadow-lg z-50">💬</a>a></a>
       
     </div>
   )
