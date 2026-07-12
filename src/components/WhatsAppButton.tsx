@@ -12,11 +12,10 @@ export default function WhatsAppButton() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with Frothy Car Wash on WhatsApp"
-        className="hidden sm:flex fixed bottom-6 right-6 items-center justify-center gap-3 px-5 py-3 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-full shadow-lg hover:shadow-xl transition-shadow duration-200 z-40 font-semibold text-sm"
+        className="hidden sm:flex fixed bottom-6 right-6 items-center justify-center px-6 py-3 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-full shadow-lg hover:shadow-xl transition-shadow duration-200 z-40 font-semibold text-sm"
         title="Chat with us on WhatsApp"
       >
-        <span style={{ fontSize: '20px', lineHeight: '1' }}>☎️</span>
-        <span>Chat with us</span>
+        Chat with us
       </a>
 
       {/* Mobile: Icon only */}
@@ -25,10 +24,10 @@ export default function WhatsAppButton() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with Frothy Car Wash on WhatsApp"
-        className="sm:hidden fixed bottom-6 right-6 flex items-center justify-center w-14 h-14 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-full shadow-lg hover:shadow-xl transition-shadow duration-200 z-40"
+        className="sm:hidden fixed bottom-6 right-6 flex items-center justify-center w-14 h-14 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-full shadow-lg hover:shadow-xl transition-shadow duration-200 z-40 text-lg font-bold"
         title="Chat with us on WhatsApp"
       >
-        <span style={{ fontSize: '28px', lineHeight: '1' }}>☎️</span>
+        💬
       </a>
     </>
   )
