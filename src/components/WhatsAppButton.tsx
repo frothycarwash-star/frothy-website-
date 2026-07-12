@@ -1,5 +1,3 @@
-import { MessageCircle } from 'lucide-react'
-
 export default function WhatsAppButton() {
   const phoneNumber = '19545103073'
   const message = 'Hi Frothy Car Wash! I would like information about your car wash and detailing services.'
@@ -17,7 +15,7 @@ export default function WhatsAppButton() {
         className="hidden sm:flex fixed bottom-6 right-6 items-center justify-center gap-2 px-5 py-3 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-200 z-40 font-semibold text-sm"
         title="Chat with us on WhatsApp"
       >
-        <MessageCircle className="w-5 h-5" />
+        <span className="text-xl">💬</span>
         <span>Chat with us</span>
       </a>
 
@@ -30,7 +28,7 @@ export default function WhatsAppButton() {
         className="sm:hidden fixed bottom-6 right-6 flex items-center justify-center w-14 h-14 bg-[#25D366] hover:bg-[#20BA5A] text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-200 z-40"
         title="Chat with us on WhatsApp"
       >
-        <MessageCircle className="w-6 h-6" />
+        <span className="text-2xl">💬</span>
       </a>
     </>
   )
