@@ -1,6 +1,3 @@
-// Single unified WhatsApp floating button component
-// Desktop: pill-shaped button with emoji + text
-// Mobile: circular button with emoji only
 export default function WhatsAppButton() {
   const phoneNumber = '19545103073'
   const message = 'Hi Frothy Car Wash! I would like information about your car wash and detailing services.'
@@ -13,23 +10,18 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with Frothy Car Wash on WhatsApp"
-      title="Chat with us on WhatsApp"
-      className="fixed bottom-6 right-6 z-40 bg-[#25D366] hover:bg-[#20BA5A] text-white font-semibold rounded-full transition-colors duration-200"
-      style={{
-        minWidth: '56px',
-        minHeight: '56px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '0 16px',
-        gap: '8px',
-        textDecoration: 'none',
-        whiteSpace: 'nowrap',
-        boxSizing: 'border-box',
-      }}
+      className="
+        fixed bottom-6 right-6 z-50
+        flex h-14 w-14 items-center justify-center
+        rounded-full bg-green-500 text-white
+        shadow-lg transition hover:scale-105 hover:bg-green-600
+        sm:h-auto sm:w-auto sm:gap-2 sm:px-5 sm:py-3
+      "
     >
-      <span style={{ fontSize: '20px', lineHeight: '1' }}>💬</span>
-      <span className="hidden sm:inline">Chat with us</span>
+      <span aria-hidden="true">💬</span>
+      <span className="hidden sm:inline font-semibold">
+        Chat with us
+      </span>
     </a>
   )
 }
