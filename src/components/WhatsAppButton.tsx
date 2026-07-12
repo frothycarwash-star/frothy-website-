@@ -15,21 +15,22 @@ export default function WhatsAppButton() {
         position: 'fixed',
         bottom: '24px',
         right: '24px',
-        padding: '12px 20px',
+        padding: '14px 24px',
         backgroundColor: '#25D366',
         color: 'white',
         textDecoration: 'none',
-        borderRadius: '8px',
-        fontWeight: '500',
-        fontSize: '14px',
+        borderRadius: '24px',
+        fontWeight: '600',
+        fontSize: '15px',
         zIndex: 40,
         border: 'none',
         cursor: 'pointer',
-        display: 'flex',
+        display: 'inline-flex',
         alignItems: 'center',
         justifyContent: 'center',
         whiteSpace: 'nowrap',
         boxSizing: 'border-box',
+        transition: 'background-color 0.2s ease',
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.backgroundColor = '#20BA5A'
@@ -38,7 +39,7 @@ export default function WhatsAppButton() {
         e.currentTarget.style.backgroundColor = '#25D366'
       }}
     >
-      Chat with us
+      💬 Chat with us
     </a>
   )
 }
