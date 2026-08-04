@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -33,6 +33,7 @@ const CarWashSunnyIsles = lazy(() => import('./pages/CarWashSunnyIsles'))
 const CarWashNorthMiamiBeach = lazy(() => import('./pages/CarWashNorthMiamiBeach'))
 
 export default function App() {
+  const location = useLocation()
   return (
     <div className="min-h-screen bg-frothy-foam">
       <Navbar />
@@ -70,7 +71,7 @@ export default function App() {
       </main>
       <Footer />
       <WhatsAppButton />
-      <SpeedInsights />
+      <SpeedInsights route={location.pathname} />
     </div>
   )
 }
