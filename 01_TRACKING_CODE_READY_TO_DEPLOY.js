@@ -35,7 +35,12 @@
     window.fetch = function (input, init) {
       return nativeFetch(input, init).then(function (response) {
         var url = typeof input === 'string' ? input : input && input.url;
-        if (!response.ok || !url || url.indexOf(FORMSPREE_ENDPOINT) === -1) return response;
+        var isBookingRequest = url && url.indexOf(FORMSPREE_ENDPOINT) !== -1;
+        if (!isBookingRequest) return response;
+
+        if (!response.ok) {
+          return Promise.reject(new Error('Booking request was not accepted.'));
+        }
 
         var payload = {};
         try {
