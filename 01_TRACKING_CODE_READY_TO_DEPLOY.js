@@ -1,80 +1,98 @@
-/**
- * FROTHY CAR WASH - CONVERSION TRACKING
- * Production-Ready Tracking Implementation
- * Ready to paste into GTM or website <head>
- *
- * This code tracks:
- * - Phone clicks (tel: links)
- * - WhatsApp clicks (wa.me links)
- * - Contact form submissions
- * - Service page views
- * - Booking page engagement
+/*
+ * Frothy Carwash Lounge — conversion measurement
+ * Tracks only business-relevant actions and preserves paid-click identifiers
+ * for booking-request follow-up.
  */
+(function () {
+  'use strict';
 
-(function() {
-    'use strict';
+  var ATTRIBUTION_KEYS = ['gclid', 'gbraid', 'wbraid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+  var FORMSPREE_ENDPOINT = 'formspree.io/f/mdavkzej';
 
-   // Wait for GA4/GTM to be ready
-   function initTracking() {
-         if (!window.gtag || !window.dataLayer) {
-                 setTimeout(initTracking, 100);
-                 return;
-         }
+  function persistAttribution() {
+    var params = new URLSearchParams(window.location.search);
+    ATTRIBUTION_KEYS.forEach(function (key) {
+      var value = params.get(key);
+      if (value) window.sessionStorage.setItem('frothy_' + key, value);
+    });
+  }
 
-      // ========== PHONE CLICK TRACKING ==========
-      document.querySelectorAll('a[href^="tel:"]').forEach(function(link) {
-              link.addEventListener('click', function() {
-                        var phone = link.getAttribute('href').replace('tel:', '');
-                        gtag('event', 'phone_call', {
-                                    'phone_number': phone,
-                                    'event_category': 'engagement',
-                                    'event_label': 'click_to_call'
-                        });
-                        dataLayer.push({'event': 'phone_call', 'phone_number': phone});
-              });
+  function storedAttribution() {
+    return ATTRIBUTION_KEYS.reduce(function (values, key) {
+      var value = window.sessionStorage.getItem('frothy_' + key);
+      if (value) values[key] = value;
+      return values;
+    }, {});
+  }
+
+  function sendEvent(name, params) {
+    if (window.gtag) window.gtag('event', name, params);
+  }
+
+  function installBookingRequestTracking() {
+    var nativeFetch = window.fetch.bind(window);
+
+    window.fetch = function (input, init) {
+      return nativeFetch(input, init).then(function (response) {
+        var url = typeof input === 'string' ? input : input && input.url;
+        if (!response.ok || !url || url.indexOf(FORMSPREE_ENDPOINT) === -1) return response;
+
+        var payload = {};
+        try {
+          payload = init && init.body ? JSON.parse(init.body) : {};
+        } catch (error) {
+          console.warn('Unable to read booking request payload for analytics.', error);
+        }
+
+        var reference = payload.reference || 'booking-' + Date.now();
+        sendEvent('qualify_lead', Object.assign({
+          event_id: 'frothy-' + reference,
+          booking_reference: reference,
+          service_type: payload.service || 'not_provided',
+          lead_source: 'website_booking_request'
+        }, storedAttribution()));
+
+        return response;
       });
+    };
+  }
 
-      // ========== WHATSAPP CLICK TRACKING ==========
-      document.querySelectorAll('a[href*="wa.me"]').forEach(function(link) {
-              link.addEventListener('click', function() {
-                        gtag('event', 'whatsapp_click', {
-                                    'event_category': 'engagement',
-                                    'event_label': 'whatsapp_inquiry'
-                        });
-                        dataLayer.push({'event': 'whatsapp_click'});
-              });
+  function initTracking() {
+    if (!window.gtag) {
+      setTimeout(initTracking, 100);
+      return;
+    }
+
+    persistAttribution();
+    installBookingRequestTracking();
+
+    document.querySelectorAll('a[href^="tel:"]').forEach(function (link) {
+      link.addEventListener('click', function () {
+        sendEvent('phone_call_click', {
+          phone_number: link.getAttribute('href').replace('tel:', ''),
+          lead_source: 'website_phone_click'
+        });
       });
+    });
 
-      // ========== CONTACT FORM TRACKING ==========
-      var contactForm = document.querySelector('form');
-         if (contactForm) {
-                 contactForm.addEventListener('submit', function() {
-                           gtag('event', 'form_submit', {
-                                       'form_type': 'contact',
-                                       'form_name': 'quick_message',
-                                       'event_category': 'lead',
-                                       'event_label': 'contact_form'
-                           });
-                           dataLayer.push({'event': 'form_submit', 'form_type': 'contact'});
-                 });
-         }
+    document.querySelectorAll('a[href*="wa.me"]').forEach(function (link) {
+      link.addEventListener('click', function () {
+        sendEvent('whatsapp_click', { lead_source: 'website_whatsapp_click' });
+      });
+    });
 
-      // ========== BOOKING PAGE TRACKING ==========
-      var path = window.location.pathname;
-         if (path === '/contact' || path === '/services' || path === '/ceramic') {
-                 gtag('event', 'page_view_' + path.replace(/\//g, '_'), {
-                           'event_category': 'engagement',
-                           'page_path': path
-                 });
-                 dataLayer.push({'event': 'booking_page_view', 'page_path': path});
-         }
-   }
+    document.querySelectorAll('a[href*="square.site/book"]').forEach(function (link) {
+      link.addEventListener('click', function () {
+        sendEvent('booking_start', Object.assign({
+          lead_source: 'square_booking_start'
+        }, storedAttribution()));
+      });
+    });
+  }
 
-   // Start tracking when DOM is ready
-   if (document.readyState === 'loading') {
-         document.addEventListener('DOMContentLoaded', initTracking);
-   } else {
-         initTracking();
-   }
-
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTracking);
+  } else {
+    initTracking();
+  }
 })();
