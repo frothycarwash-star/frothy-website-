@@ -1,13 +1,10 @@
-/*
- * Frothy Carwash Lounge — conversion measurement
- * Tracks only business-relevant actions and preserves paid-click identifiers
- * for booking-request follow-up.
- */
+/* Frothy Carwash Lounge — conversion measurement */
 (function () {
   'use strict';
 
   var ATTRIBUTION_KEYS = ['gclid', 'gbraid', 'wbraid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
   var FORMSPREE_ENDPOINT = 'formspree.io/f/mdavkzej';
+  var trackingInstalled = false;
 
   function persistAttribution() {
     var params = new URLSearchParams(window.location.search);
@@ -26,7 +23,7 @@
   }
 
   function sendEvent(name, params) {
-    if (window.gtag) window.gtag('event', name, params);
+    if (typeof window.gtag === 'function') window.gtag('event', name, params);
   }
 
   function installBookingRequestTracking() {
@@ -35,8 +32,7 @@
     window.fetch = function (input, init) {
       return nativeFetch(input, init).then(function (response) {
         var url = typeof input === 'string' ? input : input && input.url;
-        var isBookingRequest = url && url.indexOf(FORMSPREE_ENDPOINT) !== -1;
-        if (!isBookingRequest) return response;
+        if (!url || url.indexOf(FORMSPREE_ENDPOINT) === -1) return response;
 
         if (!response.ok) {
           return Promise.reject(new Error('Booking request was not accepted.'));
@@ -44,7 +40,7 @@
 
         var payload = {};
         try {
-          payload = init && init.body ? JSON.parse(init.body) : {};
+          payload = init && typeof init.body === 'string' ? JSON.parse(init.body) : {};
         } catch (error) {
           console.warn('Unable to read booking request payload for analytics.', error);
         }
@@ -63,35 +59,37 @@
   }
 
   function initTracking() {
-    if (!window.gtag) {
+    if (trackingInstalled) return;
+    if (typeof window.gtag !== 'function') {
       setTimeout(initTracking, 100);
       return;
     }
 
+    trackingInstalled = true;
     persistAttribution();
     installBookingRequestTracking();
 
-    document.querySelectorAll('a[href^="tel:"]').forEach(function (link) {
-      link.addEventListener('click', function () {
+    document.addEventListener('click', function (event) {
+      var link = event.target.closest('a');
+      if (!link) return;
+      var href = link.getAttribute('href') || '';
+
+      if (href.indexOf('tel:') === 0) {
         sendEvent('phone_call_click', {
-          phone_number: link.getAttribute('href').replace('tel:', ''),
+          phone_number: href.replace('tel:', ''),
           lead_source: 'website_phone_click'
         });
-      });
-    });
+      }
 
-    document.querySelectorAll('a[href*="wa.me"]').forEach(function (link) {
-      link.addEventListener('click', function () {
+      if (href.indexOf('wa.me') !== -1) {
         sendEvent('whatsapp_click', { lead_source: 'website_whatsapp_click' });
-      });
-    });
+      }
 
-    document.querySelectorAll('a[href*="square.site/book"]').forEach(function (link) {
-      link.addEventListener('click', function () {
+      if (href.indexOf('square.site/book') !== -1) {
         sendEvent('booking_start', Object.assign({
           lead_source: 'square_booking_start'
         }, storedAttribution()));
-      });
+      }
     });
   }
 
