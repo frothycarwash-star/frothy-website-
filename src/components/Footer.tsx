@@ -188,9 +188,18 @@ export default function Footer() {
           <p className="text-frothy-foam/60 text-xs">
             &copy; {new Date().getFullYear()} Frothy Carwash Lounge · Hollywood, FL
           </p>
-          <p className="text-frothy-foam/60 text-xs">
-            Hand Wash · Coffee · Lounge
-          </p>
+          <div className="flex items-center gap-4">
+            <Link
+              to="/privacy-policy"
+              className="text-frothy-foam/60 text-xs hover:text-frothy-yellow transition-colors"
+            >
+              Privacy Policy
+            </Link>
+            <span className="text-frothy-foam/20 text-xs">|</span>
+            <p className="text-frothy-foam/60 text-xs">
+              Hand Wash · Coffee · Lounge
+            </p>
+          </div>
         </div>
       </div>
     </footer>
