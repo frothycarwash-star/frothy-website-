@@ -13,6 +13,7 @@ const About = lazy(() => import('./pages/About'))
 const Contact = lazy(() => import('./pages/Contact'))
 const Gallery = lazy(() => import('./pages/Gallery'))
 const NotFound = lazy(() => import('./pages/NotFound'))
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
 const HandCarWashHollywood = lazy(() => import('./pages/HandCarWashHollywood'))
 const CarDetailingHollywood = lazy(() => import('./pages/CarDetailingHollywood'))
 const CeramicCoatingHollywood = lazy(() => import('./pages/CeramicCoatingHollywood'))
@@ -48,6 +49,7 @@ export default function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/areas-we-serve" element={<AreasWeServe />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/hand-car-wash-hollywood-fl" element={<HandCarWashHollywood />} />
             <Route path="/car-detailing-hollywood-fl" element={<CarDetailingHollywood />} />
             <Route path="/ceramic-coating-hollywood-fl" element={<CeramicCoatingHollywood />} />
