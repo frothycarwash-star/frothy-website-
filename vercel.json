@@ -1,5 +1,10 @@
 {
-  "rewrites": [],
+  "rewrites": [
+    {
+      "source": "/privacy-policy",
+      "destination": "/index.html"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
