@@ -2,13 +2,13 @@
 //
 // Square bookings reach the calendar through Square's own native sync. This
 // handles the other source: bookings made through the site's own form, which
-// only ever went to Formspree by email.
+// previously only ever went to Formspree by email.
 //
-// Events are titled "WEB — <service> — <name>" so they are distinguishable at a
-// glance from Square's, which arrive untitled by that convention.
+// Events are titled "WEB - <service> - <name>" so they are distinguishable at a
+// glance from the ones Square creates.
 //
 // Required Vercel environment variables:
-//   GOOGLE_SA_EMAIL        service account address (…iam.gserviceaccount.com)
+//   GOOGLE_SA_EMAIL        service account address (...iam.gserviceaccount.com)
 //   GOOGLE_SA_PRIVATE_KEY  the service account private key, newlines as \n
 //   GOOGLE_CALENDAR_ID     defaults to frothycarwash@gmail.com
 //   BOOKING_WEBHOOK_KEY    shared value, also set in the booking form
@@ -57,7 +57,7 @@ function parseTime(value) {
 }
 
 // Builds a floating local timestamp. UTC is used only as a calendar calculator
-// here — the actual zone is declared separately via the timeZone field.
+// here - the actual zone is declared separately via the timeZone field.
 function localTimestamp(dateStr, hour, minute, addMinutes = 0) {
   const [year, month, day] = String(dateStr).split('-').map(Number)
   if (!year || !month || !day) return null
@@ -79,7 +79,7 @@ function base64url(input) {
 }
 
 // Service account -> OAuth access token, signed locally. Avoids pulling in the
-// full googleapis package for one API call.
+// full googleapis package for a single API call.
 async function getAccessToken() {
   const clientEmail = process.env.GOOGLE_SA_EMAIL
   const privateKey = (process.env.GOOGLE_SA_PRIVATE_KEY || '').replace(/\\n/g, '\n')
@@ -117,6 +117,14 @@ async function getAccessToken() {
   const data = await res.json()
   if (!data.access_token) throw new Error(`Token exchange failed: ${JSON.stringify(data)}`)
   return data.access_token
+}
+
+function safeParse(value) {
+  try {
+    return JSON.parse(value)
+  } catch {
+    return {}
+  }
 }
 
 export default async function handler(req, res) {
@@ -159,7 +167,7 @@ export default async function handler(req, res) {
     return res.status(200).json({ status: 'auth failed, skipped' })
   }
 
-  // Credentials not configured yet — accept quietly so bookings still work.
+  // Credentials not configured yet - accept quietly so bookings still work.
   if (!token) {
     console.warn('Calendar credentials not set; skipping event creation')
     return res.status(200).json({ status: 'not configured' })
@@ -178,6 +186,14 @@ export default async function handler(req, res) {
     .filter(Boolean)
     .join('\n')
 
+  const event = {
+    summary: `WEB - ${body.service || 'Booking'} - ${body.name}`,
+    description: details,
+    location: '2223 Pembroke Rd, Hollywood, FL 33020',
+    start: { dateTime: start, timeZone: TIMEZONE },
+    end: { dateTime: end, timeZone: TIMEZONE },
+  }
+
   try {
     const calendarRes = await fetch(
       `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(CALENDAR_ID)}/events`,
@@ -187,13 +203,7 @@ export default async function handler(req, res) {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          summary: `WEB — ${body.service || 'Booking'} — ${body.name}`,
-          description: details,
-          location: '2223 Pembroke Rd, Hollywood, FL 33020',
-          start: { dateTime: start, timeZone: TIMEZONE },
-          end: { dateTime: end, timeZone: TIMEZONE },
-ിർ      }),
+        body: JSON.stringify(event),
       }
     )
 
@@ -203,18 +213,10 @@ export default async function handler(req, res) {
       return res.status(200).json({ status: 'calendar error', detail: calendarRes.status })
     }
 
-    const event = await calendarRes.json()
-    return res.status(200).json({ status: 'created', eventId: event.id })
+    const created = await calendarRes.json()
+    return res.status(200).json({ status: 'created', eventId: created.id })
   } catch (err) {
     console.error('Calendar insert threw', err)
     return res.status(200).json({ status: 'calendar error' })
-  }
-}
-
-function safeParse(value) {
-  try {
-    return JSON.parse(value)
-  } catch {
-    return {}
   }
 }
