@@ -97,12 +97,28 @@ function durationFor_(service) {
   return 60;
 }
 
+/**
+ * Formspree HTML-escapes the submitted values, so "Inside & Out" arrives as
+ * "Inside &amp; Out". Undo that before it reaches the calendar.
+ */
+function decodeEntities_(text) {
+  if (!text) return text;
+  return text
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#0?39;/g, "'")
+    .replace(/&apos;/g, "'")
+    .replace(/&nbsp;/g, ' ');
+}
+
 function parseBooking_(body) {
   if (!body) return null;
 
   function field(name) {
     var match = new RegExp('^\\s*' + name + '\\s*:\\s*(.+)$', 'im').exec(body);
-    return match ? match[1].trim() : '';
+    return match ? decodeEntities_(match[1].trim()) : '';
   }
 
   var booking = {
