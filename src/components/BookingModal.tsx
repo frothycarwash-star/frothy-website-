@@ -30,11 +30,15 @@ const timeSlots = [
   '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM',
 ]
 
-// Square Appointments booking page — swap in your real Square booking URL
+// Square Appointments booking page
 const SQUARE_BOOKING_URL = 'https://square.site/book/L52E1Y2E4PK6M/frothy-carwash-lounge-hollywood-fl'
 
-// Formspree endpoint — swap in your real form ID after creating at formspree.io
+// Formspree endpoint
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mdavkzej'
+
+// Mirrors the booking into Google Calendar. Must match BOOKING_WEBHOOK_KEY on the server.
+const BOOKING_HOOK_ENDPOINT = '/api/booking-webhook'
+const BOOKING_HOOK_KEY = 'frothy-booking-hook-2026'
 
 // SMS/call fallback number
 const PHONE = '(954) 510-3073'
@@ -82,33 +86,46 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
     const ref = `FR-${Date.now().toString(36).toUpperCase()}`
     setReferenceId(ref)
 
+    const payload = {
+      reference: ref,
+      name: formData.name,
+      phone: formData.phone,
+      service: formData.service,
+      addOns: selectedAddOns.join(', ') || 'None',
+      date: formData.date,
+      time: formData.time,
+      notes: formData.notes,
+    }
+
     try {
       const res = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          reference: ref,
-          name: formData.name,
-          phone: formData.phone,
-          service: formData.service,
-          addOns: selectedAddOns.join(', ') || 'None',
-          date: formData.date,
-          time: formData.time,
-          notes: formData.notes,
-          _subject: `New booking — ${formData.service}${selectedAddOns.length ? ' + ' + selectedAddOns.length + ' add-on(s)' : ''} — ${formData.date} ${formData.time}`,
+          ...payload,
+          _subject: `New booking - ${formData.service}${selectedAddOns.length ? ' + ' + selectedAddOns.length + ' add-on(s)' : ''} - ${formData.date} ${formData.time}`,
         }),
       })
 
       if (res.ok) {
         setStatus('success')
+
+        // Mirror the booking into Google Calendar. Deliberately not awaited: the
+        // booking is already confirmed to the customer, so a calendar failure
+        // must never change what they see.
+        fetch(BOOKING_HOOK_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ key: BOOKING_HOOK_KEY, ...payload }),
+        }).catch((err) => console.warn('Calendar sync failed', err))
       } else {
         // The booking is confirmed to the customer on success, so a failed submission
-        // must NOT show success — otherwise they arrive and we have no record of them.
+        // must NOT show success - otherwise they arrive and we have no record of them.
         console.error('Booking submission rejected by Formspree:', await res.text())
         setStatus('error')
       }
     } catch (err) {
-      // Network failure — fall back gracefully
+      // Network failure - fall back gracefully
       console.error('Booking submission error:', err)
       setStatus('error')
     }
@@ -154,7 +171,7 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
               <span className="font-semibold text-frothy-navy">{formData.time}</span>.
             </p>
             <p className="text-frothy-navy/70 text-sm mb-1">
-              No need to call — just come by and we'll be ready for you.
+              No need to call - just come by and we'll be ready for you.
             </p>
             <p className="text-frothy-navy/70 text-xs mb-6">Reference: {referenceId}</p>
             <p className="text-frothy-navy/70 text-xs">
@@ -213,7 +230,7 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
                 rel="noopener noreferrer"
                 className="flex-shrink-0 text-xs font-bold text-white bg-frothy-blue px-3 py-1.5 rounded-lg hover:bg-frothy-blue/90 transition-colors"
               >
-                Book Online →
+                Book Online
               </a>
             </div>
 
@@ -240,7 +257,7 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
                   <div>
                     <p className="flex items-center gap-2 text-sm font-semibold text-frothy-navy mb-2">
                       <Plus className="w-4 h-4 text-frothy-blue" />
-                      Add-Ons (optional){selectedAddOns.length > 0 ? ` — ${selectedAddOns.length} selected` : ''}
+                      Add-Ons (optional){selectedAddOns.length > 0 ? ` - ${selectedAddOns.length} selected` : ''}
                     </p>
                     <div className="border-2 border-frothy-foam rounded-xl divide-y divide-frothy-foam overflow-hidden">
                       {addOnGroups.map((group) => (
@@ -284,7 +301,7 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
                       ))}
                     </div>
                     <p className="text-xs text-frothy-navy/70 mt-1.5">
-                      Exact add-on pricing depends on vehicle size, severity, or quantity — we'll confirm your total when you arrive.
+                      Exact add-on pricing depends on vehicle size, severity, or quantity - we'll confirm your total when you arrive.
                     </p>
                   </div>
 
@@ -340,7 +357,7 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
                     onClick={() => setStep(1)}
                     className="text-sm text-frothy-blue hover:underline mb-2"
                   >
-                    ← Back to service selection
+                    Back to service selection
                   </button>
                   <div className="bg-frothy-foam rounded-xl p-4 mb-2">
                     <p className="text-xs text-frothy-navy/70 font-semibold uppercase tracking-wider mb-1">Booking Summary</p>
@@ -409,7 +426,7 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
                     )}
                   </button>
                   <p className="text-xs text-frothy-navy/70 text-center">
-                    Your slot is confirmed as soon as you book — no callback needed.
+                    Your slot is confirmed as soon as you book - no callback needed.
                   </p>
                 </>
               )}
