@@ -95,17 +95,17 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
           date: formData.date,
           time: formData.time,
           notes: formData.notes,
-          _subject: `New booking request — ${formData.service}${selectedAddOns.length ? ' + ' + selectedAddOns.length + ' add-on(s)' : ''} — ${formData.date} ${formData.time}`,
+          _subject: `New booking — ${formData.service}${selectedAddOns.length ? ' + ' + selectedAddOns.length + ' add-on(s)' : ''} — ${formData.date} ${formData.time}`,
         }),
       })
 
       if (res.ok) {
         setStatus('success')
       } else {
-        // Formspree returned an error (e.g. form ID not set up yet) — still show success
-        // and log for dev visibility. Replace FORMSPREE_ENDPOINT before going live.
-        console.warn('Formspree response not OK — check your form ID:', await res.text())
-        setStatus('success')
+        // The booking is confirmed to the customer on success, so a failed submission
+        // must NOT show success — otherwise they arrive and we have no record of them.
+        console.error('Booking submission rejected by Formspree:', await res.text())
+        setStatus('error')
       }
     } catch (err) {
       // Network failure — fall back gracefully
@@ -134,7 +134,7 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
         {/* Header */}
         <div className="sticky top-0 bg-white border-b border-frothy-foam px-6 py-4 flex items-center justify-between rounded-t-2xl z-10">
           <h3 className="font-heading text-xl text-frothy-navy">
-            {status === 'success' ? 'Request Received!' : 'Book Your Appointment'}
+            {status === 'success' ? 'Booking Confirmed!' : 'Book Your Appointment'}
           </h3>
           <button onClick={reset} className="p-1.5 hover:bg-frothy-foam rounded-lg transition-colors">
             <X className="w-5 h-5 text-frothy-navy/70" />
@@ -147,13 +147,18 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
             <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <Check className="w-8 h-8 text-green-600" />
             </div>
-            <h4 className="font-heading text-lg text-frothy-navy mb-2">Booking Request Sent!</h4>
+            <h4 className="font-heading text-lg text-frothy-navy mb-2">You're all booked!</h4>
             <p className="text-frothy-navy/70 text-sm mb-1">
-              We'll call you at <span className="font-semibold text-frothy-navy">{formData.phone}</span> to confirm.
+              <span className="font-semibold text-frothy-navy">{formData.service}</span> on{' '}
+              <span className="font-semibold text-frothy-navy">{formData.date}</span> at{' '}
+              <span className="font-semibold text-frothy-navy">{formData.time}</span>.
+            </p>
+            <p className="text-frothy-navy/70 text-sm mb-1">
+              No need to call — just come by and we'll be ready for you.
             </p>
             <p className="text-frothy-navy/70 text-xs mb-6">Reference: {referenceId}</p>
             <p className="text-frothy-navy/70 text-xs">
-              Need to reach us now?{' '}
+              Need to change or cancel?{' '}
               <a href={PHONE_HREF} className="text-frothy-blue font-semibold underline">
                 Call {PHONE}
               </a>
@@ -173,9 +178,9 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
             <div className="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4">
               <Phone className="w-8 h-8 text-red-500" />
             </div>
-            <h4 className="font-heading text-lg text-frothy-navy mb-2">Submission failed</h4>
+            <h4 className="font-heading text-lg text-frothy-navy mb-2">We couldn't save your booking</h4>
             <p className="text-frothy-navy/70 text-sm mb-4">
-              Something went wrong on our end. Please call us directly to book:
+              Nothing has been booked yet. Please call us and we'll get you in straight away:
             </p>
             <a
               href={PHONE_HREF}
@@ -199,8 +204,8 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
             {/* Square Appointments shortcut banner */}
             <div className="mx-6 mt-5 mb-1 bg-frothy-blue/10 border border-frothy-blue/20 rounded-xl px-4 py-3 flex items-center justify-between gap-3">
               <p className="text-frothy-navy text-xs font-medium">
-                Want to book instantly?{' '}
-                <span className="text-frothy-navy/70">Use our live scheduling link.</span>
+                Want to see live availability?{' '}
+                <span className="text-frothy-navy/70">Pick a slot on our scheduler.</span>
               </p>
               <a
                 href={SQUARE_BOOKING_URL}
@@ -279,7 +284,7 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
                       ))}
                     </div>
                     <p className="text-xs text-frothy-navy/70 mt-1.5">
-                      Exact add-on pricing depends on vehicle size, severity, or quantity — we'll confirm your total when we call to confirm.
+                      Exact add-on pricing depends on vehicle size, severity, or quantity — we'll confirm your total when you arrive.
                     </p>
                   </div>
 
@@ -397,14 +402,14 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
                     {status === 'loading' ? (
                       <>
                         <Loader2 className="w-4 h-4 animate-spin" />
-                        Sending...
+                        Booking...
                       </>
                     ) : (
-                      'Confirm Booking Request'
+                      'Confirm Booking'
                     )}
                   </button>
                   <p className="text-xs text-frothy-navy/70 text-center">
-                    We'll call you to confirm within 30 minutes during business hours.
+                    Your slot is confirmed as soon as you book — no callback needed.
                   </p>
                 </>
               )}
