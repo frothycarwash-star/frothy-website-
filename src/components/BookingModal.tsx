@@ -33,12 +33,9 @@ const timeSlots = [
 // Square Appointments booking page
 const SQUARE_BOOKING_URL = 'https://square.site/book/L52E1Y2E4PK6M/frothy-carwash-lounge-hollywood-fl'
 
-// Formspree endpoint
+// Formspree endpoint. Bookings emailed here are picked up by the Apps Script
+// sync and mirrored into Google Calendar.
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mdavkzej'
-
-// Mirrors the booking into Google Calendar. Must match BOOKING_WEBHOOK_KEY on the server.
-const BOOKING_HOOK_ENDPOINT = '/api/booking-webhook'
-const BOOKING_HOOK_KEY = 'frothy-booking-hook-2026'
 
 // SMS/call fallback number
 const PHONE = '(954) 510-3073'
@@ -86,38 +83,25 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
     const ref = `FR-${Date.now().toString(36).toUpperCase()}`
     setReferenceId(ref)
 
-    const payload = {
-      reference: ref,
-      name: formData.name,
-      phone: formData.phone,
-      service: formData.service,
-      addOns: selectedAddOns.join(', ') || 'None',
-      date: formData.date,
-      time: formData.time,
-      notes: formData.notes,
-    }
-
     try {
       const res = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          ...payload,
+          reference: ref,
+          name: formData.name,
+          phone: formData.phone,
+          service: formData.service,
+          addOns: selectedAddOns.join(', ') || 'None',
+          date: formData.date,
+          time: formData.time,
+          notes: formData.notes,
           _subject: `New booking - ${formData.service}${selectedAddOns.length ? ' + ' + selectedAddOns.length + ' add-on(s)' : ''} - ${formData.date} ${formData.time}`,
         }),
       })
 
       if (res.ok) {
         setStatus('success')
-
-        // Mirror the booking into Google Calendar. Deliberately not awaited: the
-        // booking is already confirmed to the customer, so a calendar failure
-        // must never change what they see.
-        fetch(BOOKING_HOOK_ENDPOINT, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ key: BOOKING_HOOK_KEY, ...payload }),
-        }).catch((err) => console.warn('Calendar sync failed', err))
       } else {
         // The booking is confirmed to the customer on success, so a failed submission
         // must NOT show success - otherwise they arrive and we have no record of them.
