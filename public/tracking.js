@@ -1,1 +1,0 @@
-/* Booking conversion tracking now runs from the application bundle. */
