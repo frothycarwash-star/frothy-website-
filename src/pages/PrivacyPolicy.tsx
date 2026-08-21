@@ -109,11 +109,23 @@ export default function PrivacyPolicy() {
             We describe them this way deliberately rather than calling them anonymous.
           </p>
 
-          <p className="pt-2">
-            We do <strong>not</strong> collect payment card details through this website. Payment for services
-            is taken in person at our location, and our website&apos;s tracking does{' '}
-            <strong>not transmit any payment amount or sales figure</strong> &mdash; no purchase value, no
-            currency, and nothing from our Square point-of-sale system.
+          <p className="font-semibold text-gray-900 pt-2">Payments</p>
+          <p>
+            <strong>This website does not collect or store payment card details.</strong> There is no card
+            form anywhere on frothycarwash.com.
+          </p>
+          <p>
+            Some buttons on this site &mdash; booking an appointment, or signing up for a membership &mdash;
+            take you to <strong>Square</strong>, our scheduling and payment provider. If you enter card or
+            payment details there, you are entering them on Square&apos;s own website, and Square handles them
+            under its own privacy practices. You can also pay in person at our location, where payment is again
+            processed by Square.
+          </p>
+          <p>
+            Either way, the tracking described on this page{' '}
+            <strong>never receives or sends any payment information</strong>. It does not see your card
+            details, the amount you paid, the currency, our point-of-sale takings, or any other Square sales
+            figure.
           </p>
         </Section>
 
@@ -183,9 +195,19 @@ export default function PrivacyPolicy() {
                   </td>
                 </tr>
                 <tr>
+                  <td className="px-4 py-3 font-medium text-gray-900">Square</td>
+                  <td className="px-4 py-3 text-gray-700">
+                    Appointment scheduling, membership and payment checkout, and in-person point-of-sale
+                    processing. Any payment information you enter on Square is handled by Square under its own
+                    privacy practices.
+                  </td>
+                </tr>
+                <tr>
                   <td className="px-4 py-3 font-medium text-gray-900">Formspree</td>
                   <td className="px-4 py-3 text-gray-700">
-                    Receives and delivers booking and contact form submissions to our inbox.
+                    Receives booking and contact form submissions and delivers them to our inbox. Where
+                    attribution information is available, the advertising identifiers and campaign parameters
+                    described in section 1 are attached to the same submission.
                   </td>
                 </tr>
                 <tr>
@@ -213,8 +235,12 @@ export default function PrivacyPolicy() {
 
         <Section id="advertising" title="5. Advertising and Analytics Choices">
           <p>
-            We advertise on Google. Google may use cookies and advertising identifiers to show you our ads and
-            to report on their performance. You can control much of this yourself:
+            We may advertise or promote Frothy through Google, ChatGPT/OpenAI, Apple Maps, Meta and other
+            platforms. The platforms used may change over time, and we are not necessarily running paid
+            advertising on all of them at any given moment. These platforms may use cookies and advertising
+            identifiers to show you our ads and to report on their performance. The controls below are the
+            Google ones, since Google is where most of our measurement happens; other platforms provide their
+            own settings:
           </p>
           <ul className="list-disc pl-6 space-y-2">
             <li>
