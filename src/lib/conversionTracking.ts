@@ -301,6 +301,10 @@ export function buildGa4Params(base: Params): Params {
 
     const presentClickIds = CLICK_ID_KEYS.filter((key) => Boolean(store.last[key]))
     if (presentClickIds.length > 0) {
+      // Informational only. Lets a report tell which click identifiers were
+      // present on the visit. It does NOT drive GA4 attribution — that comes
+      // from the landing session: auto-tagging and the UTMs on the landing
+      // URL, resolved by GA4's own attribution model.
       candidates.click_id_types = presentClickIds.join(',')
       presentClickIds.forEach((key) => {
         const value = store.last[key] as string

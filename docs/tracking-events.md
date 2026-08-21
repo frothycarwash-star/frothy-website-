@@ -223,9 +223,16 @@ and it is a change in what Formspree holds. Fields added by this PR:
 No `value`, no `currency`, no hashed or raw phone number, and no field that
 was not already in the URL the visitor arrived on.
 
-Formspree has no parameter-count or length limit, so this builder keeps full
-fidelity where GA4 gets the compact version. Two builders exist for exactly
-this reason.
+The Formspree payload is **not subject to GA4's collection limits** — those
+limits apply to `gtag('event', …)` calls, not to a JSON body posted to a form
+endpoint — so this builder keeps full fidelity where GA4 gets the compact
+version. Two builders exist for exactly this reason.
+
+That is not the same as saying Formspree accepts anything. **Formspree's own
+applicable limits — on payload size, field count, or field length — have not
+been independently verified here**, because the account is not accessible from
+this audit. If a submission is ever rejected or truncated at the Formspree
+end, this builder is the place to look first.
 
 **Privacy consequence to be aware of:** anyone with access to the Formspree
 inbox can now see which ad click a named customer came from. If that is not
@@ -271,9 +278,21 @@ Click identifiers are the exception to truncation. A truncated `gclid` is
 worse than a missing one — it will never match and it looks like data. So
 `buildGa4Params()` includes an individual click ID **only when the whole
 value fits in 100 characters**; when it does not, the identifier's *name*
-still appears in `click_id_types` so the traffic is not misattributed, and
-the complete value remains in `localStorage` and in the Formspree
-submission.
+still appears in `click_id_types`, and the complete value remains in
+`localStorage` and in the Formspree submission.
+
+**What `click_id_types` does and does not do.** It is an **informational
+custom parameter only**. It records which click identifiers were present on
+the visit, so that a report can tell "this event came from a session that
+carried a `gclid`" apart from one that carried nothing. **It does not cause
+GA4 to attribute the event to any channel or campaign.** GA4 attribution is
+determined primarily by the landing session — Google Ads auto-tagging (the
+`gclid` on the landing URL, linked through the Google Ads ↔ GA4 property
+link) and the UTM parameters on that landing URL — and is resolved by GA4's
+own attribution model, not by parameters an event happens to carry. Sending
+or omitting `click_id_types`, or any individual click ID, on a later event
+changes what a custom report can show; it does not change the source, medium
+or campaign GA4 assigns.
 
 Empty strings, `null` and `undefined` are dropped rather than sent as `""`.
 
