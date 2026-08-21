@@ -210,6 +210,7 @@ export default function BookingModal({ isOpen, onClose, preselectedService }: Bo
               </p>
               <a
                 href={SQUARE_BOOKING_URL}
+                data-analytics-event="booking_start_square"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-shrink-0 text-xs font-bold text-white bg-frothy-blue px-3 py-1.5 rounded-lg hover:bg-frothy-blue/90 transition-colors"

@@ -276,6 +276,7 @@ export default function Services() {
               Tap any add-on to request it, or{' '}
               <a
                 href="https://square.site/book/L52E1Y2E4PK6M/frothy-carwash-lounge-hollywood-fl"
+                data-analytics-event="booking_start_square"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-frothy-blue font-semibold underline"

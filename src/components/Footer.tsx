@@ -69,6 +69,7 @@ export default function Footer() {
               </a>
               <a
                 href="https://maps.google.com/?q=2223+Pembroke+Rd+Hollywood+FL+33020"
+                data-analytics-event="get_directions"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-frothy-foam/60 text-sm hover:text-frothy-yellow transition-colors"

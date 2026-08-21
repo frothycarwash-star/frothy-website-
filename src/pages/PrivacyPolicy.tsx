@@ -2,7 +2,7 @@ import { useSEO } from '../hooks/useSEO'
 import { Link } from 'react-router-dom'
 import { Mail, Phone, MapPin } from 'lucide-react'
 
-const LAST_UPDATED = 'August 7, 2026'
+const LAST_UPDATED = 'August 21, 2026'
 
 function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
@@ -56,28 +56,82 @@ export default function PrivacyPolicy() {
 
           <p className="font-semibold text-gray-900 pt-2">Advertising identifiers</p>
           <p>
-            If you reach our site by clicking one of our ads, we store advertising click identifiers supplied
-            by Google &mdash; such as <code className="text-sm bg-gray-100 px-1.5 py-0.5 rounded">gclid</code>,{' '}
+            If you reach our site from an ad or a marketing link, the link often carries a tracking code in its
+            web address. We record these codes so we can tell which advertising brought you to us. Depending on
+            where you clicked, that may include{' '}
+            <code className="text-sm bg-gray-100 px-1.5 py-0.5 rounded">gclid</code>,{' '}
             <code className="text-sm bg-gray-100 px-1.5 py-0.5 rounded">gbraid</code>, and{' '}
-            <code className="text-sm bg-gray-100 px-1.5 py-0.5 rounded">wbraid</code> &mdash; together with any
-            campaign tracking parameters (<code className="text-sm bg-gray-100 px-1.5 py-0.5 rounded">utm_source</code>,{' '}
+            <code className="text-sm bg-gray-100 px-1.5 py-0.5 rounded">wbraid</code> (Google),{' '}
+            <code className="text-sm bg-gray-100 px-1.5 py-0.5 rounded">fbclid</code> (Facebook and Instagram),{' '}
+            <code className="text-sm bg-gray-100 px-1.5 py-0.5 rounded">msclkid</code> (Microsoft and Bing),{' '}
+            <code className="text-sm bg-gray-100 px-1.5 py-0.5 rounded">ttclid</code> (TikTok),{' '}
+            <code className="text-sm bg-gray-100 px-1.5 py-0.5 rounded">li_fat_id</code> (LinkedIn), and{' '}
+            <code className="text-sm bg-gray-100 px-1.5 py-0.5 rounded">twclid</code> (X), together with any
+            campaign parameters in the address (<code className="text-sm bg-gray-100 px-1.5 py-0.5 rounded">utm_source</code>,{' '}
             <code className="text-sm bg-gray-100 px-1.5 py-0.5 rounded">utm_medium</code>,{' '}
             <code className="text-sm bg-gray-100 px-1.5 py-0.5 rounded">utm_campaign</code>,{' '}
-            <code className="text-sm bg-gray-100 px-1.5 py-0.5 rounded">utm_term</code>, and{' '}
-            <code className="text-sm bg-gray-100 px-1.5 py-0.5 rounded">utm_content</code>). These are held in
-            your browser&apos;s session storage for the duration of your visit and are attached to a booking
-            request if you submit one, so that we can tell which advertising brought you to us.
+            <code className="text-sm bg-gray-100 px-1.5 py-0.5 rounded">utm_term</code>,{' '}
+            <code className="text-sm bg-gray-100 px-1.5 py-0.5 rounded">utm_content</code>, and{' '}
+            <code className="text-sm bg-gray-100 px-1.5 py-0.5 rounded">utm_id</code>).
+          </p>
+          <p>
+            We also record the page you first landed on. If another website sent you here, we keep only the
+            <strong> name of that website</strong> &mdash; for example{' '}
+            <code className="text-sm bg-gray-100 px-1.5 py-0.5 rounded">www.google.com</code> &mdash; and not
+            the full address, the page path, or anything you typed into a search box.
           </p>
 
-          <p className="pt-2">
-            We do <strong>not</strong> collect payment card details through this website. Payment for services
-            is taken in person at our location.
+          <p className="font-semibold text-gray-900 pt-2">Where this is kept, and for how long</p>
+          <p>
+            This information is stored in your own browser, in what is called{' '}
+            <strong>local storage</strong>. It is not session storage, and it does not disappear when you close
+            the tab or the browser.
+          </p>
+          <p>
+            We treat it as expired after <strong>90 days</strong>. Expired information is not used, and it is
+            deleted the next time you load our website. If you never come back, the expired information may
+            physically remain in your browser until you clear it yourself. You can remove it at any time using
+            your browser&apos;s settings for site data &mdash; usually under a heading such as &ldquo;Cookies
+            and other site data&rdquo; or &ldquo;Clear browsing data.&rdquo;
+          </p>
+
+          <p className="font-semibold text-gray-900 pt-2">When you submit a booking</p>
+          <p>
+            If you submit a booking request, the advertising identifiers and campaign information described
+            above are attached to that submission. The submission already contains the details you entered,
+            including your name and phone number, so these are sent together in one message to Formspree, our
+            form provider, and on to our inbox.
+          </p>
+          <p>
+            These advertising identifiers are <strong>pseudonymous, not anonymous</strong>. On their own they do
+            not spell out your name, but they are unique to your click and, when combined with other information
+            &mdash; including the name and phone number in the same booking &mdash; they can be connected to you.
+            We describe them this way deliberately rather than calling them anonymous.
+          </p>
+
+          <p className="font-semibold text-gray-900 pt-2">Payments</p>
+          <p>
+            <strong>This website does not collect or store payment card details.</strong> There is no card
+            form anywhere on frothycarwash.com.
+          </p>
+          <p>
+            Some buttons on this site &mdash; booking an appointment, or signing up for a membership &mdash;
+            take you to <strong>Square</strong>, our scheduling and payment provider. If you enter card or
+            payment details there, you are entering them on Square&apos;s own website, and Square handles them
+            under its own privacy practices. You can also pay in person at our location, where payment is again
+            processed by Square.
+          </p>
+          <p>
+            Either way, the tracking described on this page{' '}
+            <strong>never receives or sends any payment information</strong>. It does not see your card
+            details, the amount you paid, the currency, our point-of-sale takings, or any other Square sales
+            figure.
           </p>
         </Section>
 
         <Section id="cookies" title="2. Cookies and Similar Technologies">
           <p>
-            We use cookies, browser session storage, and similar technologies to keep the site working, to
+            We use cookies, storage inside your browser, and similar technologies to keep the site working, to
             understand how it is used, and to measure the performance of our advertising. Broadly, these fall
             into three groups:
           </p>
@@ -95,8 +149,10 @@ export default function PrivacyPolicy() {
             </li>
           </ul>
           <p>
-            Most browsers let you block or delete cookies through their settings, and you can clear session
-            storage by closing the tab. Blocking cookies may affect how parts of the site behave.
+            Most browsers let you block or delete cookies through their settings. The advertising identifiers
+            described above are kept in local storage, which is <strong>not</strong> cleared by closing the tab
+            or the browser &mdash; to remove them, use your browser&apos;s controls for clearing site data.
+            Blocking cookies or clearing site data may affect how parts of the site behave.
           </p>
         </Section>
 
@@ -139,9 +195,19 @@ export default function PrivacyPolicy() {
                   </td>
                 </tr>
                 <tr>
+                  <td className="px-4 py-3 font-medium text-gray-900">Square</td>
+                  <td className="px-4 py-3 text-gray-700">
+                    Appointment scheduling, membership and payment checkout, and in-person point-of-sale
+                    processing. Any payment information you enter on Square is handled by Square under its own
+                    privacy practices.
+                  </td>
+                </tr>
+                <tr>
                   <td className="px-4 py-3 font-medium text-gray-900">Formspree</td>
                   <td className="px-4 py-3 text-gray-700">
-                    Receives and delivers booking and contact form submissions to our inbox.
+                    Receives booking and contact form submissions and delivers them to our inbox. Where
+                    attribution information is available, the advertising identifiers and campaign parameters
+                    described in section 1 are attached to the same submission.
                   </td>
                 </tr>
                 <tr>
@@ -169,8 +235,12 @@ export default function PrivacyPolicy() {
 
         <Section id="advertising" title="5. Advertising and Analytics Choices">
           <p>
-            We advertise on Google. Google may use cookies and advertising identifiers to show you our ads and
-            to report on their performance. You can control much of this yourself:
+            We may advertise or promote Frothy through Google, ChatGPT/OpenAI, Apple Maps, Meta and other
+            platforms. The platforms used may change over time, and we are not necessarily running paid
+            advertising on all of them at any given moment. These platforms may use cookies and advertising
+            identifiers to show you our ads and to report on their performance. The controls below are the
+            Google ones, since Google is where most of our measurement happens; other platforms provide their
+            own settings:
           </p>
           <ul className="list-disc pl-6 space-y-2">
             <li>
@@ -217,9 +287,16 @@ export default function PrivacyPolicy() {
           <p>
             We keep enquiry and booking information for as long as needed to provide the service and to keep
             reasonable business records &mdash; generally no longer than three years after your last contact
-            with us, unless a longer period is required by law. Advertising identifiers held in session storage
-            are cleared when you close your browser tab. Analytics data is retained according to the settings we
-            configure in Google Analytics.
+            with us, unless a longer period is required by law.
+          </p>
+          <p>
+            Advertising identifiers are held in your browser&apos;s local storage and are treated as expired
+            after 90 days. Once expired they are not used, and they are deleted the next time you load our
+            website. Because this data sits in your own browser rather than on our servers, we cannot delete it
+            remotely: if you never return to the site, it may remain in your browser until you clear your site
+            data. Advertising identifiers that were attached to a booking you submitted are kept with that
+            booking record, under the retention period above. Analytics data is retained according to the
+            settings we configure in Google Analytics.
           </p>
         </Section>
 
@@ -285,6 +362,7 @@ export default function PrivacyPolicy() {
             <p className="font-bold text-gray-900">Frothy Carwash Lounge</p>
             <a
               href="https://maps.google.com/?q=2223+Pembroke+Rd+Hollywood+FL+33020"
+              data-analytics-event="get_directions"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors"

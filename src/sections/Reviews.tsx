@@ -76,6 +76,7 @@ export default function Reviews() {
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
             href={googleReviewsURL}
+            data-analytics-event="google_reviews_click"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 bg-white/[0.06] border border-white/[0.08] rounded-xl px-5 py-3 hover:bg-white/[0.10] hover:border-white/[0.15] transition-colors group"
@@ -91,6 +92,7 @@ export default function Reviews() {
           </a>
           <a
             href={googleReviewsURL}
+            data-analytics-event="google_reviews_click"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 border border-frothy-yellow/30 text-frothy-yellow font-bold text-sm px-5 py-3 rounded-xl hover:bg-frothy-yellow/10 hover:border-frothy-yellow/50 transition-colors"
