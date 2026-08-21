@@ -29,6 +29,7 @@ export default function LocationCTA() {
               {/* Address - Clickable */}
               <a
                 href="https://maps.google.com/?q=2223+Pembroke+Road+Hollywood+FL+33020"
+                data-analytics-event="get_directions"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gray-50 p-6 rounded-xl hover:bg-gray-100 transition block"
@@ -89,6 +90,7 @@ export default function LocationCTA() {
             <div className="flex flex-col sm:flex-row gap-4">
               <a
                 href="https://maps.google.com/?q=2223+Pembroke+Road+Hollywood+FL+33020"
+                data-analytics-event="get_directions"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-frothy-navy text-white font-bold rounded-lg hover:bg-frothy-navy/90 transition"

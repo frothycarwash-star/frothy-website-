@@ -73,6 +73,7 @@ export default function Hero() {
               {/* Rating */}
               <a
                 href="https://g.page/r/CR3lzL_ii6qJEBM/review"
+                data-analytics-event="google_reviews_click"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 group w-fit"

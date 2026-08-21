@@ -2,29 +2,47 @@
  * Website conversion tracking.
  *
  * Design rules this file must keep to:
+ *
  *   1. No monetary value on any event. Only a completed Square payment is
  *      revenue, and that never happens in the browser. Adding `value` here
  *      would flow into Google Ads conversion value and fabricate ROAS.
- *   2. No personal data is transmitted. Attribution lives in the visitor's
- *      own localStorage and is attached to events; names, phone numbers and
- *      email addresses are never read, hashed or sent from this module.
- *   3. Every event is deduplicated on our side. Platform-side deduplication
- *      is not relied upon.
+ *
+ *   2. Ambiguous links are never inferred from their URL. A link to
+ *      google.com/maps/place/... may be "get directions" or "read our
+ *      reviews", and a square.link URL may be an appointment or a
+ *      membership purchase. Those links must carry an explicit
+ *      data-analytics-event marker. Only tel:, mailto: and WhatsApp are
+ *      matched automatically, because those protocols are unambiguous.
+ *
+ *   3. Two payloads, two budgets. GA4 has hard collection limits (25
+ *      parameters, 40-character names, 100-character values); the Formspree
+ *      submission does not. Full-fidelity click IDs live in the browser
+ *      record and the Formspree submission only.
+ *
  *   4. Nothing here may throw into the booking flow. Tracking failures must
  *      be silent to the customer.
+ *
+ * PRIVACY NOTE: this module transmits no name, phone number or email
+ * address. It does attach advertising identifiers to the Formspree booking
+ * submission, which already contains the customer's name and phone. Those
+ * identifiers are pseudonymous, not anonymous. See docs/tracking-events.md.
  */
 
-/** Click identifiers and campaign parameters captured from the landing URL. */
-const ATTRIBUTION_KEYS = [
-  'gclid', 'gbraid', 'wbraid',      // Google
-  'fbclid',                          // Meta
-  'msclkid',                         // Microsoft
-  'ttclid',                          // TikTok
-  'li_fat_id',                       // LinkedIn
-  'twclid',                          // X
+const CLICK_ID_KEYS = [
+  'gclid', 'gbraid', 'wbraid',   // Google
+  'fbclid',                       // Meta
+  'msclkid',                      // Microsoft
+  'ttclid',                       // TikTok
+  'li_fat_id',                    // LinkedIn
+  'twclid',                       // X
+] as const
+
+const UTM_KEYS = [
   'utm_source', 'utm_medium', 'utm_campaign',
   'utm_term', 'utm_content', 'utm_id',
 ] as const
+
+const ATTRIBUTION_KEYS = [...CLICK_ID_KEYS, ...UTM_KEYS] as const
 
 const FORMSPREE_ENDPOINT = 'formspree.io/f/mdavkzej'
 const MEASUREMENT_ID = 'G-TEGKNGS3QS'
@@ -33,14 +51,21 @@ const STORE_KEY = 'frothy_attribution_v2'
 const LEAD_DEDUP_KEY = 'frothy_leads_sent_v1'
 const SESSION_REF_KEY = 'frothy_sid'
 
+/** GA4 standard-property collection limits. */
+const GA4_MAX_PARAMS = 25
+const GA4_MAX_NAME_LENGTH = 40
+const GA4_MAX_VALUE_LENGTH = 100
+
+/** The browser record and the Formspree submission tolerate longer values. */
+const STORE_MAX_VALUE_LENGTH = 300
+
 /**
  * Attribution older than this is treated as invalid and purged.
  *
  * localStorage has NO native expiry. A record does not delete itself after
  * 90 days — it sits in the browser until this code runs again and removes
- * it, which only happens when the visitor returns to the site (or they
- * clear browsing data themselves). What is guaranteed is that an expired
- * record is never read and never attached to an event.
+ * it, which only happens when the visitor returns. What is guaranteed is
+ * that an expired record is never read and never attached to anything.
  */
 const TTL_MS = 90 * 24 * 60 * 60 * 1000
 
@@ -50,17 +75,31 @@ const CLICK_DEDUP_MS = 1500
 /** How many recent lead references to remember for deduplication. */
 const LEAD_DEDUP_LIMIT = 50
 
+/** Attribute carrying an explicit event name on an ambiguous link. */
+export const MARKER_ATTRIBUTE = 'data-analytics-event'
+
 /**
- * Outbound intent events: [href pattern, event name].
- *
- * NOTE: none of these carries a value. A directions tap is not worth $5.
+ * Event names a marker attribute is allowed to select. An unrecognised
+ * marker fires nothing rather than passing an arbitrary string to GA4.
  */
-const OUTBOUND_EVENTS: ReadonlyArray<readonly [RegExp, string]> = [
+export const ALLOWED_MARKER_EVENTS: readonly string[] = [
+  'get_directions',
+  'google_reviews_click',
+  'booking_start_square',
+  'membership_checkout_start',
+  'contact_call_click',
+  'contact_email_click',
+  'contact_whatsapp',
+]
+
+/**
+ * Unambiguous protocols only. Note there is deliberately no Maps or Square
+ * pattern here: those URLs cannot be classified without knowing intent.
+ */
+const PROTOCOL_EVENTS: ReadonlyArray<readonly [RegExp, string]> = [
   [/^tel:/i, 'contact_call_click'],
   [/^mailto:/i, 'contact_email_click'],
-  [/(^https?:)?\/\/(wa\.me|(api|web)\.whatsapp\.com)/i, 'contact_whatsapp'],
-  [/(maps\.google\.[a-z.]+|google\.[a-z.]+\/maps)/i, 'get_directions'],
-  [/(square\.site|square\.link)/i, 'booking_start_square'],
+  [/^(https?:)?\/\/(wa\.me|(api|web)\.whatsapp\.com)/i, 'contact_whatsapp'],
 ]
 
 /**
@@ -68,28 +107,36 @@ const OUTBOUND_EVENTS: ReadonlyArray<readonly [RegExp, string]> = [
  *
  * Deliberately still `qualify_lead`. Production GA4 and Google Ads both key
  * off this name today; renaming it to `generate_lead` in isolation would
- * silently stop recording lead conversions. The rename is a coordinated
- * account-plus-code change — see docs/tracking-events.md.
+ * silently stop recording lead conversions. See docs/tracking-events.md.
  */
 export const LEAD_EVENT_NAME = 'qualify_lead'
 
 type AttributionKey = (typeof ATTRIBUTION_KEYS)[number]
 type Attribution = Partial<Record<AttributionKey, string>>
-type Touch = Attribution & { ts: number; landing_page: string; referrer: string }
-type Store = { first: Touch; last: Touch }
-type BookingPayload = Attribution & { reference?: string; service?: string }
-type TrackingWindow = Window & {
-  gtag?: (...args: unknown[]) => void
+type Touch = Attribution & {
+  ts: number
+  landing_page: string
+  /** Hostname only. The full referrer URL is never stored or sent. */
+  referrer_host?: string
 }
+type Store = { first: Touch; last: Touch }
+type BookingPayload = { reference?: string; service?: string }
+type Params = Record<string, string>
+
+/** Minimal shape of an anchor, so the resolver is testable without a DOM. */
+export interface LinkLike {
+  getAttribute(name: string): string | null
+}
+
+type TrackingWindow = Window & { gtag?: (...args: unknown[]) => void }
 
 let installed = false
 let cachedSessionId: string | null = null
 const recentClicks = new Map<string, number>()
 
 /* ------------------------------------------------------------------ *
- * Storage helpers — every access is guarded.
- * Private browsing, disabled storage and quota errors must all degrade
- * to "no attribution" rather than throwing.
+ * Storage helpers. Private browsing, disabled storage and quota errors
+ * must all degrade to "no attribution" rather than throwing.
  * ------------------------------------------------------------------ */
 
 function safeRead(key: string): string | null {
@@ -100,11 +147,13 @@ function safeRead(key: string): string | null {
   }
 }
 
-function safeWrite(key: string, value: string): void {
+/** Returns false when the write did not happen. */
+function safeWrite(key: string, value: string): boolean {
   try {
     window.localStorage.setItem(key, value)
+    return true
   } catch {
-    /* storage unavailable or full — attribution is best-effort */
+    return false
   }
 }
 
@@ -116,8 +165,7 @@ function safeRemove(key: string): void {
   }
 }
 
-function isExpired(store: Store | null): boolean {
-  if (!store) return true
+function isExpired(store: Store): boolean {
   return Date.now() - store.last.ts > TTL_MS
 }
 
@@ -136,7 +184,7 @@ export function readStore(): Store | null {
   try {
     parsed = JSON.parse(raw)
   } catch {
-    safeRemove(STORE_KEY) // malformed JSON is unusable — drop it
+    safeRemove(STORE_KEY)
     return null
   }
 
@@ -169,6 +217,22 @@ export function purgeExpiredAttribution(): void {
 }
 
 /* ------------------------------------------------------------------ *
+ * Referrer — hostname only.
+ * A full referrer URL can carry query strings and paths that leak search
+ * terms or session identifiers, so only the host is ever retained.
+ * ------------------------------------------------------------------ */
+
+export function referrerHost(rawReferrer: string): string | undefined {
+  if (!rawReferrer) return undefined
+  try {
+    const host = new URL(rawReferrer).hostname
+    return host && host.length <= GA4_MAX_VALUE_LENGTH ? host : undefined
+  } catch {
+    return undefined // unparseable: omit rather than guess
+  }
+}
+
+/* ------------------------------------------------------------------ *
  * Attribution capture
  * ------------------------------------------------------------------ */
 
@@ -177,7 +241,7 @@ export function captureAttribution(): void {
   const found: Attribution = {}
   ATTRIBUTION_KEYS.forEach((key) => {
     const value = params.get(key)
-    if (value) found[key] = value.slice(0, 300)
+    if (value) found[key] = value.slice(0, STORE_MAX_VALUE_LENGTH)
   })
   if (Object.keys(found).length === 0) return
 
@@ -185,26 +249,89 @@ export function captureAttribution(): void {
   const touch: Touch = {
     ...found,
     ts: Date.now(),
-    landing_page: window.location.pathname.slice(0, 200),
-    referrer: (document.referrer || '').slice(0, 200),
+    landing_page: window.location.pathname.slice(0, STORE_MAX_VALUE_LENGTH),
   }
+  const host = referrerHost(document.referrer || '')
+  if (host) touch.referrer_host = host
 
   const next: Store = {
-    first: prior?.first ?? touch, // written once, never overwritten
-    last: touch,                  // always the most recent tagged arrival
+    first: prior ? prior.first : touch, // written once, never overwritten
+    last: touch,
   }
   safeWrite(STORE_KEY, JSON.stringify(next))
 }
 
+/* ------------------------------------------------------------------ *
+ * Payload builders — GA4 and Formspree have different budgets.
+ * ------------------------------------------------------------------ */
+
 /**
- * Flattens the stored attribution into GA4 event parameters.
- * Returns {} when storage is empty, malformed, unavailable or expired.
+ * Trims a parameter map to GA4's documented limits: at most 25 entries,
+ * names of at most 40 characters, values of at most 100 characters.
+ * Entries are kept in insertion order, so callers list them by priority.
  */
-export function attributionParams(): Record<string, string> {
+export function applyGa4Limits(candidates: Params): Params {
+  const out: Params = {}
+  for (const key of Object.keys(candidates)) {
+    if (Object.keys(out).length >= GA4_MAX_PARAMS) break
+    if (!key || key.length > GA4_MAX_NAME_LENGTH) continue
+    const value = candidates[key]
+    if (value === undefined || value === null || value === '') continue
+    out[key] = String(value).slice(0, GA4_MAX_VALUE_LENGTH)
+  }
+  return out
+}
+
+/**
+ * Compact GA4 payload. Click identifiers are included only when they fit
+ * inside GA4's 100-character value limit; a truncated click ID is useless
+ * for matching, so an oversized one is omitted and recorded by name in
+ * `click_id_types` instead. The complete value stays in the browser record
+ * and the Formspree submission.
+ */
+export function buildGa4Params(base: Params): Params {
+  const store = readStore()
+  const candidates: Params = { ...base }
+
+  if (store) {
+    UTM_KEYS.forEach((key) => {
+      const value = store.last[key]
+      if (value) candidates[key] = value
+    })
+
+    const presentClickIds = CLICK_ID_KEYS.filter((key) => Boolean(store.last[key]))
+    if (presentClickIds.length > 0) {
+      candidates.click_id_types = presentClickIds.join(',')
+      presentClickIds.forEach((key) => {
+        const value = store.last[key] as string
+        // Only send identifiers that survive intact.
+        if (value.length <= GA4_MAX_VALUE_LENGTH) candidates[key] = value
+      })
+    }
+
+    // A small, fixed first-touch summary — not every first-touch field.
+    if (store.first.utm_source) candidates.first_utm_source = store.first.utm_source
+    if (store.first.utm_medium) candidates.first_utm_medium = store.first.utm_medium
+    if (store.first.utm_campaign) candidates.first_utm_campaign = store.first.utm_campaign
+    if (store.first.landing_page) candidates.first_landing_page = store.first.landing_page
+  }
+
+  return applyGa4Limits(candidates)
+}
+
+/**
+ * Full-fidelity attribution for the Formspree submission, which has no
+ * parameter or length limits. This is the record that makes later lead
+ * matching possible.
+ *
+ * These fields are added to a submission that ALREADY contains the
+ * customer's name and phone number.
+ */
+export function buildFormspreeAttribution(): Params {
   const store = readStore()
   if (!store) return {}
 
-  const out: Record<string, string> = {}
+  const out: Params = {}
   ATTRIBUTION_KEYS.forEach((key) => {
     const last = store.last[key]
     const first = store.first[key]
@@ -213,15 +340,14 @@ export function attributionParams(): Record<string, string> {
   })
   if (store.first.landing_page) out.first_landing_page = store.first.landing_page
   if (store.last.landing_page) out.last_landing_page = store.last.landing_page
-  if (store.first.referrer) out.first_referrer = store.first.referrer
+  if (store.first.referrer_host) out.first_referrer_host = store.first.referrer_host
+  out.first_touch_at = new Date(store.first.ts).toISOString()
+  out.last_touch_at = new Date(store.last.ts).toISOString()
   return out
 }
 
 /* ------------------------------------------------------------------ *
- * Best-effort GA identifiers
- * Neither is load-bearing. The `_ga` cookie format is stable in practice
- * but is not a documented public contract, and session_id resolves through
- * an async callback that may not have returned yet.
+ * Best-effort GA identifiers. Neither is load-bearing.
  * ------------------------------------------------------------------ */
 
 export function readGaClientId(): string | undefined {
@@ -259,31 +385,30 @@ function sessionRef(): string {
   }
 }
 
-function identityParams(): Record<string, string> {
-  const out: Record<string, string> = { session_ref: sessionRef() }
-  const clientId = readGaClientId()
-  if (clientId) out.ga_client_id = clientId
-  if (cachedSessionId) out.ga_session_id = cachedSessionId
-  return out
-}
-
 /* ------------------------------------------------------------------ *
  * Event dispatch
  * ------------------------------------------------------------------ */
 
-function sendEvent(name: string, params: Record<string, string>): void {
+/**
+ * Sends an event. Returns true ONLY if gtag existed and accepted the call.
+ * Callers use the return value to decide whether to record the event as
+ * sent — recording a send that never happened would silently drop it.
+ */
+export function sendEvent(name: string, params: Params): boolean {
   const tracker = window as TrackingWindow
+  if (typeof tracker.gtag !== 'function') return false
+
+  const base: Params = { ...params, session_ref: sessionRef() }
+  const clientId = readGaClientId()
+  if (clientId) base.ga_client_id = clientId
+  if (cachedSessionId) base.ga_session_id = cachedSessionId
+  base.transport_type = 'beacon'
+
   try {
-    tracker.gtag?.('event', name, {
-      ...params,
-      ...identityParams(),
-      ...attributionParams(),
-      // transport_type: 'beacon' keeps the request alive across the
-      // navigation that these clicks usually trigger.
-      transport_type: 'beacon',
-    })
+    tracker.gtag('event', name, buildGa4Params(base))
+    return true
   } catch {
-    /* never let a tracking failure surface to the customer */
+    return false // blocked or throwing tag — allow a retry later
   }
 }
 
@@ -294,7 +419,6 @@ function isDuplicateClick(name: string, href: string): boolean {
   const previous = recentClicks.get(key)
   if (previous !== undefined && now - previous < CLICK_DEDUP_MS) return true
   recentClicks.set(key, now)
-  // keep the map from growing without bound on a long session
   if (recentClicks.size > 50) {
     recentClicks.forEach((t, k) => {
       if (now - t > CLICK_DEDUP_MS) recentClicks.delete(k)
@@ -303,9 +427,22 @@ function isDuplicateClick(name: string, href: string): boolean {
   return false
 }
 
-export function matchOutboundEvent(href: string): string | undefined {
-  const hit = OUTBOUND_EVENTS.find(([pattern]) => pattern.test(href))
+/** Protocol-only inference. Never matches a Maps or Square URL. */
+export function matchProtocolEvent(href: string): string | undefined {
+  const hit = PROTOCOL_EVENTS.find(([pattern]) => pattern.test(href))
   return hit ? hit[1] : undefined
+}
+
+/**
+ * Resolves the event for a link: an explicit marker wins, otherwise an
+ * unambiguous protocol, otherwise nothing.
+ */
+export function resolveEventName(link: LinkLike): string | undefined {
+  const marker = link.getAttribute(MARKER_ATTRIBUTE)
+  if (marker) {
+    return ALLOWED_MARKER_EVENTS.indexOf(marker) !== -1 ? marker : undefined
+  }
+  return matchProtocolEvent(link.getAttribute('href') || '')
 }
 
 export function handleOutboundClick(event: Event): void {
@@ -314,15 +451,13 @@ export function handleOutboundClick(event: Event): void {
   if (!link) return
 
   const href = link.getAttribute('href') || ''
-  if (!href) return
-
-  const name = matchOutboundEvent(href)
+  const name = resolveEventName(link)
   if (!name) return
   if (isDuplicateClick(name, href)) return
 
   sendEvent(name, {
-    link_url: href.slice(0, 200),
-    page_path: window.location.pathname.slice(0, 200),
+    link_url: href,
+    page_path: window.location.pathname,
   })
 }
 
@@ -349,71 +484,71 @@ function rememberLeadReference(reference: string): void {
 }
 
 /**
- * Fires the lead event exactly once per booking reference.
+ * Fires the lead event at most once per booking reference.
  *
- * The reference is generated by BookingModal before submission and is the
- * only durable idempotency key available in the browser. GA4 does not
- * deduplicate arbitrary events, so this guard is the deduplication.
+ * The reference is only recorded AFTER gtag accepts the call, so a blocked
+ * or not-yet-loaded tag leaves the reference free to retry.
+ *
+ * Deduplication is best-effort: it depends on localStorage, so it does not
+ * hold across devices, cleared browsing data, or storage that is blocked
+ * or unavailable.
  */
 export function sendLeadEvent(payload: BookingPayload): boolean {
   const reference = payload.reference
   if (!reference) return false
   if (sentLeadReferences().indexOf(reference) !== -1) return false
 
-  rememberLeadReference(reference)
-
   const service = (payload.service ?? '').replace(/\s*\(\$\d+\)\s*$/, '').trim()
-  sendEvent(LEAD_EVENT_NAME, {
+  const sent = sendEvent(LEAD_EVENT_NAME, {
     booking_reference: reference,
-    // event_id is reserved for future server-side deduplication. It is a
-    // random-ish reference, not a customer identifier.
     event_id: `frothy-${reference}`,
     service_type: service || 'not_provided',
     lead_source: 'website_booking_form',
   })
+
+  if (!sent) return false
+  rememberLeadReference(reference)
   return true
 }
 
 /* ------------------------------------------------------------------ *
- * fetch wrapper — attaches attribution to the booking submission and
- * fires the lead event on a successful response.
+ * fetch wrapper
  * ------------------------------------------------------------------ */
 
 function requestUrl(input: RequestInfo | URL): string {
   if (typeof input === 'string') return input
-  if (input instanceof Request) return input.url
+  if (typeof Request !== 'undefined' && input instanceof Request) return input.url
   return String(input)
 }
 
-function enrichBookingRequest(init?: RequestInit): RequestInit | undefined {
+export function enrichBookingRequest(init?: RequestInit): RequestInit | undefined {
   if (!init || typeof init.body !== 'string') return init
   try {
-    const payload = JSON.parse(init.body) as BookingPayload
-    return { ...init, body: JSON.stringify({ ...payload, ...attributionParams() }) }
+    const payload = JSON.parse(init.body) as Record<string, unknown>
+    return { ...init, body: JSON.stringify({ ...payload, ...buildFormspreeAttribution() }) }
   } catch {
-    return init
+    return init // non-JSON body: pass through untouched
   }
 }
 
-export function initializeConversionTracking(): void {
-  if (installed || typeof window === 'undefined') return
-  installed = true
-
-  purgeExpiredAttribution()
-  captureAttribution()
-  primeSessionId()
-
-  document.addEventListener('click', handleOutboundClick, { capture: true })
-
+export function installFetchWrapper(): void {
   const nativeFetch = window.fetch.bind(window)
   window.fetch = async (input: RequestInfo | URL, init?: RequestInit): Promise<Response> => {
-    const isBooking = requestUrl(input).includes(FORMSPREE_ENDPOINT)
-    const enriched = isBooking ? enrichBookingRequest(init) : init
+    let isBooking = false
+    let enriched = init
+    try {
+      isBooking = requestUrl(input).includes(FORMSPREE_ENDPOINT)
+      if (isBooking) enriched = enrichBookingRequest(init)
+    } catch {
+      isBooking = false
+      enriched = init
+    }
+
     const response = await nativeFetch(input, enriched)
 
-    // Return the response unchanged either way. The previous version threw
-    // on a non-ok booking response, which made BookingModal's own !res.ok
-    // branch unreachable.
+    // The response is returned unchanged in every case. Whether the customer
+    // sees success or failure is decided by BookingModal from this response,
+    // never by anything in this module.
     if (!isBooking || !response.ok) return response
 
     try {
@@ -427,6 +562,18 @@ export function initializeConversionTracking(): void {
     }
     return response
   }
+}
+
+export function initializeConversionTracking(): void {
+  if (installed || typeof window === 'undefined') return
+  installed = true
+
+  purgeExpiredAttribution()
+  captureAttribution()
+  primeSessionId()
+
+  document.addEventListener('click', handleOutboundClick, { capture: true })
+  installFetchWrapper()
 }
 
 /** Test-only reset. Not called by application code. */

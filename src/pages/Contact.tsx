@@ -23,6 +23,7 @@ export default function Contact() {
               {/* Address - Clickable */}
               <a
                 href="https://maps.google.com/?q=2223+Pembroke+Road+Hollywood+FL+33020"
+              data-analytics-event="get_directions"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-frothy-navy-light p-8 rounded-xl hover:bg-frothy-navy-light/80 transition block"

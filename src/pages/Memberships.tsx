@@ -193,6 +193,7 @@ export default function Memberships() {
 
                     <a
                       href={signupLink}
+                      data-analytics-event="membership_checkout_start"
                       target="_blank"
                       rel="noopener noreferrer"
                       className={`w-full text-center font-bold py-3.5 rounded-xl transition-all hover:scale-[1.02] ${

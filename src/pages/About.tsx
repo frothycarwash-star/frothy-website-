@@ -185,6 +185,7 @@ export default function About() {
                 </div>
                 <a
                   href="https://g.page/r/CR3lzL_ii6qJEBM/review"
+                  data-analytics-event="google_reviews_click"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-white rounded-xl p-4 flex items-center gap-3 shadow-xs hover:shadow-card transition-shadow group"
