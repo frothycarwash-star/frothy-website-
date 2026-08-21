@@ -344,8 +344,6 @@ deployment. The sequence below never merges before verification.
 
 1. Push the branch. Vercel builds a **preview deployment for the branch**,
    at a `*.vercel.app` preview URL, with no effect on `frothycarwash.com`.
-   *(Preview deployments must be enabled for the project and the branch —
-   see the blocker note below.)*
 2. On the preview URL, run the QA pass: markers fire the right events,
    reviews do not fire `get_directions`, memberships do not fire
    `booking_start_square`, no `value` or `currency`, no name or phone.
@@ -359,12 +357,24 @@ deployment. The sequence below never merges before verification.
 8. If anything regresses, roll back by promoting the previous production
    deployment in Vercel — do not attempt a forward fix under live traffic.
 
-**Current blocker:** no Vercel preview URL is available to this branch from
-here. There is no Vercel account access in this session, so the preview
-deployment cannot be located, triggered or verified. Steps 2–4 cannot be
-completed until either a preview URL is supplied or Vercel project access is
-granted. Merging to `main` is **not** an acceptable substitute, because on
-this project that merge is itself the production deploy.
+**Preview status.** Vercel's GitHub app is installed on this repository and
+does build a branch preview. For the current head of this branch the
+deployment reports `Ready` / "Deployment has completed", at:
+
+```
+https://frothy-website-git-tracking-website-25ab23-michael-s-projects28.vercel.app
+```
+
+Production (`frothycarwash.com`, Vercel project `frothy-website`) is **not**
+affected by that deployment.
+
+**Outstanding:** steps 2–4 have not been run against the preview URL itself.
+The audit environment has no network egress to `*.vercel.app` and no Vercel
+account access, so the preview can be confirmed as built but not exercised
+from here. Those three steps must be run from a browser that can reach the
+preview URL before step 5. Merging to `main` is **not** an acceptable
+substitute for them, because on this project that merge is itself the
+production deploy.
 
 ---
 
