@@ -115,7 +115,7 @@ export default function GoogleReviewsSlider() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 bg-frothy-blue text-frothy-navy font-bold rounded-lg hover:bg-frothy-blue/90 transition"
           >
-            Read all 223 reviews on Google
+            Read all 294 reviews on Google
           </a>
         </div>
       </div>
