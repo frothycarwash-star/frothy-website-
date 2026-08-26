@@ -87,7 +87,7 @@ export default function Reviews() {
               ))}
             </div>
             <span className="text-frothy-foam font-semibold text-sm">5.0</span>
-            <span className="text-frothy-foam/60 text-xs">223 Reviews</span>
+            <span className="text-frothy-foam/60 text-xs">294 Reviews</span>
             <span className="text-frothy-blue text-xs font-bold group-hover:underline ml-1">View →</span>
           </a>
           <a
