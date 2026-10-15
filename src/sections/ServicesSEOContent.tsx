@@ -5,9 +5,9 @@ const faqs = [
       'A hand wash (Exterior Wash or Inside & Out) focuses on a clean exterior, wheels, and a basic interior vacuum — it takes 15 to 35 minutes. A full detail (Signature Detail, Executive Finish, Full Detail, or Showroom Detail) goes much deeper, including shampooing, leather conditioning, clay bar decontamination, and paint correction depending on the package, and can take one to several hours.',
   },
   {
-    question: 'Do you offer different pricing for SUVs and trucks?',
+    question: 'Do you offer different pricing for SUVs, trucks, and XL SUVs?',
     answer:
-      'Yes. SUVs and trucks have more surface area and interior space, so most of our services have a slightly higher price for larger vehicles. You can toggle between sedan and SUV/truck pricing at the top of this page to see accurate pricing for your vehicle before booking.',
+      'Yes. SUVs and trucks have more surface area and interior space, so our services are priced by vehicle size: sedan, SUV/truck, and XL SUV (full-size and three-row SUVs). You can toggle between sedan, SUV/truck, and XL SUV pricing at the top of this page to see accurate pricing for your vehicle before booking.',
   },
   {
     question: 'How often should I get a full detail versus a hand wash?',

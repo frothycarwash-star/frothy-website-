@@ -6,7 +6,9 @@ import RelatedLinks from '../components/RelatedLinks'
 import MembershipsSEOContent from '../sections/MembershipsSEOContent'
 import BreadcrumbNav from '../components/BreadcrumbNav'
 
-type Vehicle = 'sedan' | 'suv'
+type Vehicle = 'sedan' | 'suv' | 'xl'
+
+const vehicleLabels: Record<Vehicle, string> = { sedan: 'sedan', suv: 'SUV/truck', xl: 'XL SUV' }
 
 const plans = [
   {
@@ -18,8 +20,10 @@ const plans = [
     badgeText: 'text-slate-200',
     sedanPrice: 119,
     suvPrice: 139,
+    xlPrice: 149,
     sedanLink: 'https://square.link/u/18XnOa8I',
     suvLink: 'https://square.link/u/ojjyVr7P',
+    xlLink: null as string | null,
     savings: '2 full washes + 2 exterior touch-ups every month',
     features: [
       '2× Inside & Out ($40 each · 35 min)',
@@ -38,8 +42,10 @@ const plans = [
     badgeText: 'text-amber-100',
     sedanPrice: 179,
     suvPrice: 199,
+    xlPrice: 229,
     sedanLink: 'https://square.link/u/TfrwVKKt',
     suvLink: 'https://square.link/u/HCgmJglV',
+    xlLink: null as string | null,
     savings: 'Unlimited full washes + wax + monthly detail',
     popular: true,
     features: [
@@ -60,8 +66,10 @@ const plans = [
     badgeText: 'text-purple-100',
     sedanPrice: 229,
     suvPrice: 249,
+    xlPrice: 259,
     sedanLink: 'https://square.link/u/a3JZmF41',
     suvLink: 'https://square.link/u/uYVlji14',
+    xlLink: null as string | null,
     savings: 'Premium tier service + executive finish included',
     features: [
       '4× Inside & Out ($40 each · 35 min)',
@@ -78,7 +86,7 @@ const rules = [
   { icon: Calendar, text: 'No rollovers — credits reset at end of each billing month' },
   { icon: CreditCard, text: 'Card on file required — auto-billed monthly through Square' },
   { icon: XCircle, text: 'Machine Polish not included — members get 10% off when booked separately' },
-  { icon: HelpCircle, text: 'SUV/Truck pricing is a flat +$20/mo across all tiers — already reflected above' },
+  { icon: HelpCircle, text: 'SUV/Truck and XL SUV pricing is shown above — use the vehicle toggle to see your price' },
   { icon: Star, text: 'Launch offer — ask about $20 off your first month' },
   { icon: Check, text: 'Cancel anytime — no contracts, no hidden fees' },
 ]
@@ -123,7 +131,7 @@ export default function Memberships() {
             <div className="inline-flex bg-white rounded-xl shadow-card p-1.5 gap-1">
               <button
                 onClick={() => setVehicle('sedan')}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-bold text-sm transition-all ${
+                className={`flex items-center gap-1.5 px-3 sm:px-5 py-2.5 rounded-lg font-bold text-sm transition-all ${
                   vehicle === 'sedan' ? 'bg-frothy-navy text-frothy-yellow' : 'text-frothy-navy/70 hover:text-frothy-navy'
                 }`}
               >
@@ -132,12 +140,21 @@ export default function Memberships() {
               </button>
               <button
                 onClick={() => setVehicle('suv')}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-bold text-sm transition-all ${
+                className={`flex items-center gap-1.5 px-3 sm:px-5 py-2.5 rounded-lg font-bold text-sm transition-all ${
                   vehicle === 'suv' ? 'bg-frothy-navy text-frothy-yellow' : 'text-frothy-navy/70 hover:text-frothy-navy'
                 }`}
               >
                 <Truck className="w-4 h-4" />
                 SUV / Truck
+              </button>
+              <button
+                onClick={() => setVehicle('xl')}
+                className={`flex items-center gap-1.5 px-3 sm:px-5 py-2.5 rounded-lg font-bold text-sm transition-all ${
+                  vehicle === 'xl' ? 'bg-frothy-navy text-frothy-yellow' : 'text-frothy-navy/70 hover:text-frothy-navy'
+                }`}
+              >
+                <Truck className="w-4 h-4" />
+                XL SUV
               </button>
             </div>
           </div>
@@ -145,8 +162,10 @@ export default function Memberships() {
           {/* Plans Grid */}
           <div className="grid lg:grid-cols-3 gap-6 mb-12 lg:auto-rows-fr">
             {plans.map((plan) => {
-              const price = vehicle === 'sedan' ? plan.sedanPrice : plan.suvPrice
-              const signupLink = vehicle === 'sedan' ? plan.sedanLink : plan.suvLink
+              const price = vehicle === 'sedan' ? plan.sedanPrice : vehicle === 'suv' ? plan.suvPrice : plan.xlPrice
+              const squareLink = vehicle === 'sedan' ? plan.sedanLink : vehicle === 'suv' ? plan.suvLink : plan.xlLink
+              // XL SUV plans have no Square checkout link yet — fall back to a phone sign-up.
+              const signupLink = squareLink ?? 'tel:9545103073'
               return (
                 <div
                   key={plan.name}
@@ -166,7 +185,7 @@ export default function Memberships() {
                       {plan.name} Plan
                     </p>
                     <p className="font-heading text-5xl font-bold text-white mb-1">${price}</p>
-                    <p className="text-white/60 text-sm mb-3">per month · {vehicle === 'sedan' ? 'sedan' : 'SUV/truck'}</p>
+                    <p className="text-white/60 text-sm mb-3">per month · {vehicleLabels[vehicle]}</p>
                     <span className={`inline-block ${plan.badgeBg} ${plan.badgeText} text-[11px] font-bold px-3 py-1.5 rounded-full`}>
                       {plan.savings}
                     </span>
@@ -193,18 +212,19 @@ export default function Memberships() {
 
                     <a
                       href={signupLink}
-                      data-analytics-event="membership_checkout_start"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      data-analytics-event={squareLink ? 'membership_checkout_start' : 'membership_call_signup'}
+                      {...(squareLink ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                       className={`w-full text-center font-bold py-3.5 rounded-xl transition-all hover:scale-[1.02] ${
                         plan.popular
                           ? 'bg-amber-500 text-white hover:bg-amber-600'
                           : 'bg-frothy-navy text-frothy-yellow hover:bg-frothy-navy-light'
                       }`}
                     >
-                      Sign Up Online — ${price}/mo
+                      {squareLink ? `Sign Up Online — $${price}/mo` : `Call to Sign Up — $${price}/mo`}
                     </a>
-                    <p className="text-center text-xs text-frothy-navy/70 mt-2">Secure checkout via Square · cancel anytime</p>
+                    <p className="text-center text-xs text-frothy-navy/70 mt-2">
+                      {squareLink ? 'Secure checkout via Square · cancel anytime' : 'Call (954) 510-3073 · cancel anytime'}
+                    </p>
                   </div>
                 </div>
               )

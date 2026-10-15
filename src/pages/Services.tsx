@@ -14,14 +14,22 @@ import {
   fleetLuxuryServices,
 } from '../data/addOns'
 
-type Vehicle = 'sedan' | 'suv'
+type Vehicle = 'sedan' | 'suv' | 'xl'
+
+const vehicleLabels: Record<Vehicle, string> = { sedan: 'Sedan', suv: 'SUV/Truck', xl: 'XL SUV' }
+
+type PricedService = { name: string; sedanPrice: number; suvPrice: number; xlPrice: number }
+
+const priceFor = (service: PricedService, vehicle: Vehicle) =>
+  vehicle === 'sedan' ? service.sedanPrice : vehicle === 'suv' ? service.suvPrice : service.xlPrice
 
 const basicWashes = [
   {
     name: 'Exterior Wash',
     tagline: 'The quick clean refresh',
     sedanPrice: 25,
-    suvPrice: 25,
+    suvPrice: 35,
+    xlPrice: 40,
     features: ['Hand wash exterior', 'Rinse & hand dry', 'Window cleaning', 'Tire & wheel cleaning', 'Door jamb wipe-down'],
     featured: false,
   },
@@ -29,7 +37,8 @@ const basicWashes = [
     name: 'Interior Vacuum',
     tagline: 'Inside freshened up',
     sedanPrice: 35,
-    suvPrice: 40,
+    suvPrice: 45,
+    xlPrice: 50,
     features: ['Full interior vacuum', 'Floor & mat vacuuming', 'Seat vacuuming', 'Trunk vacuum'],
     featured: false,
   },
@@ -38,6 +47,7 @@ const basicWashes = [
     tagline: 'Full interior + exterior · ~35 min',
     sedanPrice: 40,
     suvPrice: 50,
+    xlPrice: 65,
     features: ['Hand wash exterior', 'Wheels & tire cleaning', 'Hand dry', 'Full interior vacuum', 'Dashboard & console wipe-down', 'Door panels cleaned', 'Interior & exterior windows', 'Floor mat cleaning'],
     featured: true,
     badge: 'Most Popular',
@@ -50,6 +60,7 @@ const detailPackages = [
     tagline: 'Deep clean + UV protect + spray wax · ~1 hour',
     sedanPrice: 65,
     suvPrice: 75,
+    xlPrice: 90,
     features: ['Everything in Inside & Out', 'Spray wax exterior', 'UV paint protection', 'Tire dressing', 'Trim wipe-down', 'Air freshener'],
     featured: false,
   },
@@ -58,6 +69,7 @@ const detailPackages = [
     tagline: 'Shampoo + leather + premium wax + trim restore',
     sedanPrice: 95,
     suvPrice: 105,
+    xlPrice: 120,
     features: ['Everything in Signature Detail', 'Seat & carpet shampoo', 'Leather cleaning & conditioning', 'Premium hand wax', 'Trim restoration', 'Engine bay wipe-down'],
     featured: true,
     badge: 'Best Value',
@@ -67,6 +79,7 @@ const detailPackages = [
     tagline: 'Complete inside-out restoration',
     sedanPrice: 199,
     suvPrice: 249,
+    xlPrice: 299,
     features: ['Everything in Executive Finish', 'Clay bar decontamination', 'Iron decontamination', 'Full carpet extraction', 'Headliner cleaning', 'Paint sealant application'],
     featured: false,
   },
@@ -74,7 +87,8 @@ const detailPackages = [
     name: 'Showroom Detail',
     tagline: 'The ultimate treatment',
     sedanPrice: 299,
-    suvPrice: 399,
+    suvPrice: 349,
+    xlPrice: 399,
     features: ['Everything in Full Detail', 'Paint correction (1-step polish)', 'Full interior steam clean', 'Ozone odor treatment', 'Wheel ceramic sealant', 'Glass ceramic coating', 'Certificate of completion'],
     featured: false,
   },
@@ -82,7 +96,7 @@ const detailPackages = [
 
 
 function ServiceCard({ service, vehicle, onBook }: { service: typeof basicWashes[0]; vehicle: Vehicle; onBook: () => void }) {
-  const price = vehicle === 'sedan' ? service.sedanPrice : service.suvPrice
+  const price = priceFor(service, vehicle)
   return (
     <div className={`h-full flex flex-col rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-shadow ${
       service.featured ? 'ring-2 ring-frothy-blue' : ''
@@ -106,7 +120,7 @@ function ServiceCard({ service, vehicle, onBook }: { service: typeof basicWashes
             ${price}
           </span>
           <span className={`text-sm ml-2 ${service.featured ? 'text-white/60' : 'text-frothy-foam/60'}`}>
-            {vehicle === 'sedan' ? 'sedan' : 'SUV/Truck'}
+            {vehicle === 'sedan' ? 'sedan' : vehicleLabels[vehicle]}
           </span>
         </div>
       </div>
@@ -176,9 +190,8 @@ export default function Services() {
     setBookingOpen(true)
   }
 
-  const openServiceBooking = (service: { name: string; sedanPrice: number; suvPrice: number }) => {
-    const price = vehicle === 'sedan' ? service.sedanPrice : service.suvPrice
-    openBooking(`${service.name} (${vehicle === 'sedan' ? 'Sedan' : 'SUV/Truck'})`, `$${price}`)
+  const openServiceBooking = (service: PricedService) => {
+    openBooking(`${service.name} (${vehicleLabels[vehicle]})`, `$${priceFor(service, vehicle)}`)
   }
 
   return (
@@ -221,7 +234,7 @@ export default function Services() {
             <div className="inline-flex bg-white rounded-xl shadow-card p-1.5 gap-1">
               <button
                 onClick={() => setVehicle('sedan')}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-bold text-sm transition-all ${
+                className={`flex items-center gap-1.5 px-3 sm:px-5 py-2.5 rounded-lg font-bold text-sm transition-all ${
                   vehicle === 'sedan' ? 'bg-frothy-navy text-frothy-yellow' : 'text-frothy-navy/70 hover:text-frothy-navy'
                 }`}
               >
@@ -230,12 +243,21 @@ export default function Services() {
               </button>
               <button
                 onClick={() => setVehicle('suv')}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-bold text-sm transition-all ${
+                className={`flex items-center gap-1.5 px-3 sm:px-5 py-2.5 rounded-lg font-bold text-sm transition-all ${
                   vehicle === 'suv' ? 'bg-frothy-navy text-frothy-yellow' : 'text-frothy-navy/70 hover:text-frothy-navy'
                 }`}
               >
                 <Truck className="w-4 h-4" />
                 SUV / Truck
+              </button>
+              <button
+                onClick={() => setVehicle('xl')}
+                className={`flex items-center gap-1.5 px-3 sm:px-5 py-2.5 rounded-lg font-bold text-sm transition-all ${
+                  vehicle === 'xl' ? 'bg-frothy-navy text-frothy-yellow' : 'text-frothy-navy/70 hover:text-frothy-navy'
+                }`}
+              >
+                <Truck className="w-4 h-4" />
+                XL SUV
               </button>
             </div>
           </div>

@@ -12,7 +12,7 @@ const faqs = [
   {
     question: 'Can I use my membership on more than one vehicle?',
     answer:
-      'Memberships are tied to a single vehicle, since pricing is based on sedan or SUV/truck size. If you have multiple cars in your household, many of our members sign up for a separate plan for each vehicle — ask our team about multi-car discounts when you sign up in person.',
+      'Memberships are tied to a single vehicle, since pricing is based on vehicle size (sedan, SUV/truck, or XL SUV). If you have multiple cars in your household, many of our members sign up for a separate plan for each vehicle — ask our team about multi-car discounts when you sign up in person.',
   },
   {
     question: 'Is ceramic coating included in any membership?',
@@ -50,7 +50,7 @@ export default function MembershipsSEOContent() {
             Beyond the savings, membership means you never have to think about scheduling a wash around your week. With priority scheduling on Gold and Platinum plans, members skip the regular line and get in and out faster, which matters most for daily commuters and anyone juggling a tight calendar. Your membership also locks in current pricing, so you're protected if our walk-in rates change.
           </p>
           <p>
-            Memberships work for both sedans and SUVs/trucks, with a flat pricing adjustment for larger vehicles, and there are no long-term contracts — you can cancel anytime through Square. Whether you're a daily commuter near Hollywood, FL or a weekend driver who wants their car looking sharp every time they take it out, there's a plan built for how you actually use your car.
+            Memberships work for sedans, SUVs/trucks, and XL SUVs, with pricing adjusted for larger vehicles, and there are no long-term contracts — you can cancel anytime through Square. Whether you're a daily commuter near Hollywood, FL or a weekend driver who wants their car looking sharp every time they take it out, there's a plan built for how you actually use your car.
           </p>
         </div>
 

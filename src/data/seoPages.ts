@@ -51,7 +51,7 @@ export const seoPages: Record<string, SEOPageData> = {
         heading: 'What our premium hand car wash includes',
         paragraphs: [
           'Our hand wash packages start with a thorough pre-rinse and bug/tar pre-treatment, followed by a hand wash of the entire exterior using soft wash mitts and premium car-safe soap. We hand-dry with plush microfiber towels to avoid water spotting — something an automatic dryer can never fully prevent.',
-          'Interior service is included on most packages: vacuuming carpets and seats, wiping down the dash and console, cleaning interior glass, and tire shine for a finished look inside and out. Sedan and SUV pricing is available, and you can see exact pricing on our services page.',
+          'Interior service is included on most packages: vacuuming carpets and seats, wiping down the dash and console, cleaning interior glass, and tire shine for a finished look inside and out. Sedan, SUV, and XL SUV pricing is available, and you can see exact pricing on our services page.',
           "Need a quick rinse between full washes, or want to step it up to a Signature Detail or ceramic coating? We offer all three under one roof, so your car gets exactly the level of care it needs at the time.",
         ],
       },
@@ -124,7 +124,7 @@ export const seoPages: Record<string, SEOPageData> = {
       {
         heading: 'Showroom packages and pricing',
         paragraphs: [
-          'Signature Details at Frothy start at $65 and go up to $299 for our showroom-level packages, with separate sedan and SUV pricing. Every detailing package can be paired with ceramic coating for long-term protection once the correction work is done — see full pricing on our services page.',
+          'Signature Details at Frothy start at $65 and go up to $299 for our showroom-level packages, with separate sedan, SUV, and XL SUV pricing. Every detailing package can be paired with ceramic coating for long-term protection once the correction work is done — see full pricing on our services page.',
           "Detailing is by appointment so we can give your vehicle the time it needs — book online or call us directly and we'll walk you through which package fits your car best.",
           "Many of our Hollywood, FL detailing customers start with a Signature Detail or Executive Finish and move up to a Signature Detail or Showroom package once they see the difference paint correction and proper interior treatment makes. If you're not sure which tier your car needs, send us a few photos when you call and we'll recommend a starting point.",
           "Detailing pairs especially well with our monthly memberships — Gold and Platinum members get a Signature Detail or Executive Finish included every month, so the deeper clean becomes part of your regular routine instead of an occasional splurge.",
