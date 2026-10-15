@@ -11,7 +11,7 @@ const tiers = [
     tier: 'Entry Level · Spray Protection',
     name: 'Ceramic Spray Sealant',
     price: '$149',
-    features: ['Spray-applied ceramic sealant', 'Hydrophobic water beading', 'UV ray protection', 'Enhanced gloss finish', 'Paint prep included', 'Great for daily drivers'],
+    features: ['Sedan $149 · SUV $169 · XL SUV $189', 'Spray-applied ceramic sealant', 'Hydrophobic water beading', 'UV ray protection', 'Enhanced gloss finish', 'Paint prep included', 'Great for daily drivers'],
     featured: false,
     span: true,
   },

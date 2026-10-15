@@ -74,7 +74,7 @@ export const PAGE_SEO = {
   },
   services: {
     title: 'Car Wash & Detailing Services | Frothy Hollywood FL',
-    description: 'Hand washes from $25, full details from $65, and showroom packages up to $299. Every service done by hand. Sedan & SUV pricing. Hollywood, FL.',
+    description: 'Hand washes from $25, full details from $65, and showroom packages up to $299. Every service done by hand. Sedan, SUV & XL SUV pricing. Hollywood, FL.',
     canonical: '/services',
   },
   ceramic: {
